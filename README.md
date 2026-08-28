@@ -1,2 +1,3 @@
 # Startuzeiro
-Repo aleatório para pesquisa de mercado e criar um SaaS supostamente (viavelmente) lucrativo.
+
+Repositório aleatório para pesquisa de mercado e criar alguma coisa que possa supostamente (viavelmente) ajudar a ganhar grana.
