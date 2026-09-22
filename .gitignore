@@ -59,3 +59,7 @@ Thumbs.db
 # Firecrawl cache & temp
 .firecrawl/
 
+# Local databases and temporary scratch files
+dados/
+scratch/
+

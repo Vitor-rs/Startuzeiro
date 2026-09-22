@@ -1,6 +1,6 @@
 # ========================================================
 # Catálogo Oficial de Ferramentas - Startuzeiro
-# Total de Ferramentas: 202
+# Total de Ferramentas: 203
 # ========================================================
 
 - id: FER-001
@@ -1952,4 +1952,14 @@
   github: "https://github.com/kuzudb/kuzu"
   descricao: "Sistema de gerenciamento de banco de dados de grafos embutido e ultrarrápido (o 'DuckDB dos grafos'), executando consultas Cypher direto na memória."
   potencial_startuzeiro: "Consultas ultra-rápidas em grafos de redes societárias locais sem necessidade de instalar servidores pesados de banco de dados."
+
+- id: FER-203
+  nome: "Hugging Face Hub MCP"
+  slug: "huggingface-hub-mcp"
+  categoria: "api-ia"
+  tipo: "mcp-servico-api"
+  url: "https://huggingface.co/mcp"
+  github: "https://github.com/huggingface/mcp-course"
+  descricao: "Servidor MCP oficial do Hugging Face para descoberta, inspeção e navegação em modelos abertos, datasets para fine-tuning, spaces e papers diários do arXiv via ferramentas hf_fs e hub_repo_search."
+  potencial_startuzeiro: "Busca de modelos estado-da-arte, verificação de licenças comerciais, monitoramento de papers do arXiv e download de datasets para os experimentos de IA do laboratório."
 

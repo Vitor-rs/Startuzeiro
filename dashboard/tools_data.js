@@ -1,4 +1,4 @@
-// Base de Dados Oficial - Startuzeiro Hub (202 Ferramentas)
+// Base de Dados Oficial - Startuzeiro Hub (203 Ferramentas)
 const TOOLS_DATA = [
   {
     "id": "FER-001",
@@ -621,6 +621,7 @@ const TOOLS_DATA = [
     "potencial_startuzeiro": "Prospecção hiper-segmentada com buscas cruzadas (pessoas por atributos de empresas), enriquecimento massivo multiprovedor, execução de rotinas automatizadas e geração de listas de leads de altíssima conversão."
   },
   {
+    "id": "FER-063",
     "nome": "NetworkX",
     "slug": "networkx",
     "categoria": "grafos-redes-complexas",
@@ -628,10 +629,10 @@ const TOOLS_DATA = [
     "url": "https://networkx.org/",
     "github": "https://github.com/networkx/networkx",
     "descricao": "Biblioteca Python padrão para criação, manipulação e estudo da estrutura, dinâmica e funções de redes e grafos complexos.",
-    "potencial_startuzeiro": "Modelagem de grafos societários, análise de centralidade em redes de sócios (cnpj.ai) e mapas de conhecimento do laboratório.",
-    "id": "FER-063"
+    "potencial_startuzeiro": "Modelagem de grafos societários, análise de centralidade em redes de sócios (cnpj.ai) e mapas de conhecimento do laboratório."
   },
   {
+    "id": "FER-064",
     "nome": "GLiNER / GLiNER2",
     "slug": "gliner",
     "categoria": "nlp-ner-extracao",
@@ -639,10 +640,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/urchade/GLiNER",
     "github": "https://github.com/urchade/GLiNER",
     "descricao": "Modelo compacto e revolucionário de Reconhecimento de Entidades Nomeadas (NER) de vocabulário aberto (zero-shot) baseado em encoders bidirecionais.",
-    "potencial_startuzeiro": "Extração estruturada de entidades arbitrárias (cargos, empresas, tecnologias, valores monetários) de páginas web e transcrições de vídeos sem requisições caras a LLMs.",
-    "id": "FER-064"
+    "potencial_startuzeiro": "Extração estruturada de entidades arbitrárias (cargos, empresas, tecnologias, valores monetários) de páginas web e transcrições de vídeos sem requisições caras a LLMs."
   },
   {
+    "id": "FER-065",
     "nome": "Docling",
     "slug": "docling",
     "categoria": "documentos-rag",
@@ -650,10 +651,10 @@ const TOOLS_DATA = [
     "url": "https://ds4sd.github.io/docling/",
     "github": "https://github.com/DS4SD/docling",
     "descricao": "Parser de documentos de última geração desenvolvido pela IBM Research, convertendo PDFs complexos, DOCX e scans em Markdown estruturado com preservação fiel de tabelas.",
-    "potencial_startuzeiro": "Ingestão e preparação de relatórios financeiros, contratos e balanços para a esteira de RAG e agentes do laboratório.",
-    "id": "FER-065"
+    "potencial_startuzeiro": "Ingestão e preparação de relatórios financeiros, contratos e balanços para a esteira de RAG e agentes do laboratório."
   },
   {
+    "id": "FER-066",
     "nome": "Marker",
     "slug": "marker",
     "categoria": "documentos-rag",
@@ -661,10 +662,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/VikParuchuri/marker",
     "github": "https://github.com/VikParuchuri/marker",
     "descricao": "Conversor de PDFs e livros técnicos em Markdown de alta precisão via modelos neurais de visão, com suporte impecável a fórmulas LaTeX, tabelas e diagramas.",
-    "potencial_startuzeiro": "Digitalização massiva de papers, e-books e documentações técnicas acadêmicas para alimentação da base do Obsidian.",
-    "id": "FER-066"
+    "potencial_startuzeiro": "Digitalização massiva de papers, e-books e documentações técnicas acadêmicas para alimentação da base do Obsidian."
   },
   {
+    "id": "FER-067",
     "nome": "MarkItDown",
     "slug": "markitdown",
     "categoria": "documentos-rag",
@@ -672,10 +673,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/microsoft/markitdown",
     "github": "https://github.com/microsoft/markitdown",
     "descricao": "Utilitário oficial da Microsoft em Python para conversão rápida de múltiplos formatos de arquivo (PDF, PowerPoint, Excel, Word, imagens) em Markdown limpo para LLMs.",
-    "potencial_startuzeiro": "Pipeline universal de ingestão de arquivos recebidos de clientes e parceiros para indexação rápida no Startuzeiro.",
-    "id": "FER-067"
+    "potencial_startuzeiro": "Pipeline universal de ingestão de arquivos recebidos de clientes e parceiros para indexação rápida no Startuzeiro."
   },
   {
+    "id": "FER-068",
     "nome": "PyMuPDF",
     "slug": "pymupdf",
     "categoria": "documentos-rag",
@@ -683,10 +684,10 @@ const TOOLS_DATA = [
     "url": "https://pymupdf.readthedocs.io/",
     "github": "https://github.com/pymupdf/PyMuPDF",
     "descricao": "Binding em Python de alta performance para o MuPDF, permitindo extração e renderização ultrarrápida de páginas, textos, metadados e imagens de PDFs e ePubs.",
-    "potencial_startuzeiro": "Manipulação bruta, validação e extração relâmpago de texto de documentos PDF sem overhead de inferência de visão.",
-    "id": "FER-068"
+    "potencial_startuzeiro": "Manipulação bruta, validação e extração relâmpago de texto de documentos PDF sem overhead de inferência de visão."
   },
   {
+    "id": "FER-069",
     "nome": "PyMuPDF4LLM",
     "slug": "pymupdf4llm",
     "categoria": "documentos-rag",
@@ -694,10 +695,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/pymupdf/PyMuPDF4LLM",
     "github": "https://github.com/pymupdf/PyMuPDF4LLM",
     "descricao": "Extensão do PyMuPDF projetada especificamente para RAG e LLMs, exportando páginas em Markdown nativo e chunks estruturados com metadados posicionais.",
-    "potencial_startuzeiro": "Segmentação direta de PDFs em chunks semânticos com tabelas formatadas para indexação vetorial no Startuzeiro.",
-    "id": "FER-069"
+    "potencial_startuzeiro": "Segmentação direta de PDFs em chunks semânticos com tabelas formatadas para indexação vetorial no Startuzeiro."
   },
   {
+    "id": "FER-070",
     "nome": "Pydantic AI",
     "slug": "pydantic-ai",
     "categoria": "agentes-ia",
@@ -705,10 +706,10 @@ const TOOLS_DATA = [
     "url": "https://ai.pydantic.dev/",
     "github": "https://github.com/pydantic/pydantic-ai",
     "descricao": "Framework moderno de desenvolvimento de agentes de IA com validação de tipo estrita, desacoplamento de provedores e integração nativa ao ecossistema Pydantic.",
-    "potencial_startuzeiro": "Construção de bots de automação e agentes de extração de dados com tipagem estrita e validação de saída garantida em tempo de execução.",
-    "id": "FER-070"
+    "potencial_startuzeiro": "Construção de bots de automação e agentes de extração de dados com tipagem estrita e validação de saída garantida em tempo de execução."
   },
   {
+    "id": "FER-071",
     "nome": "LiteLLM",
     "slug": "litellm",
     "categoria": "llm-infra-observabilidade",
@@ -716,10 +717,10 @@ const TOOLS_DATA = [
     "url": "https://www.litellm.ai/",
     "github": "https://github.com/BerriAI/litellm",
     "descricao": "Gateway e proxy unificado que traduz chamadas de mais de 100 provedores de LLMs (OpenAI, Anthropic, Bedrock, Gemini, Groq, Ollama) para a API padrão da OpenAI.",
-    "potencial_startuzeiro": "Camada de abstração de LLMs no laboratório, garantindo failover automático entre provedores, controle de custos e roteamento inteligente.",
-    "id": "FER-071"
+    "potencial_startuzeiro": "Camada de abstração de LLMs no laboratório, garantindo failover automático entre provedores, controle de custos e roteamento inteligente."
   },
   {
+    "id": "FER-072",
     "nome": "Pydantic Logfire",
     "slug": "pydantic-logfire",
     "categoria": "llm-infra-observabilidade",
@@ -727,10 +728,10 @@ const TOOLS_DATA = [
     "url": "https://pydantic.dev/logfire",
     "github": "https://github.com/pydantic/logfire",
     "descricao": "Plataforma de observabilidade baseada em OpenTelemetry para aplicações Python, APIs FastAPI e fluxos de IA construída pelo time do Pydantic.",
-    "potencial_startuzeiro": "Rastreamento distribuído de traces, latências e inspeção de payloads de agentes e rotinas do Startuzeiro em tempo real.",
-    "id": "FER-072"
+    "potencial_startuzeiro": "Rastreamento distribuído de traces, latências e inspeção de payloads de agentes e rotinas do Startuzeiro em tempo real."
   },
   {
+    "id": "FER-073",
     "nome": "LangGraph",
     "slug": "langgraph",
     "categoria": "agentes-ia",
@@ -738,10 +739,10 @@ const TOOLS_DATA = [
     "url": "https://langchain-ai.github.io/langgraph/",
     "github": "https://github.com/langchain-ai/langgraph",
     "descricao": "Framework para orquestração de fluxos agênticos complexos baseados em grafos cíclicos de estados, checkpoints persistentes e interação humano-no-loop.",
-    "potencial_startuzeiro": "Construção de workflows autônomos multi-agente de prospecção, qualificação e auditoria de empresas com recuperação de falhas.",
-    "id": "FER-073"
+    "potencial_startuzeiro": "Construção de workflows autônomos multi-agente de prospecção, qualificação e auditoria de empresas com recuperação de falhas."
   },
   {
+    "id": "FER-074",
     "nome": "OpenAI Agents SDK",
     "slug": "openai-agents-sdk",
     "categoria": "agentes-ia",
@@ -749,10 +750,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/openai/openai-agents-python",
     "github": "https://github.com/openai/openai-agents-python",
     "descricao": "SDK oficial da OpenAI em Python para construção de agentes autônomos, handoffs entre especialistas e orquestração de chamadas de funções.",
-    "potencial_startuzeiro": "Desenvolvimento de agentes corporativos com padrão oficial da OpenAI e delegação de tarefas entre subagentes especializados.",
-    "id": "FER-074"
+    "potencial_startuzeiro": "Desenvolvimento de agentes corporativos com padrão oficial da OpenAI e delegação de tarefas entre subagentes especializados."
   },
   {
+    "id": "FER-075",
     "nome": "Google GenAI SDK",
     "slug": "google-genai-sdk",
     "categoria": "agentes-ia",
@@ -760,10 +761,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/googleapis/python-genai",
     "github": "https://github.com/googleapis/python-genai",
     "descricao": "SDK unificado de próxima geração da Google para os modelos Gemini, multimodalidade nativa, live audio/video streaming e embeddings.",
-    "potencial_startuzeiro": "Integração direta com o Gemini 2.0 / Flash para análise massiva de documentos de 1M+ tokens e processamento de áudio em tempo real.",
-    "id": "FER-075"
+    "potencial_startuzeiro": "Integração direta com o Gemini 2.0 / Flash para análise massiva de documentos de 1M+ tokens e processamento de áudio em tempo real."
   },
   {
+    "id": "FER-076",
     "nome": "XGBoost",
     "slug": "xgboost",
     "categoria": "machine-learning",
@@ -771,10 +772,10 @@ const TOOLS_DATA = [
     "url": "https://xgboost.readthedocs.io/",
     "github": "https://github.com/dmlc/xgboost",
     "descricao": "Biblioteca líder de gradient boosting em árvores de decisão otimizada para eficiência, flexibilidade e alta performance em dados tabulares.",
-    "potencial_startuzeiro": "Modelagem preditiva de propensão de compra de leads B2B e pontuação de risco fiscal em bases de CNPJs.",
-    "id": "FER-076"
+    "potencial_startuzeiro": "Modelagem preditiva de propensão de compra de leads B2B e pontuação de risco fiscal em bases de CNPJs."
   },
   {
+    "id": "FER-077",
     "nome": "LightGBM",
     "slug": "lightgbm",
     "categoria": "machine-learning",
@@ -782,10 +783,10 @@ const TOOLS_DATA = [
     "url": "https://lightgbm.readthedocs.io/",
     "github": "https://github.com/microsoft/LightGBM",
     "descricao": "Framework de gradient boosting de alto desempenho desenvolvido pela Microsoft, com crescimento folha por folha (leaf-wise) e suporte nativo a dados categóricos.",
-    "potencial_startuzeiro": "Treinamento ultrarrápido em grandes datasets tabulares da Receita Federal e transações comerciais.",
-    "id": "FER-077"
+    "potencial_startuzeiro": "Treinamento ultrarrápido em grandes datasets tabulares da Receita Federal e transações comerciais."
   },
   {
+    "id": "FER-078",
     "nome": "spaCy",
     "slug": "spacy",
     "categoria": "nlp-ner-extracao",
@@ -793,10 +794,10 @@ const TOOLS_DATA = [
     "url": "https://spacy.io/",
     "github": "https://github.com/explosion/spaCy",
     "descricao": "Biblioteca industrial de processamento de linguagem natural em Python/Cython com pipelines otimizados de tokenização, POS tagging e NER.",
-    "potencial_startuzeiro": "Linguística computacional e pré-processamento rápido de textos em português para enriquecimento de corpora no Startuzeiro.",
-    "id": "FER-078"
+    "potencial_startuzeiro": "Linguística computacional e pré-processamento rápido de textos em português para enriquecimento de corpora no Startuzeiro."
   },
   {
+    "id": "FER-079",
     "nome": "Aider",
     "slug": "aider",
     "categoria": "dev-ia-agentes",
@@ -804,10 +805,10 @@ const TOOLS_DATA = [
     "url": "https://aider.chat/",
     "github": "https://github.com/Aider-AI/aider",
     "descricao": "Ferramenta de programação em par com IA no terminal que edita código em múltiplos arquivos e comita automaticamente no Git com mensagens descritivas.",
-    "potencial_startuzeiro": "Aceleração drástica no desenvolvimento de refatorações, criação de scripts e automações diretamente no terminal.",
-    "id": "FER-079"
+    "potencial_startuzeiro": "Aceleração drástica no desenvolvimento de refatorações, criação de scripts e automações diretamente no terminal."
   },
   {
+    "id": "FER-080",
     "nome": "LLM CLI",
     "slug": "llm-cli",
     "categoria": "llm-infra-observabilidade",
@@ -815,10 +816,10 @@ const TOOLS_DATA = [
     "url": "https://llm.datasette.io/",
     "github": "https://github.com/simonw/llm",
     "descricao": "Ferramenta de linha de comando criada por Simon Willison para enviar prompts a LLMs locais e remotos, gerenciar embeddings e criar pipelines no terminal.",
-    "potencial_startuzeiro": "Criação de scripts one-liner no terminal conectando saídas de comandos bash/PowerShell a modelos de IA.",
-    "id": "FER-080"
+    "potencial_startuzeiro": "Criação de scripts one-liner no terminal conectando saídas de comandos bash/PowerShell a modelos de IA."
   },
   {
+    "id": "FER-081",
     "nome": "Instructor",
     "slug": "instructor",
     "categoria": "llm-infra-observabilidade",
@@ -826,10 +827,10 @@ const TOOLS_DATA = [
     "url": "https://python.useinstructor.com/",
     "github": "https://github.com/jxnl/instructor",
     "descricao": "Biblioteca que simplifica a extração estruturada de dados com LLMs usando schemas Pydantic, com validação automática, retentativas e streaming.",
-    "potencial_startuzeiro": "Garantia de que qualquer retorno de LLM (Claude, GPT, Gemini) siga rigorosamente o formato de dados esperado pelos sistemas do laboratório.",
-    "id": "FER-081"
+    "potencial_startuzeiro": "Garantia de que qualquer retorno de LLM (Claude, GPT, Gemini) siga rigorosamente o formato de dados esperado pelos sistemas do laboratório."
   },
   {
+    "id": "FER-082",
     "nome": "smolagents",
     "slug": "smolagents",
     "categoria": "agentes-ia",
@@ -837,10 +838,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/huggingface/smolagents",
     "github": "https://github.com/huggingface/smolagents",
     "descricao": "Framework minimalista da Hugging Face para agentes que escrevem e executam ações através de blocos de código Python em vez de JSON.",
-    "potencial_startuzeiro": "Execução de agentes de código ultra-leves e eficientes para automações analíticas no Startuzeiro.",
-    "id": "FER-082"
+    "potencial_startuzeiro": "Execução de agentes de código ultra-leves e eficientes para automações analíticas no Startuzeiro."
   },
   {
+    "id": "FER-083",
     "nome": "Langfuse",
     "slug": "langfuse",
     "categoria": "llm-infra-observabilidade",
@@ -848,10 +849,10 @@ const TOOLS_DATA = [
     "url": "https://langfuse.com/",
     "github": "https://github.com/langfuse/langfuse",
     "descricao": "Plataforma open-source de engenharia de LLM para rastreamento de traces, monitoramento de custos de tokens, avaliações e gestão de prompts.",
-    "potencial_startuzeiro": "Observabilidade centralizada de todos os agentes e pipelines do Startuzeiro com painel analítico de custos e latência.",
-    "id": "FER-083"
+    "potencial_startuzeiro": "Observabilidade centralizada de todos os agentes e pipelines do Startuzeiro com painel analítico de custos e latência."
   },
   {
+    "id": "FER-084",
     "nome": "SentenceTransformers",
     "slug": "sentence-transformers",
     "categoria": "nlp-embeddings",
@@ -859,10 +860,10 @@ const TOOLS_DATA = [
     "url": "https://sbert.net/",
     "github": "https://github.com/UKPLab/sentence-transformers",
     "descricao": "Framework líder para geração de embeddings semânticos densos de sentenças, parágrafos e imagens para busca vetorial e similaridade semântica.",
-    "potencial_startuzeiro": "Vetorização local de notas do Obsidian, catálogos de produtos e transcrições de vídeos sem dependência de APIs externas.",
-    "id": "FER-084"
+    "potencial_startuzeiro": "Vetorização local de notas do Obsidian, catálogos de produtos e transcrições de vídeos sem dependência de APIs externas."
   },
   {
+    "id": "FER-085",
     "nome": "CheckLLM",
     "slug": "checkllm",
     "categoria": "avaliacao-llm",
@@ -870,10 +871,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/intel/checkllm",
     "github": "https://github.com/intel/checkllm",
     "descricao": "Toolkit para verificação de conformidade, performance de inferência e validação de precisão de modelos de linguagem.",
-    "potencial_startuzeiro": "Testes de integridade e benchmarks de latência de modelos locais executados no hardware do laboratório.",
-    "id": "FER-085"
+    "potencial_startuzeiro": "Testes de integridade e benchmarks de latência de modelos locais executados no hardware do laboratório."
   },
   {
+    "id": "FER-086",
     "nome": "DeepEval",
     "slug": "deepeval",
     "categoria": "avaliacao-llm",
@@ -881,10 +882,10 @@ const TOOLS_DATA = [
     "url": "https://confident-ai.com/",
     "github": "https://github.com/confident-ai/deepeval",
     "descricao": "Framework de testes unitários para pipelines de LLMs e RAG (o 'Pytest para IA'), medindo alucinação, relevância, toxicidade e precisão de respostas.",
-    "potencial_startuzeiro": "Auditoria automatizada de qualidade e mitigação de alucinações nas respostas dos agentes e assistentes do laboratório.",
-    "id": "FER-086"
+    "potencial_startuzeiro": "Auditoria automatizada de qualidade e mitigação de alucinações nas respostas dos agentes e assistentes do laboratório."
   },
   {
+    "id": "FER-087",
     "nome": "pytest-llmeval",
     "slug": "pytest-llmeval",
     "categoria": "avaliacao-llm",
@@ -892,10 +893,10 @@ const TOOLS_DATA = [
     "url": "https://pypi.org/project/pytest-llmeval/",
     "github": "https://github.com/pytest-dev/pytest-llmeval",
     "descricao": "Plugin para o ecossistema Pytest que adiciona asserções e métricas de avaliação semântica para testes automatizados com modelos de IA.",
-    "potencial_startuzeiro": "Integração de testes de regressão de prompts e pipelines agênticos diretamente nas rotinas de CI/CD do repositório.",
-    "id": "FER-087"
+    "potencial_startuzeiro": "Integração de testes de regressão de prompts e pipelines agênticos diretamente nas rotinas de CI/CD do repositório."
   },
   {
+    "id": "FER-088",
     "nome": "Eval Protocol (EP)",
     "slug": "eval-protocol",
     "categoria": "avaliacao-llm",
@@ -903,10 +904,10 @@ const TOOLS_DATA = [
     "url": "https://evalprotocol.org/",
     "github": "https://github.com/evalprotocol/eval-protocol",
     "descricao": "Protocolo aberto e especificação padronizada para execução e compartilhamento de benchmarks de avaliação de modelos e agentes de IA.",
-    "potencial_startuzeiro": "Padronização de resultados de testes de prompts e modelos entre diferentes membros da equipe e máquinas do laboratório.",
-    "id": "FER-088"
+    "potencial_startuzeiro": "Padronização de resultados de testes de prompts e modelos entre diferentes membros da equipe e máquinas do laboratório."
   },
   {
+    "id": "FER-089",
     "nome": "LLMEvaluationFramework",
     "slug": "llm-evaluation-framework",
     "categoria": "avaliacao-llm",
@@ -914,10 +915,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/aws-samples/llm-evaluation-methodology",
     "github": "https://github.com/aws-samples/llm-evaluation-methodology",
     "descricao": "Metodologia e framework para avaliação holística de LLMs em tarefas de sumarização, Q&A, extração e raciocínio lógico.",
-    "potencial_startuzeiro": "Matriz de decisão para escolher qual modelo (Gemini, Claude, DeepSeek, GPT) utilizar em cada funcionalidade do Startuzeiro.",
-    "id": "FER-089"
+    "potencial_startuzeiro": "Matriz de decisão para escolher qual modelo (Gemini, Claude, DeepSeek, GPT) utilizar em cada funcionalidade do Startuzeiro."
   },
   {
+    "id": "FER-090",
     "nome": "LLM-Bridge",
     "slug": "llm-bridge",
     "categoria": "llm-infra-observabilidade",
@@ -925,10 +926,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/open-interpreter/llm-bridge",
     "github": "https://github.com/open-interpreter/llm-bridge",
     "descricao": "Camada de ponte para conectar ambientes locais e ferramentas externas a múltiplos backends de IA de forma padronizada.",
-    "potencial_startuzeiro": "Interconexão de ferramentas CLI locais do Startuzeiro com gateways de modelos generativos.",
-    "id": "FER-090"
+    "potencial_startuzeiro": "Interconexão de ferramentas CLI locais do Startuzeiro com gateways de modelos generativos."
   },
   {
+    "id": "FER-091",
     "nome": "casual-llm",
     "slug": "casual-llm",
     "categoria": "llm-infra-observabilidade",
@@ -936,10 +937,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/casual-llm/casual-llm",
     "github": "https://github.com/casual-llm/casual-llm",
     "descricao": "Abstração e interface simplificada para execução e orquestração de modelos generativos em pipelines de engenharia de software.",
-    "potencial_startuzeiro": "Automação de scripts de rotina com geração de texto e conversão de formatos de dados.",
-    "id": "FER-091"
+    "potencial_startuzeiro": "Automação de scripts de rotina com geração de texto e conversão de formatos de dados."
   },
   {
+    "id": "FER-092",
     "nome": "OpenLLM",
     "slug": "openllm",
     "categoria": "llm-infra-observabilidade",
@@ -947,10 +948,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/bentoml/OpenLLM",
     "github": "https://github.com/bentoml/OpenLLM",
     "descricao": "Plataforma aberta criada pelo time do BentoML para deploy, servir em produção e escalar modelos de linguagem de código aberto com APIs compatíveis com OpenAI.",
-    "potencial_startuzeiro": "Subida de servidores de modelos open-source (Llama, Mistral, Qwen) em servidores locais ou VPS dedicadas.",
-    "id": "FER-092"
+    "potencial_startuzeiro": "Subida de servidores de modelos open-source (Llama, Mistral, Qwen) em servidores locais ou VPS dedicadas."
   },
   {
+    "id": "FER-093",
     "nome": "Evidently AI",
     "slug": "evidently-ai",
     "categoria": "avaliacao-llm",
@@ -958,10 +959,10 @@ const TOOLS_DATA = [
     "url": "https://evidentlyai.com/",
     "github": "https://github.com/evidentlyai/evidently",
     "descricao": "Biblioteca líder de monitoramento e avaliação de modelos de ML e pipelines de LLM em produção, detectando drift de dados, qualidade de RAG e integridade.",
-    "potencial_startuzeiro": "Monitoramento contínuo das esteiras de enriquecimento e detecção de anomalias em dados coletados na web.",
-    "id": "FER-093"
+    "potencial_startuzeiro": "Monitoramento contínuo das esteiras de enriquecimento e detecção de anomalias em dados coletados na web."
   },
   {
+    "id": "FER-094",
     "nome": "CatBoost",
     "slug": "catboost",
     "categoria": "machine-learning",
@@ -969,10 +970,10 @@ const TOOLS_DATA = [
     "url": "https://catboost.ai/",
     "github": "https://github.com/catboost/catboost",
     "descricao": "Algoritmo de gradient boosting desenvolvido pela Yandex com tratamento pioneiro e estado-da-arte para dados categóricos e prevenção de overfitting.",
-    "potencial_startuzeiro": "Classificação avançada de empresas por CNAE, natureza jurídica e região sem necessidade de engenharia complexa de one-hot encoding.",
-    "id": "FER-094"
+    "potencial_startuzeiro": "Classificação avançada de empresas por CNAE, natureza jurídica e região sem necessidade de engenharia complexa de one-hot encoding."
   },
   {
+    "id": "FER-095",
     "nome": "DistilBERT",
     "slug": "distilbert",
     "categoria": "nlp-embeddings",
@@ -980,10 +981,10 @@ const TOOLS_DATA = [
     "url": "https://huggingface.co/distilbert/distilbert-base-uncased",
     "github": "https://github.com/huggingface/transformers",
     "descricao": "Versão destilada, 40% menor e 60% mais rápida do BERT, retendo 97% das capacidades de compreensão de linguagem natural.",
-    "potencial_startuzeiro": "Classificação ultrarrápida de sentimentos, intenção de e-mails e categorização de tickets no hardware local.",
-    "id": "FER-095"
+    "potencial_startuzeiro": "Classificação ultrarrápida de sentimentos, intenção de e-mails e categorização de tickets no hardware local."
   },
   {
+    "id": "FER-096",
     "nome": "BERTimbau",
     "slug": "bertimbau",
     "categoria": "nlp-embeddings",
@@ -991,10 +992,10 @@ const TOOLS_DATA = [
     "url": "https://huggingface.co/neuralmind/bert-base-portuguese-cased",
     "github": "https://github.com/neuralmind-ai/portuguese-bert",
     "descricao": "Modelo de linguagem BERT pré-treinado especificamente na língua portuguesa brasileira pela NeuralMind, padrão de excelência em benchmarks em PT-BR.",
-    "potencial_startuzeiro": "Classificação e análise profunda de textos jurídicos, societários e corporativos brasileiros sem ruídos de tradução.",
-    "id": "FER-096"
+    "potencial_startuzeiro": "Classificação e análise profunda de textos jurídicos, societários e corporativos brasileiros sem ruídos de tradução."
   },
   {
+    "id": "FER-097",
     "nome": "UV",
     "slug": "uv",
     "categoria": "dev-tooling",
@@ -1002,10 +1003,10 @@ const TOOLS_DATA = [
     "url": "https://astral.sh/uv",
     "github": "https://github.com/astral-sh/uv",
     "descricao": "Gerenciador de pacotes e projetos Python escrito em Rust pela Astral, 10x a 100x mais rápido que pip, poetry e virtualenv.",
-    "potencial_startuzeiro": "Motor padrão de execução de ambientes virtuais e dependências do laboratório Startuzeiro em todos os computadores.",
-    "id": "FER-097"
+    "potencial_startuzeiro": "Motor padrão de execução de ambientes virtuais e dependências do laboratório Startuzeiro em todos os computadores."
   },
   {
+    "id": "FER-098",
     "nome": "CrewAI",
     "slug": "crewai",
     "categoria": "agentes-ia",
@@ -1013,10 +1014,10 @@ const TOOLS_DATA = [
     "url": "https://crewai.com/",
     "github": "https://github.com/crewAIInc/crewAI",
     "descricao": "Framework líder para orquestração de equipes autônomas de agentes de IA com papéis definidos, objetivos específicos e cooperação tática.",
-    "potencial_startuzeiro": "Simulação de equipes completas (analista de mercado, pesquisador societário e copywriter) operando juntas em prospecção.",
-    "id": "FER-098"
+    "potencial_startuzeiro": "Simulação de equipes completas (analista de mercado, pesquisador societário e copywriter) operando juntas em prospecção."
   },
   {
+    "id": "FER-099",
     "nome": "LlamaIndex",
     "slug": "llamaindex",
     "categoria": "agentes-ia",
@@ -1024,10 +1025,10 @@ const TOOLS_DATA = [
     "url": "https://www.llamaindex.ai/",
     "github": "https://github.com/run-llama/llama_index",
     "descricao": "Framework de dados pioneiro para conectar fontes de dados customizadas a grandes modelos de linguagem (RAG avançado, índices e conectores de dados).",
-    "potencial_startuzeiro": "Criação de índices contextuais sobre documentos corporativos e bases de dados do Startuzeiro.",
-    "id": "FER-099"
+    "potencial_startuzeiro": "Criação de índices contextuais sobre documentos corporativos e bases de dados do Startuzeiro."
   },
   {
+    "id": "FER-100",
     "nome": "LlamaParse",
     "slug": "llamaparse",
     "categoria": "documentos-rag",
@@ -1035,10 +1036,10 @@ const TOOLS_DATA = [
     "url": "https://cloud.llamaindex.ai/parse",
     "github": "https://github.com/run-llama/llama_parse",
     "descricao": "Serviço de análise e parsing de documentos da LlamaIndex voltado para extrair tabelas intrincadas e layouts complexos em Markdown limpo.",
-    "potencial_startuzeiro": "Leitura de balanços patrimoniais e tabelas financeiras com 1000 páginas gratuitas por dia.",
-    "id": "FER-100"
+    "potencial_startuzeiro": "Leitura de balanços patrimoniais e tabelas financeiras com 1000 páginas gratuitas por dia."
   },
   {
+    "id": "FER-101",
     "nome": "Label Studio",
     "slug": "label-studio",
     "categoria": "machine-learning",
@@ -1046,10 +1047,10 @@ const TOOLS_DATA = [
     "url": "https://labelstud.io/",
     "github": "https://github.com/HumanSignal/label-studio",
     "descricao": "Plataforma open-source multi-tipo para rotulagem e anotação de dados (texto, áudio, imagens, séries temporais) para treinamento de modelos de IA.",
-    "potencial_startuzeiro": "Construção de datasets proprietários e anotação supervisionada para fine-tuning de modelos no laboratório.",
-    "id": "FER-101"
+    "potencial_startuzeiro": "Construção de datasets proprietários e anotação supervisionada para fine-tuning de modelos no laboratório."
   },
   {
+    "id": "FER-102",
     "nome": "Promptfoo",
     "slug": "promptfoo",
     "categoria": "avaliacao-llm",
@@ -1057,10 +1058,10 @@ const TOOLS_DATA = [
     "url": "https://promptfoo.dev/",
     "github": "https://github.com/promptfoo/promptfoo",
     "descricao": "CLI e biblioteca de testes de segurança, avaliação e hardening de prompts contra ataques de injeção, vazamento de dados e degradação de saída.",
-    "potencial_startuzeiro": "Auditoria de segurança em prompts de sistema dos agentes do Startuzeiro antes de ir a produção.",
-    "id": "FER-102"
+    "potencial_startuzeiro": "Auditoria de segurança em prompts de sistema dos agentes do Startuzeiro antes de ir a produção."
   },
   {
+    "id": "FER-103",
     "nome": "MiroFish",
     "slug": "mirofish",
     "categoria": "avaliacao-llm",
@@ -1068,10 +1069,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/6677-ai/MiroFish",
     "github": "https://github.com/6677-ai/MiroFish",
     "descricao": "Ambiente de simulação e benchmark social de agentes de IA para avaliar comportamento em redes, tomada de decisões e dinâmicas de mercado.",
-    "potencial_startuzeiro": "Simulação de aceitação de produtos e dinâmicas de preços entre personas geradas por IA.",
-    "id": "FER-103"
+    "potencial_startuzeiro": "Simulação de aceitação de produtos e dinâmicas de preços entre personas geradas por IA."
   },
   {
+    "id": "FER-104",
     "nome": "Inspect (AISI)",
     "slug": "inspect-ai",
     "categoria": "avaliacao-llm",
@@ -1079,10 +1080,10 @@ const TOOLS_DATA = [
     "url": "https://inspect.ai-safety-institute.org.uk/",
     "github": "https://github.com/UKGovernmentBEIS/inspect_ai",
     "descricao": "Framework oficial de avaliação e segurança de fronteira em IA desenvolvido pelo AI Safety Institute (Reino Unido e EUA).",
-    "potencial_startuzeiro": "Validação rigorosa de capacidades autônomas e mitigação de comportamentos de risco em agentes de software.",
-    "id": "FER-104"
+    "potencial_startuzeiro": "Validação rigorosa de capacidades autônomas e mitigação de comportamentos de risco em agentes de software."
   },
   {
+    "id": "FER-105",
     "nome": "LangSmith",
     "slug": "langsmith",
     "categoria": "llm-infra-observabilidade",
@@ -1090,10 +1091,10 @@ const TOOLS_DATA = [
     "url": "https://smith.langchain.com/",
     "github": "https://github.com/langchain-ai/langsmith-sdk",
     "descricao": "Plataforma empresarial da LangChain para depuração, teste, avaliação e monitoramento de aplicações e cadeias de LLMs.",
-    "potencial_startuzeiro": "Visualização de fluxos de raciocínio passo a passo de pipelines LangChain e LangGraph.",
-    "id": "FER-105"
+    "potencial_startuzeiro": "Visualização de fluxos de raciocínio passo a passo de pipelines LangChain e LangGraph."
   },
   {
+    "id": "FER-106",
     "nome": "Browser-use",
     "slug": "browser-use",
     "categoria": "agentes-ia",
@@ -1101,10 +1102,10 @@ const TOOLS_DATA = [
     "url": "https://browser-use.com/",
     "github": "https://github.com/browser-use/browser-use",
     "descricao": "Biblioteca que permite a agentes de IA controlar navegadores web reais, clicar em botões, preencher formulários e extrair dados dinâmicos complexos.",
-    "potencial_startuzeiro": "Automação de processos humanos em sites sem API pública (portais governamentais, sistemas bancários e formulários de cadastro).",
-    "id": "FER-106"
+    "potencial_startuzeiro": "Automação de processos humanos em sites sem API pública (portais governamentais, sistemas bancários e formulários de cadastro)."
   },
   {
+    "id": "FER-107",
     "nome": "Microsoft Agent Framework (AutoGen)",
     "slug": "microsoft-agent-framework",
     "categoria": "agentes-ia",
@@ -1112,10 +1113,10 @@ const TOOLS_DATA = [
     "url": "https://microsoft.github.io/autogen/",
     "github": "https://github.com/microsoft/autogen",
     "descricao": "Framework de conversação multi-agente pioneiro da Microsoft para construir fluxos colaborativos de inteligência artificial de próxima geração.",
-    "potencial_startuzeiro": "Pesquisa e execução de sistemas colaborativos onde agentes debatem e refinam soluções antes de entregar a resposta final.",
-    "id": "FER-107"
+    "potencial_startuzeiro": "Pesquisa e execução de sistemas colaborativos onde agentes debatem e refinam soluções antes de entregar a resposta final."
   },
   {
+    "id": "FER-108",
     "nome": "Open WebUI",
     "slug": "open-webui",
     "categoria": "llm-ui-chat",
@@ -1123,10 +1124,10 @@ const TOOLS_DATA = [
     "url": "https://openwebui.com/",
     "github": "https://github.com/open-webui/open-webui",
     "descricao": "Interface web de chat self-hosted, elegante e completa para interagir com Ollama, modelos locais e APIs de IA com suporte a RAG, plugins e perfis de usuário.",
-    "potencial_startuzeiro": "Interface interna de chat para a equipe do Startuzeiro consultar as bases de dados e modelos privados.",
-    "id": "FER-108"
+    "potencial_startuzeiro": "Interface interna de chat para a equipe do Startuzeiro consultar as bases de dados e modelos privados."
   },
   {
+    "id": "FER-109",
     "nome": "Dify",
     "slug": "dify",
     "categoria": "agentes-ia",
@@ -1134,10 +1135,10 @@ const TOOLS_DATA = [
     "url": "https://dify.ai/",
     "github": "https://github.com/langgenius/dify",
     "descricao": "Plataforma de orquestração visual de fluxos de LLM (LLMOps) que combina orquestração de prompts, RAG e gestão de agentes em uma interface amigável.",
-    "potencial_startuzeiro": "Criação rápida de aplicações de IA sem código para testes rápidos de MVP e validação com clientes.",
-    "id": "FER-109"
+    "potencial_startuzeiro": "Criação rápida de aplicações de IA sem código para testes rápidos de MVP e validação com clientes."
   },
   {
+    "id": "FER-110",
     "nome": "Flowise",
     "slug": "flowise",
     "categoria": "agentes-ia",
@@ -1145,10 +1146,10 @@ const TOOLS_DATA = [
     "url": "https://flowiseai.com/",
     "github": "https://github.com/FlowiseAI/Flowise",
     "descricao": "Interface visual baseada em nós (drag-and-drop) para construir fluxos de LangChain e agentes autônomos em Node.js/TypeScript.",
-    "potencial_startuzeiro": "Prototipagem visual e rápida de pipelines de conversação e fluxos de atendimento com IA.",
-    "id": "FER-110"
+    "potencial_startuzeiro": "Prototipagem visual e rápida de pipelines de conversação e fluxos de atendimento com IA."
   },
   {
+    "id": "FER-111",
     "nome": "AnythingLLM",
     "slug": "anything-llm",
     "categoria": "llm-ui-chat",
@@ -1156,10 +1157,10 @@ const TOOLS_DATA = [
     "url": "https://anythingllm.com/",
     "github": "https://github.com/Mintplex-Labs/anything-llm",
     "descricao": "Aplicativo de desktop e servidor completo de inteligência empresarial privada que transforma documentos em assistentes com RAG sem vazamento de dados.",
-    "potencial_startuzeiro": "Consulta instantânea de documentos confidenciais do Startuzeiro rodando 100% offline no laptop.",
-    "id": "FER-111"
+    "potencial_startuzeiro": "Consulta instantânea de documentos confidenciais do Startuzeiro rodando 100% offline no laptop."
   },
   {
+    "id": "FER-112",
     "nome": "Jupyter AI",
     "slug": "jupyter-ai",
     "categoria": "dev-ia-agentes",
@@ -1167,10 +1168,10 @@ const TOOLS_DATA = [
     "url": "https://jupyter-ai.readthedocs.io/",
     "github": "https://github.com/jupyterlab/jupyter-ai",
     "descricao": "Extensão oficial do JupyterLab que adiciona capacidades de IA generativa, geração de notebooks a partir de prompts e assistência de depuração de código.",
-    "potencial_startuzeiro": "Assistência em tempo real durante a análise de dados em notebooks Python e exploração de bases no laboratório.",
-    "id": "FER-112"
+    "potencial_startuzeiro": "Assistência em tempo real durante a análise de dados em notebooks Python e exploração de bases no laboratório."
   },
   {
+    "id": "FER-113",
     "nome": "Firecrawl",
     "slug": "firecrawl",
     "categoria": "scraping-automacao",
@@ -1178,10 +1179,10 @@ const TOOLS_DATA = [
     "url": "https://firecrawl.dev/",
     "github": "https://github.com/mendableai/firecrawl",
     "descricao": "Motor e API líder mundial para rastreamento web e conversão de sites inteiros em Markdown limpo estruturado para LLMs.",
-    "potencial_startuzeiro": "Alimentação de bases de conhecimento e indexação de sites completos para alimentar agentes de pesquisa.",
-    "id": "FER-113"
+    "potencial_startuzeiro": "Alimentação de bases de conhecimento e indexação de sites completos para alimentar agentes de pesquisa."
   },
   {
+    "id": "FER-114",
     "nome": "Modal",
     "slug": "modal",
     "categoria": "cloud-serverless-compute",
@@ -1189,10 +1190,10 @@ const TOOLS_DATA = [
     "url": "https://modal.com/",
     "github": "https://github.com/modal-labs/modal-client",
     "descricao": "Plataforma serverless de computação em nuvem para rodar código Python com GPUs potentes sob demanda em segundos, sem gerenciar Kubernetes.",
-    "potencial_startuzeiro": "Execução de modelos pesados de visão computacional, transcrição de áudio e fine-tuning pagando apenas pelos segundos utilizados.",
-    "id": "FER-114"
+    "potencial_startuzeiro": "Execução de modelos pesados de visão computacional, transcrição de áudio e fine-tuning pagando apenas pelos segundos utilizados."
   },
   {
+    "id": "FER-115",
     "nome": "Trigger.dev",
     "slug": "trigger-dev",
     "categoria": "cloud-serverless-compute",
@@ -1200,10 +1201,10 @@ const TOOLS_DATA = [
     "url": "https://trigger.dev/",
     "github": "https://github.com/triggerdotdev/trigger.dev",
     "descricao": "Framework de background jobs e workflows em TypeScript sem limites de timeout de servidor, com retentativas e visualização passo a passo.",
-    "potencial_startuzeiro": "Orquestração de tarefas assíncronas longas (como prospecções em lote e enriquecimentos de leads).",
-    "id": "FER-115"
+    "potencial_startuzeiro": "Orquestração de tarefas assíncronas longas (como prospecções em lote e enriquecimentos de leads)."
   },
   {
+    "id": "FER-116",
     "nome": "Cloudflare",
     "slug": "cloudflare",
     "categoria": "cloud-cdn-infra",
@@ -1211,10 +1212,10 @@ const TOOLS_DATA = [
     "url": "https://www.cloudflare.com/",
     "github": "https://github.com/cloudflare/workers-sdk",
     "descricao": "Rede global de entrega de conteúdo (CDN), proteção contra ataques DDoS, DNS ultrarrápido e computação serverless na borda (Cloudflare Workers / Pages).",
-    "potencial_startuzeiro": "Hospedagem de landing pages ultrarrápidas, proxy seguro de APIs e automações na borda sem custo de servidor.",
-    "id": "FER-116"
+    "potencial_startuzeiro": "Hospedagem de landing pages ultrarrápidas, proxy seguro de APIs e automações na borda sem custo de servidor."
   },
   {
+    "id": "FER-117",
     "nome": "SerpApi",
     "slug": "serpapi",
     "categoria": "scraping-automacao",
@@ -1222,10 +1223,10 @@ const TOOLS_DATA = [
     "url": "https://serpapi.com/",
     "github": "https://github.com/serpapi/google-search-results-python",
     "descricao": "API especializada em extrair e estruturar dados de resultados de motores de busca (Google, Bing, Baidu, YouTube) em JSON limpo com bypass de proxies.",
-    "potencial_startuzeiro": "Auditoria de posicionamento de palavras-chave, inteligência de concorrentes em anúncios e monitoramento de menções de marca.",
-    "id": "FER-117"
+    "potencial_startuzeiro": "Auditoria de posicionamento de palavras-chave, inteligência de concorrentes em anúncios e monitoramento de menções de marca."
   },
   {
+    "id": "FER-118",
     "nome": "Deepgram",
     "slug": "deepgram",
     "categoria": "audio-voz-ia",
@@ -1233,10 +1234,10 @@ const TOOLS_DATA = [
     "url": "https://deepgram.com/",
     "github": "https://github.com/deepgram/deepgram-python-sdk",
     "descricao": "Plataforma de inteligência de voz com modelos de speech-to-text e text-to-speech ultrarrápidos e de baixíssima latência para agentes de voz.",
-    "potencial_startuzeiro": "Construção de assistentes de atendimento por voz e transcrição em tempo real de chamadas comerciais.",
-    "id": "FER-118"
+    "potencial_startuzeiro": "Construção de assistentes de atendimento por voz e transcrição em tempo real de chamadas comerciais."
   },
   {
+    "id": "FER-119",
     "nome": "Whisper",
     "slug": "whisper",
     "categoria": "audio-voz-ia",
@@ -1244,10 +1245,10 @@ const TOOLS_DATA = [
     "url": "https://openai.com/research/whisper",
     "github": "https://github.com/openai/whisper",
     "descricao": "Modelo de reconhecimento de fala (ASR) da OpenAI treinado em mais de 680.000 horas de áudio multilíngue e multitarefa.",
-    "potencial_startuzeiro": "Transcrição de vídeos, podcasts e áudios de reuniões no próprio hardware sem custo de API.",
-    "id": "FER-119"
+    "potencial_startuzeiro": "Transcrição de vídeos, podcasts e áudios de reuniões no próprio hardware sem custo de API."
   },
   {
+    "id": "FER-120",
     "nome": "WhisperX",
     "slug": "whisperx",
     "categoria": "audio-voz-ia",
@@ -1255,10 +1256,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/m-bain/whisperX",
     "github": "https://github.com/m-bain/whisperX",
     "descricao": "Evolução do Whisper com alinhamento forçado de fonemas (palavra a palavra) e diarização de locutores integrada para identificação de quem falou o quê.",
-    "potencial_startuzeiro": "Geração de legendas dinâmicas perfeitamente sincronizadas para vídeos curtos de marketing e cortes virais.",
-    "id": "FER-120"
+    "potencial_startuzeiro": "Geração de legendas dinâmicas perfeitamente sincronizadas para vídeos curtos de marketing e cortes virais."
   },
   {
+    "id": "FER-121",
     "nome": "pyannote.audio",
     "slug": "pyannote-audio",
     "categoria": "audio-voz-ia",
@@ -1266,10 +1267,10 @@ const TOOLS_DATA = [
     "url": "https://pyannote.github.io/",
     "github": "https://github.com/pyannote/pyannote-audio",
     "descricao": "Toolkit em Python baseado em PyTorch para diarização de locutores, detecção de sobreposição de vozes e biometria vocal.",
-    "potencial_startuzeiro": "Separação precisa de interlocutores em reuniões comerciais gravadas e análise de proporção de fala de vendas.",
-    "id": "FER-121"
+    "potencial_startuzeiro": "Separação precisa de interlocutores em reuniões comerciais gravadas e análise de proporção de fala de vendas."
   },
   {
+    "id": "FER-122",
     "nome": "AssemblyAI",
     "slug": "assemblyai",
     "categoria": "audio-voz-ia",
@@ -1277,10 +1278,10 @@ const TOOLS_DATA = [
     "url": "https://www.assemblyai.com/",
     "github": "https://github.com/AssemblyAI/assemblyai-python-sdk",
     "descricao": "Plataforma de APIs de IA para transcrição de áudio, detecção de tópicos, diarização de locutores, moderação de conteúdo e análise de sentimento.",
-    "potencial_startuzeiro": "Enriquecimento e análise automática de conteúdo de vídeos baixados para o lake do Startuzeiro.",
-    "id": "FER-122"
+    "potencial_startuzeiro": "Enriquecimento e análise automática de conteúdo de vídeos baixados para o lake do Startuzeiro."
   },
   {
+    "id": "FER-123",
     "nome": "Graphify",
     "slug": "graphify",
     "categoria": "grafos-redes-complexas",
@@ -1288,10 +1289,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/Graphify-AI/graphify",
     "github": "https://github.com/Graphify-AI/graphify",
     "descricao": "Toolkit para converter dados relacionais e tabelas em estruturas de grafos conectadas para exploração e análise de redes.",
-    "potencial_startuzeiro": "Transformação de cadastros de clientes e fornecedores em grafos de relacionamento corporativo.",
-    "id": "FER-123"
+    "potencial_startuzeiro": "Transformação de cadastros de clientes e fornecedores em grafos de relacionamento corporativo."
   },
   {
+    "id": "FER-124",
     "nome": "Pipecat",
     "slug": "pipecat",
     "categoria": "audio-voz-ia",
@@ -1299,10 +1300,10 @@ const TOOLS_DATA = [
     "url": "https://pipecat.ai/",
     "github": "https://github.com/pipecat-ai/pipecat",
     "descricao": "Framework open-source para construção de agentes conversacionais de voz e vídeo multimodal em tempo real com WebRTC, VAD e interrupções naturais.",
-    "potencial_startuzeiro": "Desenvolvimento de agentes de vendas e suporte que conversam com humanos por telefone ou navegadores em tempo real.",
-    "id": "FER-124"
+    "potencial_startuzeiro": "Desenvolvimento de agentes de vendas e suporte que conversam com humanos por telefone ou navegadores em tempo real."
   },
   {
+    "id": "FER-125",
     "nome": "MoneyPrinterV2",
     "slug": "moneyprinter-v2",
     "categoria": "video-conteudo",
@@ -1310,10 +1311,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/FujiwaraChoki/MoneyPrinterV2",
     "github": "https://github.com/FujiwaraChoki/MoneyPrinterV2",
     "descricao": "Automação completa para criação de vídeos verticais curtos (YouTube Shorts, TikTok) com geração de roteiro, narração com IA e montagem dinâmica.",
-    "potencial_startuzeiro": "Criação em escala de vídeos para canais dark e perfis temáticos de atração de tráfego orgânico.",
-    "id": "FER-125"
+    "potencial_startuzeiro": "Criação em escala de vídeos para canais dark e perfis temáticos de atração de tráfego orgânico."
   },
   {
+    "id": "FER-126",
     "nome": "GPT-Researcher",
     "slug": "gpt-researcher",
     "categoria": "agentes-ia",
@@ -1321,10 +1322,10 @@ const TOOLS_DATA = [
     "url": "https://gptr.dev/",
     "github": "https://github.com/assafelovic/gpt-researcher",
     "descricao": "Agente autônomo que realiza pesquisas detalhadas na web sobre qualquer assunto, compilando relatórios com fontes e citações verificadas.",
-    "potencial_startuzeiro": "Geração de relatórios completos de due diligence, análise de mercado e estudos de concorrentes em minutos.",
-    "id": "FER-126"
+    "potencial_startuzeiro": "Geração de relatórios completos de due diligence, análise de mercado e estudos de concorrentes em minutos."
   },
   {
+    "id": "FER-127",
     "nome": "Botpress",
     "slug": "botpress",
     "categoria": "agentes-ia",
@@ -1332,10 +1333,10 @@ const TOOLS_DATA = [
     "url": "https://botpress.com/",
     "github": "https://github.com/botpress/botpress",
     "descricao": "Plataforma de última geração para desenvolvimento de chatbots e assistentes de IA com integração multicanal (WhatsApp, Telegram, Web).",
-    "potencial_startuzeiro": "Implantação de agentes de atendimento e qualificação de leads diretamente nos canais de comunicação de clientes.",
-    "id": "FER-127"
+    "potencial_startuzeiro": "Implantação de agentes de atendimento e qualificação de leads diretamente nos canais de comunicação de clientes."
   },
   {
+    "id": "FER-128",
     "nome": "Skyvern",
     "slug": "skyvern",
     "categoria": "agentes-ia",
@@ -1343,10 +1344,10 @@ const TOOLS_DATA = [
     "url": "https://www.skyvern.com/",
     "github": "https://github.com/Skyvern-AI/skyvern",
     "descricao": "Agente de automação de fluxo de trabalho baseado em visão computacional e LLMs que navega e preenche formulários em qualquer site sem quebrar com mudanças no DOM.",
-    "potencial_startuzeiro": "Automação de processos corporativos legados que não possuem APIs modernas para integração.",
-    "id": "FER-128"
+    "potencial_startuzeiro": "Automação de processos corporativos legados que não possuem APIs modernas para integração."
   },
   {
+    "id": "FER-129",
     "nome": "Open3D",
     "slug": "open3d",
     "categoria": "computer-vision-3d",
@@ -1354,10 +1355,10 @@ const TOOLS_DATA = [
     "url": "http://www.open3d.org/",
     "github": "https://github.com/isl-org/Open3D",
     "descricao": "Biblioteca moderna em C++ e Python para processamento de dados 3D, nuvens de pontos, reconstrução de malhas e visualização espacial.",
-    "potencial_startuzeiro": "Geointeligência tridimensional e reconstrução espacial de cenários a partir de imagens aéreas e de drones.",
-    "id": "FER-129"
+    "potencial_startuzeiro": "Geointeligência tridimensional e reconstrução espacial de cenários a partir de imagens aéreas e de drones."
   },
   {
+    "id": "FER-130",
     "nome": "Moondream",
     "slug": "moondream",
     "categoria": "computer-vision-vlm",
@@ -1365,10 +1366,10 @@ const TOOLS_DATA = [
     "url": "https://moondream.ai/",
     "github": "https://github.com/vikhyat/moondream",
     "descricao": "Modelo de visão e linguagem (VLM) ultracompacto (1.6B parâmetros) capaz de rodar em qualquer CPU, celular ou GPU básica com altíssima velocidade.",
-    "potencial_startuzeiro": "Descrição automática de imagens de produtos, leitura de diagramas e auditoria visual sem custo de tokens em nuvem.",
-    "id": "FER-130"
+    "potencial_startuzeiro": "Descrição automática de imagens de produtos, leitura de diagramas e auditoria visual sem custo de tokens em nuvem."
   },
   {
+    "id": "FER-131",
     "nome": "Tesseract OCR",
     "slug": "tesseract",
     "categoria": "computer-vision-ocr",
@@ -1376,10 +1377,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/tesseract-ocr/tesseract",
     "github": "https://github.com/tesseract-ocr/tesseract",
     "descricao": "Motor de reconhecimento óptico de caracteres (OCR) open-source mais tradicional do mundo, mantido pelo Google com suporte a mais de 100 idiomas.",
-    "potencial_startuzeiro": "Linha de base leve e rápida para extração de texto de documentos escaneados e prints de tela.",
-    "id": "FER-131"
+    "potencial_startuzeiro": "Linha de base leve e rápida para extração de texto de documentos escaneados e prints de tela."
   },
   {
+    "id": "FER-132",
     "nome": "NanoChat",
     "slug": "nanochat",
     "categoria": "llm-ui-chat",
@@ -1387,10 +1388,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/nanochat-ai/nanochat",
     "github": "https://github.com/nanochat-ai/nanochat",
     "descricao": "Interface de chat e playground minimalista e rápida para testar múltiplos modelos de linguagem locais e remotos.",
-    "potencial_startuzeiro": "Testes rápidos de respostas de modelos sem necessidade de carregar plataformas pesadas.",
-    "id": "FER-132"
+    "potencial_startuzeiro": "Testes rápidos de respostas de modelos sem necessidade de carregar plataformas pesadas."
   },
   {
+    "id": "FER-133",
     "nome": "Heretic",
     "slug": "heretic",
     "categoria": "llm-infra-observabilidade",
@@ -1398,10 +1399,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/p-e-w/heretic",
     "github": "https://github.com/p-e-w/heretic",
     "descricao": "Ferramenta de edição de ativações internas e direcionamento de representações de modelos de linguagem para auditoria e controle fino de comportamento.",
-    "potencial_startuzeiro": "Pesquisa avançada em interpretabilidade e alinhamento de modelos de IA locais.",
-    "id": "FER-133"
+    "potencial_startuzeiro": "Pesquisa avançada em interpretabilidade e alinhamento de modelos de IA locais."
   },
   {
+    "id": "FER-134",
     "nome": "Open Viking",
     "slug": "open-viking",
     "categoria": "banco-de-dados",
@@ -1409,10 +1410,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/viking-db/viking",
     "github": "https://github.com/viking-db/viking",
     "descricao": "Banco de dados vetorial de alta performance projetado para armazenamento e busca de vizinhos mais próximos em grande escala.",
-    "potencial_startuzeiro": "Repositório de embeddings para busca de similaridade em milhões de itens.",
-    "id": "FER-134"
+    "potencial_startuzeiro": "Repositório de embeddings para busca de similaridade em milhões de itens."
   },
   {
+    "id": "FER-135",
     "nome": "Hermes Agent",
     "slug": "hermes-agent",
     "categoria": "agentes-ia",
@@ -1420,10 +1421,10 @@ const TOOLS_DATA = [
     "url": "https://nousresearch.com/",
     "github": "https://github.com/NousResearch/Hermes-Function-Calling",
     "descricao": "Modelos e especificações de agentes da Nous Research especializados em raciocínio estruturado, chamadas de função complexas e planejamento.",
-    "potencial_startuzeiro": "Execução de agentes de raciocínio profundo com modelos abertos sem depender das APIs das big techs.",
-    "id": "FER-135"
+    "potencial_startuzeiro": "Execução de agentes de raciocínio profundo com modelos abertos sem depender das APIs das big techs."
   },
   {
+    "id": "FER-136",
     "nome": "OpenClaw",
     "slug": "openclaw",
     "categoria": "scraping-automacao",
@@ -1431,10 +1432,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/openclaw/openclaw",
     "github": "https://github.com/openclaw/openclaw",
     "descricao": "Motor de coleta e extração estruturada de dados na web com agendamento e gerenciamento de tarefas.",
-    "potencial_startuzeiro": "Automação de rotinas de monitoramento de portais e extração de notícias em massa.",
-    "id": "FER-136"
+    "potencial_startuzeiro": "Automação de rotinas de monitoramento de portais e extração de notícias em massa."
   },
   {
+    "id": "FER-137",
     "nome": "Scikit-Learn",
     "slug": "scikit-learn",
     "categoria": "machine-learning",
@@ -1442,10 +1443,10 @@ const TOOLS_DATA = [
     "url": "https://scikit-learn.org/",
     "github": "https://github.com/scikit-learn/scikit-learn",
     "descricao": "A biblioteca fundamental de aprendizado de máquina em Python para classificação, regressão, clustering, redução de dimensionalidade e pré-processamento.",
-    "potencial_startuzeiro": "Algoritmos clássicos e robustos para análise estatística, clustering de perfis de empresas e seleção de features.",
-    "id": "FER-137"
+    "potencial_startuzeiro": "Algoritmos clássicos e robustos para análise estatística, clustering de perfis de empresas e seleção de features."
   },
   {
+    "id": "FER-138",
     "nome": "NVIDIA NeMo",
     "slug": "nemo",
     "categoria": "machine-learning",
@@ -1453,10 +1454,10 @@ const TOOLS_DATA = [
     "url": "https://www.nvidia.com/en-us/ai-data-science/products/nemo/",
     "github": "https://github.com/NVIDIA/NeMo",
     "descricao": "Framework empresarial da NVIDIA para construir, treinar e fazer fine-tuning de modelos generativos de linguagem, visão e fala multimodal.",
-    "potencial_startuzeiro": "Aceleração máxima em processamento de áudio, voz e diarização acelerada por GPU.",
-    "id": "FER-138"
+    "potencial_startuzeiro": "Aceleração máxima em processamento de áudio, voz e diarização acelerada por GPU."
   },
   {
+    "id": "FER-139",
     "nome": "Agency Agents",
     "slug": "agency-agents",
     "categoria": "agentes-ia",
@@ -1464,10 +1465,10 @@ const TOOLS_DATA = [
     "url": "https://agencyenterprise.org/",
     "github": "https://github.com/agency-enterprise/agency-agents",
     "descricao": "Conjunto de agentes de software especializados em automações corporativas e fluxos de agência de desenvolvimento e marketing.",
-    "potencial_startuzeiro": "Padronização de workflows comerciais para produtos e serviços oferecidos pelo laboratório.",
-    "id": "FER-139"
+    "potencial_startuzeiro": "Padronização de workflows comerciais para produtos e serviços oferecidos pelo laboratório."
   },
   {
+    "id": "FER-140",
     "nome": "NestJS",
     "slug": "nestjs",
     "categoria": "fullstack-backend",
@@ -1475,10 +1476,10 @@ const TOOLS_DATA = [
     "url": "https://nestjs.com/",
     "github": "https://github.com/nestjs/nest",
     "descricao": "Framework progressivo em TypeScript para construir aplicações de backend corporativas escaláveis, modulares e manuteníveis com injeção de dependência.",
-    "potencial_startuzeiro": "Arquitetura de microsserviços robustos para produtos SaaS e plataformas de alto tráfego.",
-    "id": "FER-140"
+    "potencial_startuzeiro": "Arquitetura de microsserviços robustos para produtos SaaS e plataformas de alto tráfego."
   },
   {
+    "id": "FER-141",
     "nome": "OCRmyPDF",
     "slug": "ocrmypdf",
     "categoria": "documentos-rag",
@@ -1486,10 +1487,10 @@ const TOOLS_DATA = [
     "url": "https://ocrmypdf.readthedocs.io/",
     "github": "https://github.com/ocrmypdf/OCRmyPDF",
     "descricao": "Ferramenta que adiciona uma camada de texto OCR pesquisável em documentos PDF escaneados, preservando o layout visual e compactando o arquivo.",
-    "potencial_startuzeiro": "Tratamento de documentos escaneados antigos recebidos de órgãos públicos e clientes para torná-los pesquisáveis.",
-    "id": "FER-141"
+    "potencial_startuzeiro": "Tratamento de documentos escaneados antigos recebidos de órgãos públicos e clientes para torná-los pesquisáveis."
   },
   {
+    "id": "FER-142",
     "nome": "Hono",
     "slug": "hono",
     "categoria": "fullstack-backend",
@@ -1497,10 +1498,10 @@ const TOOLS_DATA = [
     "url": "https://hono.dev/",
     "github": "https://github.com/honojs/hono",
     "descricao": "Framework web em TypeScript ultrarrápido, leve e com suporte universal para rodar em Cloudflare Workers, Deno, Bun, Node e AWS Lambda.",
-    "potencial_startuzeiro": "Criação de micro-APIs e webhooks de altíssima velocidade para captura de leads e integrações de pagamentos.",
-    "id": "FER-142"
+    "potencial_startuzeiro": "Criação de micro-APIs e webhooks de altíssima velocidade para captura de leads e integrações de pagamentos."
   },
   {
+    "id": "FER-143",
     "nome": "PlantUML",
     "slug": "plantuml",
     "categoria": "diagramas-arquitetura",
@@ -1508,10 +1509,10 @@ const TOOLS_DATA = [
     "url": "https://plantuml.com/",
     "github": "https://github.com/plantuml/plantuml",
     "descricao": "Ferramenta e sintaxe textual para desenhar rapidamente diagramas de sequência, caso de uso, classes, atividades e arquiteturas de software.",
-    "potencial_startuzeiro": "Documentação e diagramação técnica de arquiteturas de sistemas no repositório.",
-    "id": "FER-143"
+    "potencial_startuzeiro": "Documentação e diagramação técnica de arquiteturas de sistemas no repositório."
   },
   {
+    "id": "FER-144",
     "nome": "Mermaid.js",
     "slug": "mermaid-js",
     "categoria": "diagramas-arquitetura",
@@ -1519,10 +1520,10 @@ const TOOLS_DATA = [
     "url": "https://mermaid.js.org/",
     "github": "https://github.com/mermaid-js/mermaid",
     "descricao": "Ferramenta de diagramação e gráficos baseada em JavaScript que renderiza fluxogramas e sequências a partir de texto no padrão Markdown.",
-    "potencial_startuzeiro": "Visualização de fluxos e arquiteturas diretamente dentro do Obsidian e dos arquivos README do Startuzeiro.",
-    "id": "FER-144"
+    "potencial_startuzeiro": "Visualização de fluxos e arquiteturas diretamente dentro do Obsidian e dos arquivos README do Startuzeiro."
   },
   {
+    "id": "FER-145",
     "nome": "Appwrite",
     "slug": "appwrite",
     "categoria": "fullstack-backend",
@@ -1530,10 +1531,10 @@ const TOOLS_DATA = [
     "url": "https://appwrite.io/",
     "github": "https://github.com/appwrite/appwrite",
     "descricao": "Plataforma de Backend-as-a-Service (BaaS) open-source e self-hosted com autenticação, banco de dados, storage de arquivos e funções serverless.",
-    "potencial_startuzeiro": "Infraestrutura completa para lançar novos aplicativos web e mobile em questão de horas sem custos recorrentes.",
-    "id": "FER-145"
+    "potencial_startuzeiro": "Infraestrutura completa para lançar novos aplicativos web e mobile em questão de horas sem custos recorrentes."
   },
   {
+    "id": "FER-146",
     "nome": "MongoDB",
     "slug": "mongodb",
     "categoria": "banco-de-dados",
@@ -1541,10 +1542,10 @@ const TOOLS_DATA = [
     "url": "https://www.mongodb.com/",
     "github": "https://github.com/mongodb/mongo",
     "descricao": "Banco de dados orientado a documentos NoSQL mais popular do mundo, oferecendo flexibilidade de esquema, indexação rica e alta escalabilidade.",
-    "potencial_startuzeiro": "Armazenamento flexível de dados brutos não estruturados coletados de APIs e web crawlers.",
-    "id": "FER-146"
+    "potencial_startuzeiro": "Armazenamento flexível de dados brutos não estruturados coletados de APIs e web crawlers."
   },
   {
+    "id": "FER-147",
     "nome": "Neo4j",
     "slug": "neo4j",
     "categoria": "grafos-redes-complexas",
@@ -1552,10 +1553,10 @@ const TOOLS_DATA = [
     "url": "https://neo4j.com/",
     "github": "https://github.com/neo4j/neo4j",
     "descricao": "Sistema de gerenciamento de banco de dados orientado a grafos nativo líder de mercado, com linguagem de consulta Cypher e algoritmos de grafo.",
-    "potencial_startuzeiro": "Mapeamento profundo de redes de sócios, detecção de fraudes corporativas e relações societárias em larga escala.",
-    "id": "FER-147"
+    "potencial_startuzeiro": "Mapeamento profundo de redes de sócios, detecção de fraudes corporativas e relações societárias em larga escala."
   },
   {
+    "id": "FER-148",
     "nome": "Sigma.js",
     "slug": "sigma-js",
     "categoria": "grafos-redes-complexas",
@@ -1563,10 +1564,10 @@ const TOOLS_DATA = [
     "url": "https://www.sigmajs.org/",
     "github": "https://github.com/jacomyal/sigma.js",
     "descricao": "Biblioteca JavaScript de alta performance baseada em WebGL para visualização interativa de redes e grafos gigantes no navegador.",
-    "potencial_startuzeiro": "Exibição visual interativa de grafos de relacionamentos empresariais no dashboard do Startuzeiro.",
-    "id": "FER-148"
+    "potencial_startuzeiro": "Exibição visual interativa de grafos de relacionamentos empresariais no dashboard do Startuzeiro."
   },
   {
+    "id": "FER-149",
     "nome": "Graphology",
     "slug": "graphology",
     "categoria": "grafos-redes-complexas",
@@ -1574,10 +1575,10 @@ const TOOLS_DATA = [
     "url": "https://graphology.github.io/",
     "github": "https://github.com/graphology/graphology",
     "descricao": "Biblioteca de especificação e algoritmos de teoria dos grafos para JavaScript e TypeScript, com suporte a métricas, layout e serialização.",
-    "potencial_startuzeiro": "Cálculo de métricas de conectividade e agrupamento comunitário de redes de contatos no frontend.",
-    "id": "FER-149"
+    "potencial_startuzeiro": "Cálculo de métricas de conectividade e agrupamento comunitário de redes de contatos no frontend."
   },
   {
+    "id": "FER-150",
     "nome": "TanStack Tools",
     "slug": "tanstack-tools",
     "categoria": "fullstack-frontend",
@@ -1585,10 +1586,10 @@ const TOOLS_DATA = [
     "url": "https://tanstack.com/",
     "github": "https://github.com/TanStack/query",
     "descricao": "Conjunto de bibliotecas headless de ponta para aplicações web (TanStack Query, Table, Router, Form) com gerenciamento de estado assíncrono.",
-    "potencial_startuzeiro": "Construção de interfaces de dashboards reativas, tabelas dinâmicas e cache de dados de APIs.",
-    "id": "FER-150"
+    "potencial_startuzeiro": "Construção de interfaces de dashboards reativas, tabelas dinâmicas e cache de dados de APIs."
   },
   {
+    "id": "FER-151",
     "nome": "Next.js",
     "slug": "nextjs",
     "categoria": "fullstack-frontend",
@@ -1596,10 +1597,10 @@ const TOOLS_DATA = [
     "url": "https://nextjs.org/",
     "github": "https://github.com/vercel/next.js",
     "descricao": "O framework React padrão da indústria para aplicações web modernas, com renderização no servidor (SSR), geração estática (SSG) e Server Actions.",
-    "potencial_startuzeiro": "Padrão de desenvolvimento para todos os MVPs e produtos web voltados para usuários finais no laboratório.",
-    "id": "FER-151"
+    "potencial_startuzeiro": "Padrão de desenvolvimento para todos os MVPs e produtos web voltados para usuários finais no laboratório."
   },
   {
+    "id": "FER-152",
     "nome": "Express.js",
     "slug": "expressjs",
     "categoria": "fullstack-backend",
@@ -1607,10 +1608,10 @@ const TOOLS_DATA = [
     "url": "https://expressjs.com/",
     "github": "https://github.com/expressjs/express",
     "descricao": "Framework web minimalista, flexível e rápido para aplicações Node.js, servindo de base para grande parte do ecossistema de APIs em JavaScript.",
-    "potencial_startuzeiro": "Construção de microsserviços simples e rotas de webhook para captura de eventos.",
-    "id": "FER-152"
+    "potencial_startuzeiro": "Construção de microsserviços simples e rotas de webhook para captura de eventos."
   },
   {
+    "id": "FER-153",
     "nome": "FastAPI",
     "slug": "fastapi",
     "categoria": "fullstack-backend",
@@ -1618,10 +1619,10 @@ const TOOLS_DATA = [
     "url": "https://fastapi.tiangolo.com/",
     "github": "https://github.com/tiangolo/fastapi",
     "descricao": "Framework moderno e de altíssima performance para construir APIs com Python 3.8+ baseado em type hints, validação Pydantic e OpenAPI automático.",
-    "potencial_startuzeiro": "Construção de APIs de inteligência, endpoints de IA e backends analíticos no Startuzeiro.",
-    "id": "FER-153"
+    "potencial_startuzeiro": "Construção de APIs de inteligência, endpoints de IA e backends analíticos no Startuzeiro."
   },
   {
+    "id": "FER-154",
     "nome": "Django",
     "slug": "django",
     "categoria": "fullstack-backend",
@@ -1629,10 +1630,10 @@ const TOOLS_DATA = [
     "url": "https://www.djangoproject.com/",
     "github": "https://github.com/django/django",
     "descricao": "Framework web completo em Python com filosofia 'batteries-included', oferecendo ORM maduro, painel administrativo e sistema de segurança nativo.",
-    "potencial_startuzeiro": "Desenvolvimento de portais corporativos e backoffices complexos com gestão de usuários e permissões.",
-    "id": "FER-154"
+    "potencial_startuzeiro": "Desenvolvimento de portais corporativos e backoffices complexos com gestão de usuários e permissões."
   },
   {
+    "id": "FER-155",
     "nome": "Flask",
     "slug": "flask",
     "categoria": "fullstack-backend",
@@ -1640,10 +1641,10 @@ const TOOLS_DATA = [
     "url": "https://flask.palletsprojects.com/",
     "github": "https://github.com/pallets/flask",
     "descricao": "Microframework web em Python leve e flexível, projetado para permitir prototipagem rápida e controle total de arquitetura.",
-    "potencial_startuzeiro": "Criação de protótipos de servidores e utilitários rápidos para teste de hipóteses.",
-    "id": "FER-155"
+    "potencial_startuzeiro": "Criação de protótipos de servidores e utilitários rápidos para teste de hipóteses."
   },
   {
+    "id": "FER-156",
     "nome": "Supabase",
     "slug": "supabase",
     "categoria": "fullstack-backend",
@@ -1651,10 +1652,10 @@ const TOOLS_DATA = [
     "url": "https://supabase.com/",
     "github": "https://github.com/supabase/supabase",
     "descricao": "Alternativa open-source ao Firebase construída sobre PostgreSQL, com autenticação, banco relacional com pgvector, storage e subscriptions em tempo real.",
-    "potencial_startuzeiro": "Backend padrão relacional para persistência de dados de produtos, busca vetorial e gerenciamento de usuários.",
-    "id": "FER-156"
+    "potencial_startuzeiro": "Backend padrão relacional para persistência de dados de produtos, busca vetorial e gerenciamento de usuários."
   },
   {
+    "id": "FER-157",
     "nome": "SHAP",
     "slug": "shap",
     "categoria": "machine-learning",
@@ -1662,10 +1663,10 @@ const TOOLS_DATA = [
     "url": "https://shap.readthedocs.io/",
     "github": "https://github.com/shap/shap",
     "descricao": "Biblioteca de explicabilidade de modelos de machine learning baseada em valores Shapley da teoria dos jogos, explicando o impacto de cada feature.",
-    "potencial_startuzeiro": "Auditoria e transparência na pontuação de leads comerciais e justificativa de scores preditivos.",
-    "id": "FER-157"
+    "potencial_startuzeiro": "Auditoria e transparência na pontuação de leads comerciais e justificativa de scores preditivos."
   },
   {
+    "id": "FER-158",
     "nome": "Turborepo",
     "slug": "turborepo",
     "categoria": "dev-tooling",
@@ -1673,21 +1674,20 @@ const TOOLS_DATA = [
     "url": "https://turbo.build/repo",
     "github": "https://github.com/vercel/turborepo",
     "descricao": "Sistema de build de alta velocidade para monorepos JavaScript e TypeScript desenvolvido em Rust pela Vercel, com computação remota de cache.",
-    "potencial_startuzeiro": "Estruturação eficiente de repositórios que agrupam múltiplos pacotes, dashboards e bibliotecas compartilhadas.",
-    "id": "FER-158"
+    "potencial_startuzeiro": "Estruturação eficiente de repositórios que agrupam múltiplos pacotes, dashboards e bibliotecas compartilhadas."
   },
   {
+    "id": "FER-159",
     "nome": "CodeRabbit",
     "slug": "coderabbit",
     "categoria": "dev-ia-agentes",
     "tipo": "saas-freemium",
     "url": "https://coderabbit.ai/",
-    "github": null,
     "descricao": "Agente de inteligência artificial para revisão automatizada de Pull Requests no GitHub e GitLab, identificando bugs e sugerindo melhorias.",
-    "potencial_startuzeiro": "Revisão contínua de código e garantia de padrões de qualidade em commits do Startuzeiro.",
-    "id": "FER-159"
+    "potencial_startuzeiro": "Revisão contínua de código e garantia de padrões de qualidade em commits do Startuzeiro."
   },
   {
+    "id": "FER-160",
     "nome": "SonarQube",
     "slug": "sonarqube",
     "categoria": "dev-tooling",
@@ -1695,10 +1695,10 @@ const TOOLS_DATA = [
     "url": "https://www.sonarsource.com/products/sonarqube/",
     "github": "https://github.com/SonarSource/sonarqube",
     "descricao": "Plataforma de auditoria estática de código-fonte que detecta bugs, vulnerabilidades de segurança e débitos técnicos em mais de 30 linguagens.",
-    "potencial_startuzeiro": "Análise de segurança e auditoria de vulnerabilidades em bases de código antes do lançamento.",
-    "id": "FER-160"
+    "potencial_startuzeiro": "Análise de segurança e auditoria de vulnerabilidades em bases de código antes do lançamento."
   },
   {
+    "id": "FER-161",
     "nome": "Sentry",
     "slug": "sentry",
     "categoria": "llm-infra-observabilidade",
@@ -1706,10 +1706,10 @@ const TOOLS_DATA = [
     "url": "https://sentry.io/",
     "github": "https://github.com/getsentry/sentry",
     "descricao": "Plataforma de monitoramento de erros em tempo real e telemetria de performance para aplicações web, mobile e backends.",
-    "potencial_startuzeiro": "Captura instantânea de exceptions e rastreamento de falhas em produção em todos os sistemas do laboratório.",
-    "id": "FER-161"
+    "potencial_startuzeiro": "Captura instantânea de exceptions e rastreamento de falhas em produção em todos os sistemas do laboratório."
   },
   {
+    "id": "FER-162",
     "nome": "Stripe",
     "slug": "stripe",
     "categoria": "pagamentos-fintech",
@@ -1717,10 +1717,10 @@ const TOOLS_DATA = [
     "url": "https://stripe.com/",
     "github": "https://github.com/stripe/stripe-python",
     "descricao": "Infraestrutura financeira e gateway de pagamentos global para cobrança de assinaturas recorrentes, cartões de crédito e faturamento digital.",
-    "potencial_startuzeiro": "Monetização de SaaS, venda de relatórios de dados e cobrança de serviços comerciais desenvolvidos pelo laboratório.",
-    "id": "FER-162"
+    "potencial_startuzeiro": "Monetização de SaaS, venda de relatórios de dados e cobrança de serviços comerciais desenvolvidos pelo laboratório."
   },
   {
+    "id": "FER-163",
     "nome": "Apache Kafka",
     "slug": "apache-kafka",
     "categoria": "engenharia-dados",
@@ -1728,10 +1728,10 @@ const TOOLS_DATA = [
     "url": "https://kafka.apache.org/",
     "github": "https://github.com/apache/kafka",
     "descricao": "Plataforma de streaming de eventos distribuída de altíssima vazão e baixa latência para ingestão e processamento de dados em tempo real.",
-    "potencial_startuzeiro": "Espinha dorsal de mensageria para esteiras de dados que processam milhões de eventos por segundo.",
-    "id": "FER-163"
+    "potencial_startuzeiro": "Espinha dorsal de mensageria para esteiras de dados que processam milhões de eventos por segundo."
   },
   {
+    "id": "FER-164",
     "nome": "Apache ECharts",
     "slug": "apache-echarts",
     "categoria": "visualizacao-dados",
@@ -1739,10 +1739,10 @@ const TOOLS_DATA = [
     "url": "https://echarts.apache.org/",
     "github": "https://github.com/apache/echarts",
     "descricao": "Biblioteca de visualização de dados e gráficos interativos em JavaScript com suporte a renderização fluida em Canvas e SVG.",
-    "potencial_startuzeiro": "Criação de dashboards gerenciais ricos, gráficos de distribuição e mapas interativos para relatórios.",
-    "id": "FER-164"
+    "potencial_startuzeiro": "Criação de dashboards gerenciais ricos, gráficos de distribuição e mapas interativos para relatórios."
   },
   {
+    "id": "FER-165",
     "nome": "Optuna",
     "slug": "optuna",
     "categoria": "machine-learning",
@@ -1750,10 +1750,10 @@ const TOOLS_DATA = [
     "url": "https://optuna.org/",
     "github": "https://github.com/optuna/optuna",
     "descricao": "Framework de otimização automática de hiperparâmetros de machine learning e deep learning com amostragem bayesiana e poda antecipada eficiente.",
-    "potencial_startuzeiro": "Maximização de performance e tuning de modelos preditivos no laboratório.",
-    "id": "FER-165"
+    "potencial_startuzeiro": "Maximização de performance e tuning de modelos preditivos no laboratório."
   },
   {
+    "id": "FER-166",
     "nome": "RabbitMQ",
     "slug": "rabbitmq",
     "categoria": "engenharia-dados",
@@ -1761,10 +1761,10 @@ const TOOLS_DATA = [
     "url": "https://www.rabbitmq.com/",
     "github": "https://github.com/rabbitmq/rabbitmq-server",
     "descricao": "Broker de mensageria open-source confiável e amplamente utilizado que implementa o protocolo AMQP para filas e roteamento assíncrono.",
-    "potencial_startuzeiro": "Distribuição de tarefas de scraping, transcrição e enriquecimento entre múltiplos workers assíncronos.",
-    "id": "FER-166"
+    "potencial_startuzeiro": "Distribuição de tarefas de scraping, transcrição e enriquecimento entre múltiplos workers assíncronos."
   },
   {
+    "id": "FER-167",
     "nome": "Apache Spark",
     "slug": "apache-spark",
     "categoria": "engenharia-dados",
@@ -1772,10 +1772,10 @@ const TOOLS_DATA = [
     "url": "https://spark.apache.org/",
     "github": "https://github.com/apache/spark",
     "descricao": "Motor unificado de análise distribuída para processamento de dados em grande escala (Big Data) em memória com suporte a SQL, streaming e ML.",
-    "potencial_startuzeiro": "Transformação e agregação massiva de bases de dados abertas do governo brasileiro com dezenas de milhões de registros.",
-    "id": "FER-167"
+    "potencial_startuzeiro": "Transformação e agregação massiva de bases de dados abertas do governo brasileiro com dezenas de milhões de registros."
   },
   {
+    "id": "FER-168",
     "nome": "Apache Iceberg",
     "slug": "apache-iceberg",
     "categoria": "engenharia-dados",
@@ -1783,10 +1783,10 @@ const TOOLS_DATA = [
     "url": "https://iceberg.apache.org/",
     "github": "https://github.com/apache/iceberg",
     "descricao": "Formato aberto de tabela de alta performance para enormes volumes analíticos em data lakes, com suporte a transações ACID e evolução de esquema.",
-    "potencial_startuzeiro": "Estruturação do lakehouse de dados corporativos do Startuzeiro para consultas analíticas velozes.",
-    "id": "FER-168"
+    "potencial_startuzeiro": "Estruturação do lakehouse de dados corporativos do Startuzeiro para consultas analíticas velozes."
   },
   {
+    "id": "FER-169",
     "nome": "DuckDB",
     "slug": "duckdb",
     "categoria": "engenharia-dados",
@@ -1794,10 +1794,10 @@ const TOOLS_DATA = [
     "url": "https://duckdb.org/",
     "github": "https://github.com/duckdb/duckdb",
     "descricao": "Sistema de gerenciamento de banco de dados SQL analítico (OLAP) embutido, executando consultas colunares ultrarrápidas diretamente na máquina local sem servidor.",
-    "potencial_startuzeiro": "Consulta direta a arquivos Parquet, CSVs e bancos de dados SQLite com velocidade de data warehouse no laptop.",
-    "id": "FER-169"
+    "potencial_startuzeiro": "Consulta direta a arquivos Parquet, CSVs e bancos de dados SQLite com velocidade de data warehouse no laptop."
   },
   {
+    "id": "FER-170",
     "nome": "Polars",
     "slug": "polars",
     "categoria": "engenharia-dados",
@@ -1805,10 +1805,10 @@ const TOOLS_DATA = [
     "url": "https://pola.rs/",
     "github": "https://github.com/pola-rs/polars",
     "descricao": "Biblioteca de DataFrames ultrarrápida escrita em Rust para manipulação de dados com multithreading nativo e execução preguiçosa (lazy execution).",
-    "potencial_startuzeiro": "Substituição moderna e até 30x mais rápida para o Pandas em todas as rotinas analíticas do laboratório.",
-    "id": "FER-170"
+    "potencial_startuzeiro": "Substituição moderna e até 30x mais rápida para o Pandas em todas as rotinas analíticas do laboratório."
   },
   {
+    "id": "FER-171",
     "nome": "MLflow",
     "slug": "mlflow",
     "categoria": "machine-learning",
@@ -1816,10 +1816,10 @@ const TOOLS_DATA = [
     "url": "https://mlflow.org/",
     "github": "https://github.com/mlflow/mlflow",
     "descricao": "Plataforma open-source para gerenciamento do ciclo de vida de ML, rastreando experimentos, parâmetros, métricas e registro de modelos.",
-    "potencial_startuzeiro": "Rastreabilidade completa de experimentos de dados e catálogo central de modelos treinados.",
-    "id": "FER-171"
+    "potencial_startuzeiro": "Rastreabilidade completa de experimentos de dados e catálogo central de modelos treinados."
   },
   {
+    "id": "FER-172",
     "nome": "Firebase",
     "slug": "firebase",
     "categoria": "cloud-serverless-compute",
@@ -1827,54 +1827,50 @@ const TOOLS_DATA = [
     "url": "https://firebase.google.com/",
     "github": "https://github.com/firebase/firebase-admin-python",
     "descricao": "Plataforma de desenvolvimento de aplicativos da Google com autenticação, Firestore NoSQL, Cloud Functions e analytics.",
-    "potencial_startuzeiro": "Lançamento ágil de aplicativos com infraestrutura gerenciada pelo Google.",
-    "id": "FER-172"
+    "potencial_startuzeiro": "Lançamento ágil de aplicativos com infraestrutura gerenciada pelo Google."
   },
   {
+    "id": "FER-173",
     "nome": "Hostinger",
     "slug": "hostinger",
     "categoria": "cloud-hospedagem",
     "tipo": "saas-freemium",
     "url": "https://www.hostinger.com.br/",
-    "github": null,
     "descricao": "Provedor global de hospedagem na web, servidores VPS em nuvem e registro de domínios com excelente custo-benefício.",
-    "potencial_startuzeiro": "Hospedagem de baixo custo de instâncias de VPS para crawlers contínuos e bots do laboratório.",
-    "id": "FER-173"
+    "potencial_startuzeiro": "Hospedagem de baixo custo de instâncias de VPS para crawlers contínuos e bots do laboratório."
   },
   {
+    "id": "FER-174",
     "nome": "NestJS Cloud",
     "slug": "nestjs-cloud",
     "categoria": "cloud-serverless-compute",
     "tipo": "saas-freemium",
     "url": "https://cloud.nestjs.com/",
-    "github": null,
     "descricao": "Plataforma de hospedagem e deployment gerenciado oficial para aplicações e microsserviços construídos com NestJS.",
-    "potencial_startuzeiro": "Deploy contínuo de backends NestJS corporativos com monitoramento integrado.",
-    "id": "FER-174"
+    "potencial_startuzeiro": "Deploy contínuo de backends NestJS corporativos com monitoramento integrado."
   },
   {
+    "id": "FER-175",
     "nome": "Sevalla",
     "slug": "sevalla",
     "categoria": "cloud-hospedagem",
     "tipo": "saas-freemium",
     "url": "https://sevalla.com/",
-    "github": null,
     "descricao": "Plataforma de hospedagem em nuvem de alto desempenho para aplicações, bancos de dados e sites estáticos (antiga Kinsta Cloud).",
-    "potencial_startuzeiro": "Deploy simplificado de containers Docker e aplicações full-stack na infraestrutura global da Google Cloud.",
-    "id": "FER-175"
+    "potencial_startuzeiro": "Deploy simplificado de containers Docker e aplicações full-stack na infraestrutura global da Google Cloud."
   },
   {
+    "id": "FER-176",
     "nome": "Make.com",
     "slug": "make",
     "categoria": "automacao-no-code",
     "tipo": "saas-freemium",
     "url": "https://www.make.com/",
-    "github": null,
     "descricao": "Plataforma visual líder de automação de fluxos de trabalho no-code/low-code que conecta milhares de serviços e APIs em pipelines complexos.",
-    "potencial_startuzeiro": "Integração rápida entre formulários de captura, CRMs, WhatsApp e alertas de e-mail.",
-    "id": "FER-176"
+    "potencial_startuzeiro": "Integração rápida entre formulários de captura, CRMs, WhatsApp e alertas de e-mail."
   },
   {
+    "id": "FER-177",
     "nome": "OpenAI ChatGPT API",
     "slug": "openai-api",
     "categoria": "api-ia",
@@ -1882,10 +1878,10 @@ const TOOLS_DATA = [
     "url": "https://platform.openai.com/",
     "github": "https://github.com/openai/openai-python",
     "descricao": "API da OpenAI para os modelos GPT-4o, GPT-4o-mini e reasoning models (série o1/o3), com suporte a function calling e visão.",
-    "potencial_startuzeiro": "Motor generativo de referência para raciocínio complexo, geração de código e atendimento inteligente.",
-    "id": "FER-177"
+    "potencial_startuzeiro": "Motor generativo de referência para raciocínio complexo, geração de código e atendimento inteligente."
   },
   {
+    "id": "FER-178",
     "nome": "Anthropic Claude API",
     "slug": "anthropic-claude-api",
     "categoria": "api-ia",
@@ -1893,10 +1889,10 @@ const TOOLS_DATA = [
     "url": "https://www.anthropic.com/api",
     "github": "https://github.com/anthropics/anthropic-sdk-python",
     "descricao": "API da família de modelos Claude (Claude 3.5 Sonnet, Haiku, Opus), líder global em engenharia de software e análise textual profunda.",
-    "potencial_startuzeiro": "O cérebro principal para tarefas complexas de codificação, análise de código e redação analítica no Startuzeiro.",
-    "id": "FER-178"
+    "potencial_startuzeiro": "O cérebro principal para tarefas complexas de codificação, análise de código e redação analítica no Startuzeiro."
   },
   {
+    "id": "FER-179",
     "nome": "Google AI API",
     "slug": "google-ai-api",
     "categoria": "api-ia",
@@ -1904,10 +1900,10 @@ const TOOLS_DATA = [
     "url": "https://ai.google.dev/",
     "github": "https://github.com/google-gemini/generative-ai-python",
     "descricao": "API oficial do Google AI Studio para acesso aos modelos Gemini 1.5 e 2.0 com janelas de contexto gigantescas de até 2 milhões de tokens.",
-    "potencial_startuzeiro": "Processamento de livros inteiros, repositórios de código e vídeos longos em uma única chamada de contexto.",
-    "id": "FER-179"
+    "potencial_startuzeiro": "Processamento de livros inteiros, repositórios de código e vídeos longos em uma única chamada de contexto."
   },
   {
+    "id": "FER-180",
     "nome": "DeepSeek API",
     "slug": "deepseek-api",
     "categoria": "api-ia",
@@ -1915,10 +1911,10 @@ const TOOLS_DATA = [
     "url": "https://www.deepseek.com/",
     "github": "https://github.com/deepseek-ai/DeepSeek-V3",
     "descricao": "API de alta performance e custo ultra-baixo para os modelos DeepSeek-V3 e DeepSeek-R1 (raciocínio avançado por reinforcement learning).",
-    "potencial_startuzeiro": "Redução drástica de custos em tarefas pesadas de extração e raciocínio lógico em larga escala.",
-    "id": "FER-180"
+    "potencial_startuzeiro": "Redução drástica de custos em tarefas pesadas de extração e raciocínio lógico em larga escala."
   },
   {
+    "id": "FER-181",
     "nome": "Zhipu AI GLM API",
     "slug": "zhipu-glm-api",
     "categoria": "api-ia",
@@ -1926,10 +1922,10 @@ const TOOLS_DATA = [
     "url": "https://open.bigmodel.cn/",
     "github": "https://github.com/THUDM/GLM-4",
     "descricao": "Plataforma de IA da Zhipu AI oferecendo a família de modelos bilingues GLM-4 com suporte nativo a chamadas de ferramentas e multimodalidade.",
-    "potencial_startuzeiro": "Alternativa resiliente e de baixo custo para tarefas de extração e suporte multilíngue.",
-    "id": "FER-181"
+    "potencial_startuzeiro": "Alternativa resiliente e de baixo custo para tarefas de extração e suporte multilíngue."
   },
   {
+    "id": "FER-182",
     "nome": "RapidFuzz",
     "slug": "rapidfuzz",
     "categoria": "nlp-embeddings",
@@ -1937,43 +1933,40 @@ const TOOLS_DATA = [
     "url": "https://github.com/maxbachmann/RapidFuzz",
     "github": "https://github.com/maxbachmann/RapidFuzz",
     "descricao": "Biblioteca C++ e Python ultrarrápida para correspondência difusa de strings (fuzzy string matching) usando distância de Levenshtein.",
-    "potencial_startuzeiro": "Deduplicação e cruzamento rápido de nomes de empresas, sócios e títulos de produtos com grafias divergentes.",
-    "id": "FER-182"
+    "potencial_startuzeiro": "Deduplicação e cruzamento rápido de nomes de empresas, sócios e títulos de produtos com grafias divergentes."
   },
   {
+    "id": "FER-183",
     "nome": "Moonshot AI Kimi API",
     "slug": "moonshot-kimi-api",
     "categoria": "api-ia",
     "tipo": "saas-freemium",
     "url": "https://platform.moonshot.cn/",
-    "github": null,
     "descricao": "API de inteligência artificial da Moonshot AI pioneira em suporte a contexto extremo de até 2 milhões de caracteres chineses e ocidentais.",
-    "potencial_startuzeiro": "Análise de grandes dossiês documentais e auditoria de históricos extensos.",
-    "id": "FER-183"
+    "potencial_startuzeiro": "Análise de grandes dossiês documentais e auditoria de históricos extensos."
   },
   {
+    "id": "FER-184",
     "nome": "OpenRouter",
     "slug": "openrouter",
     "categoria": "llm-infra-observabilidade",
     "tipo": "saas-freemium",
     "url": "https://openrouter.ai/",
-    "github": null,
     "descricao": "Roteador unificado de APIs de IA que permite acessar dezenas de modelos de diferentes provedores com uma única chave e cobrança unificada.",
-    "potencial_startuzeiro": "Acesso imediato a novos lançamentos de modelos de IA sem precisar criar contas e cartões em cada provedor.",
-    "id": "FER-184"
+    "potencial_startuzeiro": "Acesso imediato a novos lançamentos de modelos de IA sem precisar criar contas e cartões em cada provedor."
   },
   {
+    "id": "FER-185",
     "nome": "9Router",
     "slug": "9router",
     "categoria": "llm-infra-observabilidade",
     "tipo": "saas-freemium",
     "url": "https://9router.com/",
-    "github": null,
     "descricao": "Gateway inteligente para roteamento de tráfego de inferência de IA com failover dinâmico e otimização de custos.",
-    "potencial_startuzeiro": "Alta disponibilidade e balanceamento de carga para aplicações críticas de clientes.",
-    "id": "FER-185"
+    "potencial_startuzeiro": "Alta disponibilidade e balanceamento de carga para aplicações críticas de clientes."
   },
   {
+    "id": "FER-186",
     "nome": "Hugging Face",
     "slug": "hugging-face",
     "categoria": "machine-learning",
@@ -1981,10 +1974,10 @@ const TOOLS_DATA = [
     "url": "https://huggingface.co/",
     "github": "https://github.com/huggingface/transformers",
     "descricao": "O hub central global de colaboração em inteligência artificial, reunindo centenas de milhares de modelos de código aberto, datasets e demos.",
-    "potencial_startuzeiro": "Descoberta, download e execução de modelos especializados pré-treinados para as esteiras do Startuzeiro.",
-    "id": "FER-186"
+    "potencial_startuzeiro": "Descoberta, download e execução de modelos especializados pré-treinados para as esteiras do Startuzeiro."
   },
   {
+    "id": "FER-187",
     "nome": "ECAPA-TDNN",
     "slug": "ecapa-tdnn",
     "categoria": "audio-voz-ia",
@@ -1992,10 +1985,10 @@ const TOOLS_DATA = [
     "url": "https://speechbrain.github.io/",
     "github": "https://github.com/speechbrain/speechbrain",
     "descricao": "Arquitetura neural estado-da-arte para extração de embeddings de voz e reconhecimento/verificação biométrica de locutores.",
-    "potencial_startuzeiro": "Autenticação por voz e identificação de perfil vocal de executivos e interlocutores em reuniões.",
-    "id": "FER-187"
+    "potencial_startuzeiro": "Autenticação por voz e identificação de perfil vocal de executivos e interlocutores em reuniões."
   },
   {
+    "id": "FER-188",
     "nome": "Charoite Audio",
     "slug": "charoite-audio",
     "categoria": "audio-voz-ia",
@@ -2003,10 +1996,10 @@ const TOOLS_DATA = [
     "url": "https://huggingface.co/models?search=charoite",
     "github": "https://github.com/charoite-audio",
     "descricao": "Representação neural e modelos especializados em processamento e síntese de áudio de alta fidelidade.",
-    "potencial_startuzeiro": "Melhoria e restauração de faixas de áudio ruidosas captadas em entrevistas.",
-    "id": "FER-188"
+    "potencial_startuzeiro": "Melhoria e restauração de faixas de áudio ruidosas captadas em entrevistas."
   },
   {
+    "id": "FER-189",
     "nome": "x-vectors",
     "slug": "x-vectors",
     "categoria": "audio-voz-ia",
@@ -2014,10 +2007,10 @@ const TOOLS_DATA = [
     "url": "https://kaldi-asr.org/doc/xvec.html",
     "github": "https://github.com/kaldi-asr/kaldi",
     "descricao": "Metodologia consagrada de embeddings de fala baseada em redes neurais de retardo de tempo (TDNN) para caracterização de locutores.",
-    "potencial_startuzeiro": "Indexação vetorial de vozes para agrupamento de gravações por pessoa que falou.",
-    "id": "FER-189"
+    "potencial_startuzeiro": "Indexação vetorial de vozes para agrupamento de gravações por pessoa que falou."
   },
   {
+    "id": "FER-190",
     "nome": "d-vectors",
     "slug": "d-vectors",
     "categoria": "audio-voz-ia",
@@ -2025,10 +2018,10 @@ const TOOLS_DATA = [
     "url": "https://google.github.io/speaker-id/publications/LSP/",
     "github": "https://github.com/yistLin/dvector",
     "descricao": "Representação vetorial de fala profunda desenvolvida pelo Google para identificação e verificação contínua de locutores em tempo real.",
-    "potencial_startuzeiro": "Clustering vocal em tempo real para assistentes de reunião e transcrições diarizadas.",
-    "id": "FER-190"
+    "potencial_startuzeiro": "Clustering vocal em tempo real para assistentes de reunião e transcrições diarizadas."
   },
   {
+    "id": "FER-191",
     "nome": "WavLM",
     "slug": "wavlm",
     "categoria": "audio-voz-ia",
@@ -2036,10 +2029,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/microsoft/unilm/tree/master/wavlm",
     "github": "https://github.com/microsoft/unilm",
     "descricao": "Modelo de fundação de áudio da Microsoft pré-treinado em 94 mil horas de fala para tarefas de ASR, separação de áudio e análise de emoção.",
-    "potencial_startuzeiro": "Extração de features profundas de áudio para classificação de tom de voz e detecção de urgência comercial.",
-    "id": "FER-191"
+    "potencial_startuzeiro": "Extração de features profundas de áudio para classificação de tom de voz e detecção de urgência comercial."
   },
   {
+    "id": "FER-192",
     "nome": "Azure Speech",
     "slug": "azure-speech",
     "categoria": "audio-voz-ia",
@@ -2047,10 +2040,10 @@ const TOOLS_DATA = [
     "url": "https://azure.microsoft.com/services/cognitive-services/speech-services/",
     "github": "https://github.com/Azure-Samples/cognitive-services-speech-sdk",
     "descricao": "Suíte empresarial da Microsoft para síntese de voz hiper-realista, reconhecimento de fala e tradução com alta confiabilidade.",
-    "potencial_startuzeiro": "Vozes neurais corporativas de alta expressividade para vídeos institucionais e atendimento.",
-    "id": "FER-192"
+    "potencial_startuzeiro": "Vozes neurais corporativas de alta expressividade para vídeos institucionais e atendimento."
   },
   {
+    "id": "FER-193",
     "nome": "Google Speech-to-Text",
     "slug": "google-speech-to-text",
     "categoria": "audio-voz-ia",
@@ -2058,10 +2051,10 @@ const TOOLS_DATA = [
     "url": "https://cloud.google.com/speech-to-text",
     "github": "https://github.com/googleapis/python-speech",
     "descricao": "API da Google Cloud que converte áudio em texto em mais de 125 idiomas e variantes com pontuação e reconhecimento de nomes próprios.",
-    "potencial_startuzeiro": "Transcrição de alta confiabilidade integrada diretamente à infraestrutura GCP.",
-    "id": "FER-193"
+    "potencial_startuzeiro": "Transcrição de alta confiabilidade integrada diretamente à infraestrutura GCP."
   },
   {
+    "id": "FER-194",
     "nome": "FFmpeg",
     "slug": "ffmpeg",
     "categoria": "audio-video-processing",
@@ -2069,10 +2062,10 @@ const TOOLS_DATA = [
     "url": "https://ffmpeg.org/",
     "github": "https://github.com/FFmpeg/FFmpeg",
     "descricao": "O software multimídia fundamental do planeta para decodificar, codificar, transcodificar, cortar e filtrar qualquer formato de vídeo e áudio.",
-    "potencial_startuzeiro": "Motor base para fatiamento de vídeos do YouTube, conversão para MP3 e geração de recortes automatizados.",
-    "id": "FER-194"
+    "potencial_startuzeiro": "Motor base para fatiamento de vídeos do YouTube, conversão para MP3 e geração de recortes automatizados."
   },
   {
+    "id": "FER-195",
     "nome": "DeepFilterNet",
     "slug": "deepfilternet",
     "categoria": "audio-voz-ia",
@@ -2080,10 +2073,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/Rikorose/DeepFilterNet",
     "github": "https://github.com/Rikorose/DeepFilterNet",
     "descricao": "Framework em Rust e Python para supressão profunda de ruídos e eco acústico em tempo real com baixíssimo consumo computacional.",
-    "potencial_startuzeiro": "Limpeza automática de áudios ruidosos antes do envio para modelos de transcrição, aumentando a precisão das legendas.",
-    "id": "FER-195"
+    "potencial_startuzeiro": "Limpeza automática de áudios ruidosos antes do envio para modelos de transcrição, aumentando a precisão das legendas."
   },
   {
+    "id": "FER-196",
     "nome": "Demucs",
     "slug": "demucs",
     "categoria": "audio-voz-ia",
@@ -2091,10 +2084,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/facebookresearch/demucs",
     "github": "https://github.com/facebookresearch/demucs",
     "descricao": "Modelo de ponta da Meta AI para separação de fontes musicais (isolando voz, bateria, baixo e outros instrumentos) em alta definição.",
-    "potencial_startuzeiro": "Isolamento de faixas de voz limpas a partir de vídeos com trilha sonora alta de fundo para cortes perfeitos.",
-    "id": "FER-196"
+    "potencial_startuzeiro": "Isolamento de faixas de voz limpas a partir de vídeos com trilha sonora alta de fundo para cortes perfeitos."
   },
   {
+    "id": "FER-197",
     "nome": "RNNoise",
     "slug": "rnnoise",
     "categoria": "audio-voz-ia",
@@ -2102,10 +2095,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/xiph/rnnoise",
     "github": "https://github.com/xiph/rnnoise",
     "descricao": "Biblioteca de supressão de ruído ultraleve da Xiph.Org baseada em redes neurais recorrentes projetada para tempo real em dispositivos móveis.",
-    "potencial_startuzeiro": "Filtro em tempo real para transmissões e chamadas de voz com zero latência perceptível.",
-    "id": "FER-197"
+    "potencial_startuzeiro": "Filtro em tempo real para transmissões e chamadas de voz com zero latência perceptível."
   },
   {
+    "id": "FER-198",
     "nome": "Silero VAD",
     "slug": "silero-vad",
     "categoria": "audio-voz-ia",
@@ -2113,10 +2106,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/snakers4/silero-vad",
     "github": "https://github.com/snakers4/silero-vad",
     "descricao": "Detector de atividade de voz (Voice Activity Detector) pré-treinado de nível empresarial, pesando menos de 2MB e com precisão impecável.",
-    "potencial_startuzeiro": "Detecção instantânea de pausas de fala para saber quando cortar um áudio ou quando um humano parou de falar em ligações de IA.",
-    "id": "FER-198"
+    "potencial_startuzeiro": "Detecção instantânea de pausas de fala para saber quando cortar um áudio ou quando um humano parou de falar em ligações de IA."
   },
   {
+    "id": "FER-199",
     "nome": "NeMo Sortformer",
     "slug": "nemo-sortformer",
     "categoria": "audio-voz-ia",
@@ -2124,10 +2117,10 @@ const TOOLS_DATA = [
     "url": "https://github.com/NVIDIA/NeMo",
     "github": "https://github.com/NVIDIA/NeMo",
     "descricao": "Módulo avançado de diarização de múltiplos locutores da NVIDIA baseado em atenção com capacidade de ordenar e atribuir falas dinamicamente.",
-    "potencial_startuzeiro": "Diarização de locutores em reuniões de negócios com múltiplos participantes falando ao mesmo tempo.",
-    "id": "FER-199"
+    "potencial_startuzeiro": "Diarização de locutores em reuniões de negócios com múltiplos participantes falando ao mesmo tempo."
   },
   {
+    "id": "FER-200",
     "nome": "TypeDB",
     "slug": "typedb",
     "categoria": "banco-de-dados",
@@ -2135,10 +2128,10 @@ const TOOLS_DATA = [
     "url": "https://typedb.com/",
     "github": "https://github.com/vaticle/typedb",
     "descricao": "Banco de dados polimórfico e tipado com raciocínio lógico embutido (TypeQL), unificando dados relacionais e grafos conceituais.",
-    "potencial_startuzeiro": "Construção de ontologias corporativas ricas e inferência automática de relacionamentos indiretos entre empresas e sócios.",
-    "id": "FER-200"
+    "potencial_startuzeiro": "Construção de ontologias corporativas ricas e inferência automática de relacionamentos indiretos entre empresas e sócios."
   },
   {
+    "id": "FER-201",
     "nome": "BGE-M3",
     "slug": "bge-m3",
     "categoria": "nlp-embeddings",
@@ -2146,10 +2139,10 @@ const TOOLS_DATA = [
     "url": "https://huggingface.co/BAAI/bge-m3",
     "github": "https://github.com/FlagOpen/FlagEmbedding",
     "descricao": "O modelo de embedding multilíngue mais completo do mundo, suportando busca densa, busca esparsa (BM25 neural) e multi-vetor em mais de 100 idiomas.",
-    "potencial_startuzeiro": "O modelo definitivo de busca híbrida para o sistema de RAG do laboratório, unindo precisão por palavra-chave e proximidade semântica.",
-    "id": "FER-201"
+    "potencial_startuzeiro": "O modelo definitivo de busca híbrida para o sistema de RAG do laboratório, unindo precisão por palavra-chave e proximidade semântica."
   },
   {
+    "id": "FER-202",
     "nome": "KùzuDB",
     "slug": "kuzudb",
     "categoria": "grafos-redes-complexas",
@@ -2157,7 +2150,17 @@ const TOOLS_DATA = [
     "url": "https://kuzudb.com/",
     "github": "https://github.com/kuzudb/kuzu",
     "descricao": "Sistema de gerenciamento de banco de dados de grafos embutido e ultrarrápido (o 'DuckDB dos grafos'), executando consultas Cypher direto na memória.",
-    "potencial_startuzeiro": "Consultas ultra-rápidas em grafos de redes societárias locais sem necessidade de instalar servidores pesados de banco de dados.",
-    "id": "FER-202"
+    "potencial_startuzeiro": "Consultas ultra-rápidas em grafos de redes societárias locais sem necessidade de instalar servidores pesados de banco de dados."
+  },
+  {
+    "id": "FER-203",
+    "nome": "Hugging Face Hub MCP",
+    "slug": "huggingface-hub-mcp",
+    "categoria": "api-ia",
+    "tipo": "mcp-servico-api",
+    "url": "https://huggingface.co/mcp",
+    "github": "https://github.com/huggingface/mcp-course",
+    "descricao": "Servidor MCP oficial do Hugging Face para descoberta, inspeção e navegação em modelos abertos, datasets para fine-tuning, spaces e papers diários do arXiv via ferramentas hf_fs e hub_repo_search.",
+    "potencial_startuzeiro": "Busca de modelos estado-da-arte, verificação de licenças comerciais, monitoramento de papers do arXiv e download de datasets para os experimentos de IA do laboratório."
   }
 ];
