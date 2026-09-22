@@ -1,0 +1,10 @@
+[project]
+name = "startuzeiro"
+version = "0.1.0"
+description = "Laboratório de inteligência de mercado, validação e experimentos de negócios digitais."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv]
+package = false

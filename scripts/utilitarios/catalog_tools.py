@@ -1,0 +1,668 @@
+import sys
+from pathlib import Path
+
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")
+
+TOOLS = [
+    {
+        "id": "FER-001",
+        "nome": "ViralityAI",
+        "slug": "viralityai",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://viralityai.net/",
+        "descricao": "Plataforma de crescimento acelerado e viralização para criadores de conteúdo com análise preditiva de engajamento por IA.",
+        "potencial": "Validação de modelos de distribuição de tráfego orgânico para canais dark, perfis de nicho e afiliados."
+    },
+    {
+        "id": "FER-002",
+        "nome": "Upscale.media",
+        "slug": "upscale-media",
+        "categoria": "design-assets",
+        "tipo": "saas-freemium",
+        "url": "https://www.upscale.media/pt",
+        "descricao": "Ferramenta de upscaling com IA que amplia e restaura a resolução de imagens e fotos gratuitamente sem perda de nitidez.",
+        "potencial": "Restauração de criativos de baixa qualidade e fotos de produtos para anúncios de e-commerce e afiliados."
+    },
+    {
+        "id": "FER-003",
+        "nome": "FaceCheck.id",
+        "slug": "facecheck-id",
+        "categoria": "osint-investigacao",
+        "tipo": "saas-freemium",
+        "url": "https://facecheck.id/pt",
+        "descricao": "Motor de busca facial reversa por IA que identifica perfis de redes sociais e aparições públicas a partir de uma foto de rosto.",
+        "potencial": "Investigação de perfis falsos, checagem de antecedentes de influenciadores e due diligence de parceiros comerciais."
+    },
+    {
+        "id": "FER-004",
+        "nome": "Netryx Astra V2",
+        "slug": "netryx-astra-v2",
+        "categoria": "osint-investigacao",
+        "tipo": "open-source",
+        "url": "https://github.com/sparkyniner/Netryx-Astra-V2-Geolocation-Tool",
+        "descricao": "Software de geolocalização de fotos a nível de rua, cruzando dados visuais com imagens de satélite e mapas públicos.",
+        "potencial": "Geointeligência, auditoria de veracidade de locais em criativos de concorrentes e investigação de imagens."
+    },
+    {
+        "id": "FER-005",
+        "nome": "Robin Dark Web OSINT",
+        "slug": "robin-dark-web-osint",
+        "categoria": "osint-investigacao",
+        "tipo": "open-source",
+        "url": "https://github.com/apurvsinghgautam/robin",
+        "descricao": "Ferramenta de inteligência contra ameaças e OSINT focada na Dark Web potencializada por modelos de IA.",
+        "potencial": "Auditoria de segurança, busca de vazamentos de credenciais e monitoramento de ativos digitais de empresas."
+    },
+    {
+        "id": "FER-006",
+        "nome": "MVT (Mobile Verification Toolkit)",
+        "slug": "mvt-mobile-toolkit",
+        "categoria": "osint-investigacao",
+        "tipo": "open-source",
+        "url": "https://github.com/mvt-project/mvt",
+        "descricao": "Toolkit de computação forense da Anistia Internacional para analisar celulares (Android/iOS) em busca de spywares sofisticados.",
+        "potencial": "Serviços de auditoria em privacidade e segurança móvel para executivos e figuras de alto patrimônio."
+    },
+    {
+        "id": "FER-007",
+        "nome": "Aimap",
+        "slug": "aimap",
+        "categoria": "osint-investigacao",
+        "tipo": "open-source",
+        "url": "https://github.com/BishopFox/aimap",
+        "descricao": "Scanner da Bishop Fox para descobrir e auditar serviços, modelos e endpoints de IA expostos publicamente na internet.",
+        "potencial": "Varredura de brechas em sistemas concorrentes e descoberta de APIs de IA desprotegidas no mercado."
+    },
+    {
+        "id": "FER-008",
+        "nome": "VoidAccess",
+        "slug": "voidaccess",
+        "categoria": "osint-investigacao",
+        "tipo": "open-source",
+        "url": "https://github.com/KatrielMoses/voidaccess",
+        "descricao": "Plataforma self-hosted de OSINT na Dark Web alternativa a soluções corporativas pagas de inteligência de ameaças.",
+        "potencial": "Prestação de serviços de monitoramento de vazamento de senhas e dados para pequenas e médias empresas."
+    },
+    {
+        "id": "FER-009",
+        "nome": "Airplanes.live",
+        "slug": "airplanes-live",
+        "categoria": "osint-investigacao",
+        "tipo": "utilitario-web",
+        "url": "https://airplanes.live/",
+        "descricao": "Rastreador de tráfego aéreo global em tempo real que exibe dados brutos de transponders ADS-B sem filtros governamentais.",
+        "potencial": "OSINT investigativo, rastreamento de transporte de cargas e inteligência sobre aviação executiva."
+    },
+    {
+        "id": "FER-010",
+        "nome": "MailAccess",
+        "slug": "mailaccess",
+        "categoria": "osint-investigacao",
+        "tipo": "open-source",
+        "url": "https://github.com/KatrielMoses/MailAccess",
+        "descricao": "Ferramenta gratuita de OSINT de e-mails em mais de 2.500 plataformas com clustering de identidade e detecção de violações.",
+        "potencial": "Higienização de listas de prospecção fria (cold email) e verificação de autenticidade de leads."
+    },
+    {
+        "id": "FER-011",
+        "nome": "TorBot",
+        "slug": "torbot",
+        "categoria": "osint-investigacao",
+        "tipo": "open-source",
+        "url": "https://github.com/dedsecinside/torbot",
+        "descricao": "Crawler e analisador de links na rede Tor (.onion) com extração de cabeçalhos e verificação de atividade de nós ocultos.",
+        "potencial": "Monitoramento automatizado de fóruns e diretórios da Dark Web."
+    },
+    {
+        "id": "FER-012",
+        "nome": "Comp AI CRM",
+        "slug": "comp-ai-crm",
+        "categoria": "agentes-ia",
+        "tipo": "open-source",
+        "url": "https://github.com/trycompai/crm",
+        "descricao": "CRM open-source construído nativamente para que agentes de IA gerenciem e atualizem pipelines de vendas de forma autônoma.",
+        "potencial": "Base técnica para estruturação de agências de prospecção e atendimento comercial totalmente operadas por agentes de IA."
+    },
+    {
+        "id": "FER-013",
+        "nome": "Open SEO",
+        "slug": "open-seo",
+        "categoria": "scraping-automacao",
+        "tipo": "open-source",
+        "url": "https://github.com/every-app/open-seo",
+        "descricao": "Alternativa de código aberto ao Semrush e Ahrefs para auditoria técnica de sites, palavras-chave e concorrentes.",
+        "potencial": "Prestação de serviços de auditoria de SEO local para negócios sem incorrer no alto custo de licenças proprietárias."
+    },
+    {
+        "id": "FER-014",
+        "nome": "Changedetection.io",
+        "slug": "changedetection-io",
+        "categoria": "scraping-automacao",
+        "tipo": "open-source",
+        "url": "https://github.com/dgtlmoon/changedetection.io",
+        "descricao": "Sistema self-hosted que vigia páginas web e dispara notificações imediatas sobre alterações de preços, texto ou estoque.",
+        "potencial": "Monitoramento 24/7 de tabelas de preços de concorrentes, alertas de reposição de estoque para arbitragem e rastreamento de vagas."
+    },
+    {
+        "id": "FER-015",
+        "nome": "AI Website Cloner Template",
+        "slug": "ai-website-cloner-template",
+        "categoria": "scraping-automacao",
+        "tipo": "open-source",
+        "url": "https://github.com/JCodesMore/ai-website-cloner-template",
+        "descricao": "Template para clonar e recriar visualmente qualquer landing page com um comando através de agentes de IA.",
+        "potencial": "Recriação ultrarrápida de estruturas de landing pages de alta conversão para teste de ofertas e produtos."
+    },
+    {
+        "id": "FER-016",
+        "nome": "PPT Master",
+        "slug": "ppt-master",
+        "categoria": "apresentacoes-pitch",
+        "tipo": "open-source",
+        "url": "https://github.com/hugohe3/ppt-master",
+        "descricao": "Ferramenta de IA que transforma documentos e tópicos em apresentações PowerPoint (.pptx) nativas com animações e narração.",
+        "potencial": "Geração automatizada de relatórios comerciais e propostas de vendas para clientes corporativos."
+    },
+    {
+        "id": "FER-017",
+        "nome": "Scrapling",
+        "slug": "scrapling",
+        "categoria": "scraping-automacao",
+        "tipo": "open-source",
+        "url": "https://github.com/d4vinci/Scrapling",
+        "descricao": "Framework adaptativo e ultrarrápido de Web Scraping em Python capaz de lidar desde requisições simples a crawls complexos com bypass.",
+        "potencial": "Coleta massiva de preços, catálogos e inteligência de concorrentes para municiar o laboratório Startuzeiro."
+    },
+    {
+        "id": "FER-018",
+        "nome": "PaddleOCR",
+        "slug": "paddleocr",
+        "categoria": "scraping-automacao",
+        "tipo": "open-source",
+        "url": "https://github.com/PADDLEPADDLE/PADDLEOCR",
+        "descricao": "Kit de ferramentas OCR de alta precisão que suporta mais de 100 idiomas e converte PDFs e fotos em dados estruturados para LLMs.",
+        "potencial": "Processamento e automação de documentos não estruturados (notas fiscais, cardápios, contratos) para empresas locais."
+    },
+    {
+        "id": "FER-019",
+        "nome": "Remotion",
+        "slug": "remotion",
+        "categoria": "video-conteudo",
+        "tipo": "open-source",
+        "url": "https://github.com/remotion-dev/remotion",
+        "descricao": "Framework para criar e renderizar vídeos programaticamente usando React, possibilitando geração de vídeos em escala via código.",
+        "potencial": "Construção de micro-SaaS de vídeos personalizados ou criação automatizada de vídeos dinâmicos para redes sociais."
+    },
+    {
+        "id": "FER-020",
+        "nome": "AutoClip MVP",
+        "slug": "autoclip-mvp",
+        "categoria": "video-conteudo",
+        "tipo": "open-source",
+        "url": "https://github.com/zhouxiaoka/autoclip_mvp",
+        "descricao": "Ferramenta de IA para detecção de momentos de pico, cortes automáticos e legendagem dinâmica de vídeos longos.",
+        "potencial": "Operação de canais de cortes automatizados no YouTube e TikTok para monetização por visualizações e parcerias."
+    },
+    {
+        "id": "FER-021",
+        "nome": "OpenHands",
+        "slug": "openhands",
+        "categoria": "agentes-ia",
+        "tipo": "open-source",
+        "url": "https://github.com/OpenHands/openhands",
+        "descricao": "Plataforma open-source de agentes autônomos de desenvolvimento de software que escrevem, depuram e executam código no terminal.",
+        "potencial": "Criação acelerada de protótipos de produtos e validação técnica de ferramentas sem necessidade de contratar desenvolvedores."
+    },
+    {
+        "id": "FER-022",
+        "nome": "PersonaLive",
+        "slug": "personalive",
+        "categoria": "video-conteudo",
+        "tipo": "open-source",
+        "url": "https://github.com/GVCLab/PersonaLive",
+        "descricao": "Tecnologia para animação expressiva de retratos estáticos em tempo real para transmissões ao vivo e avatares virtuais.",
+        "potencial": "Transmissões ao vivo 24/7 com avatares de IA promovendo produtos físicos como afiliado na Shopee e TikTok Shop."
+    },
+    {
+        "id": "FER-023",
+        "nome": "TubeLab",
+        "slug": "tubelab",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://tubelab.net/",
+        "descricao": "Plataforma para descobrir nichos lucrativos no YouTube, analisar formatos virais e mapear vídeos com alta retenção.",
+        "potencial": "Pesquisa de mercado para abertura de canais no YouTube em nichos com alto CPM e forte demanda por afiliados."
+    },
+    {
+        "id": "FER-024",
+        "nome": "vidIQ",
+        "slug": "vidiq",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://vidiq.com/pt/",
+        "descricao": "Ferramenta líder de otimização de SEO, pontuação de palavras-chave e métricas preditivas para canais do YouTube.",
+        "potencial": "Otimização orgânica de títulos e tags para ranquear vídeos no topo da busca do YouTube."
+    },
+    {
+        "id": "FER-025",
+        "nome": "VidRush",
+        "slug": "vidrush",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://vidrush.ai/",
+        "descricao": "Gerador de vídeos de formato longo com roteiro, narração e edição automatizada por inteligência artificial.",
+        "potencial": "Escalação de canais dark de documentários, finanças e curiosidades sem necessidade de gravação humana."
+    },
+    {
+        "id": "FER-026",
+        "nome": "Pikzels",
+        "slug": "pikzels",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://pikzels.com/",
+        "descricao": "Gerador de thumbnails para YouTube com IA treinado para maximizar a taxa de cliques (CTR) dos vídeos.",
+        "potencial": "Aumento imediato do tráfego orgânico de vídeos próprios através de testes A/B de miniaturas atraentes."
+    },
+    {
+        "id": "FER-027",
+        "nome": "ElevenLabs",
+        "slug": "elevenlabs",
+        "categoria": "audio-voz",
+        "tipo": "saas-freemium",
+        "url": "https://elevenlabs.io/",
+        "descricao": "Padrão da indústria em síntese de voz hiper-realista, clonagem vocal e criação de agentes conversacionais de voz.",
+        "potencial": "Narração profissional de vídeos de vendas (VSLs), audiobooks e agentes de atendimento por ligação com IA."
+    },
+    {
+        "id": "FER-028",
+        "nome": "Chatimator",
+        "slug": "chatimator",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://chatimator.com/",
+        "descricao": "Criador de vídeos simulando conversas de chat de WhatsApp e mensagens de texto, formato de altíssimo engajamento no TikTok/Reels.",
+        "potencial": "Produção em massa de criativos de tráfego pago com forte poder de retenção para venda de infoprodutos e afiliações."
+    },
+    {
+        "id": "FER-029",
+        "nome": "Free Design Resources",
+        "slug": "free-design-resources",
+        "categoria": "design-assets",
+        "tipo": "banco-de-assets",
+        "url": "https://freedesignresources.net/",
+        "descricao": "Curadoria diária de recursos de design gratuitos: mockups realistas, fontes, templates de UI e ilustrações.",
+        "potencial": "Construção de páginas de vendas profissionais e criativos de alto padrão com custo zero de licença."
+    },
+    {
+        "id": "FER-030",
+        "nome": "Cheatography",
+        "slug": "cheatography",
+        "categoria": "engenharia-estudo",
+        "tipo": "plataforma-educacional",
+        "url": "https://cheatography.com/",
+        "descricao": "Maior repositório colaborativo de cheat sheets (colas) do mundo cobrindo programação, negócios, marketing e ferramentas.",
+        "potencial": "Guia de consulta rápida para comandos de terminal, Docker, Git e frameworks durante o desenvolvimento no laboratório."
+    },
+    {
+        "id": "FER-031",
+        "nome": "Pictalio",
+        "slug": "pictalio",
+        "categoria": "video-conteudo",
+        "tipo": "banco-de-assets",
+        "url": "https://pictalio.com/",
+        "descricao": "Banco de vídeos verticais gratuitos gravados especificamente para Stories, Reels, TikTok e Shorts.",
+        "potencial": "Vídeos de fundo para reels motivacionais, reflexões com voz de IA e anúncios no formato vertical."
+    },
+    {
+        "id": "FER-032",
+        "nome": "Lightricks",
+        "slug": "lightricks",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://www.lightricks.com/",
+        "descricao": "Ecossistema de aplicativos móveis e desktop pioneiros em edição criativa de fotos e vídeos com IA.",
+        "potencial": "Benchmarking de recursos de edição visual móvel e geração rápida de ativos gráficos."
+    },
+    {
+        "id": "FER-033",
+        "nome": "Bored Hoard",
+        "slug": "bored-hoard",
+        "categoria": "pesquisa-mercado",
+        "tipo": "utilitario-web",
+        "url": "https://boredhoard.com/",
+        "descricao": "Diretório de sites curiosos, inovadores e experimentos criativos espalhados pela web.",
+        "potencial": "Inspiração para criação de micro-ferramentas virais e descoberta de novos conceitos de produto."
+    },
+    {
+        "id": "FER-034",
+        "nome": "TinEye",
+        "slug": "tineye",
+        "categoria": "osint-investigacao",
+        "tipo": "utilitario-web",
+        "url": "https://tineye.com/",
+        "descricao": "Motor pioneiro de busca reversa de imagens que rastreia onde uma foto foi publicada e suas versões modificadas.",
+        "potencial": "Identificação de fotos de bancos de imagem usadas em anúncios de concorrentes e rastreamento de plágio."
+    },
+    {
+        "id": "FER-035",
+        "nome": "SubjectLine.com",
+        "slug": "subjectline",
+        "categoria": "copywriting-marketing",
+        "tipo": "utilitario-web",
+        "url": "https://subjectline.com/",
+        "descricao": "Ferramenta que analisa e pontua linhas de assunto de e-mails com base em histórico de bilhões de disparos.",
+        "potencial": "Otimização de taxas de abertura em campanhas de cold mail para prospecção B2B e newsletters."
+    },
+    {
+        "id": "FER-036",
+        "nome": "Academic Earth",
+        "slug": "academic-earth",
+        "categoria": "engenharia-estudo",
+        "tipo": "plataforma-educacional",
+        "url": "https://academicearth.org/",
+        "descricao": "Plataforma de cursos acadêmicos completos e gratuitos das maiores universidades do planeta (MIT, Stanford, Berkeley).",
+        "potencial": "Aprofundamento conceitual em economia comportamental, inteligência artificial e estatística aplicada a negócios."
+    },
+    {
+        "id": "FER-037",
+        "nome": "10 Minute Mail",
+        "slug": "10-minute-mail",
+        "categoria": "utilitarios-seguranca",
+        "tipo": "utilitario-web",
+        "url": "https://10minutemail.com/",
+        "descricao": "Serviço que gera uma caixa de entrada temporária descartável com duração de 10 minutos para cadastros rápidos.",
+        "potencial": "Testes de fluxo de onboarding de concorrentes sem expor a conta de e-mail corporativa a listas de spam."
+    },
+    {
+        "id": "FER-038",
+        "nome": "Mixkit",
+        "slug": "mixkit",
+        "categoria": "video-conteudo",
+        "tipo": "banco-de-assets",
+        "url": "https://mixkit.co/",
+        "descricao": "Banco gratuito mantido pela Envato com clipes de vídeo em alta definição, faixas de áudio e efeitos sonoros livres de royalties.",
+        "potencial": "Sonorização e edição de criativos de conversão, trailers e vídeos explicativos de produtos."
+    },
+    {
+        "id": "FER-039",
+        "nome": "Pitch",
+        "slug": "pitch",
+        "categoria": "apresentacoes-pitch",
+        "tipo": "saas-freemium",
+        "url": "https://pitch.com/",
+        "descricao": "Workspace colaborativo de apresentações de slides com foco em negócios, integração de dados em tempo real e IA.",
+        "potencial": "Montagem de propostas de serviço e pitch decks de alto valor para captação de clientes corporativos."
+    },
+    {
+        "id": "FER-040",
+        "nome": "Calligraphr",
+        "slug": "calligraphr",
+        "categoria": "design-assets",
+        "tipo": "saas-freemium",
+        "url": "https://www.calligraphr.com/en/",
+        "descricao": "Ferramenta que converte desenhos manuais ou caligrafia em fontes digitais completas nos formatos TTF e OTF.",
+        "potencial": "Criação de fontes exclusivas para branding ou comercialização de pacotes de tipografia como produto digital."
+    },
+    {
+        "id": "FER-041",
+        "nome": "CleanPNG",
+        "slug": "cleanpng",
+        "categoria": "design-assets",
+        "tipo": "banco-de-assets",
+        "url": "https://www.cleanpng.com/",
+        "descricao": "Acervo com mais de 3 milhões de imagens PNG com fundo transparente em alta definição para download gratuito.",
+        "potencial": "Composição ágil de thumbnails para YouTube, criativos de anúncios e páginas de venda."
+    },
+    {
+        "id": "FER-042",
+        "nome": "Class Central",
+        "slug": "class-central",
+        "categoria": "engenharia-estudo",
+        "tipo": "plataforma-educacional",
+        "url": "https://www.classcentral.com/",
+        "descricao": "Maior indexador mundial de cursos online, certificações e MOOCs das principais plataformas educacionais.",
+        "potencial": "Identificação de temas e habilidades com demanda em crescimento para criação de produtos ou afiliação educacional."
+    },
+    {
+        "id": "FER-043",
+        "nome": "Rytr",
+        "slug": "rytr",
+        "categoria": "copywriting-marketing",
+        "tipo": "saas-freemium",
+        "url": "https://rytr.me/",
+        "descricao": "Assistente de redação e copywriting com IA para anúncios, posts em mídias sociais, e-mails e páginas de captura.",
+        "potencial": "Redação em massa de copys persuasivas para testes de ofertas e landing pages de validação."
+    },
+    {
+        "id": "FER-044",
+        "nome": "Skillshop Google",
+        "slug": "skillshop-google",
+        "categoria": "engenharia-estudo",
+        "tipo": "plataforma-educacional",
+        "url": "https://skillshop.withgoogle.com/",
+        "descricao": "Plataforma oficial de treinamentos e certificações gratuitas do Google cobrindo Google Ads, Analytics e YouTube.",
+        "potencial": "Capacitação comprovada em estratégias oficiais de compra de tráfego e mensuração de campanhas."
+    },
+    {
+        "id": "FER-045",
+        "nome": "Coverr",
+        "slug": "coverr",
+        "categoria": "video-conteudo",
+        "tipo": "banco-de-assets",
+        "url": "https://coverr.co/pt",
+        "descricao": "Biblioteca de vídeos em 4K e músicas de fundo livres de direitos autorais para projetos comerciais.",
+        "potencial": "Fundos em vídeo de altíssima qualidade para páginas de captura, VSLs e anúncios em redes sociais."
+    },
+    {
+        "id": "FER-046",
+        "nome": "Tome AI",
+        "slug": "tome-ai",
+        "categoria": "apresentacoes-pitch",
+        "tipo": "saas-freemium",
+        "url": "https://tomeapp.ai/",
+        "descricao": "Plataforma generativa de apresentações e narrativas visuais que transforma rascunhos em decks interativos com IA.",
+        "potencial": "Criação de apresentações comerciais de vendas altamente visuais e diferenciadas para fechar contratos de serviços."
+    },
+    {
+        "id": "FER-047",
+        "nome": "Easelly",
+        "slug": "easelly",
+        "categoria": "design-assets",
+        "tipo": "saas-freemium",
+        "url": "https://www.easel.ly/",
+        "descricao": "Ferramenta intuitiva para criação de infográficos, relatórios visuais e ilustrações informativas.",
+        "potencial": "Produção de infográficos como iscas digitais para captura de leads e autoridade em nichos específicos."
+    },
+    {
+        "id": "FER-048",
+        "nome": "Bubbl.us",
+        "slug": "bubbl-us",
+        "categoria": "produtividade-ideias",
+        "tipo": "saas-freemium",
+        "url": "https://bubbl.us/",
+        "descricao": "Ferramenta visual de mapas conceituais e diagramação de ideias rápida e direta pelo navegador.",
+        "potencial": "Desenho de funis de vendas, arquitetura de negócios e mapeamento de jornadas do cliente no Startuzeiro."
+    },
+    {
+        "id": "FER-049",
+        "nome": "Impeccable",
+        "slug": "impeccable",
+        "categoria": "design-assets",
+        "tipo": "open-source",
+        "url": "https://github.com/pbakaus/impeccable",
+        "descricao": "Linguagem de design e sistema de regras criado para guiar agentes de IA na geração de interfaces mais polidas e acessíveis.",
+        "potencial": "Instruções de UI/UX para que agentes de desenvolvimento construam interfaces modernas para os MVPs do laboratório."
+    },
+    {
+        "id": "FER-050",
+        "nome": "Ponytail",
+        "slug": "ponytail",
+        "categoria": "engenharia-estudo",
+        "tipo": "open-source",
+        "url": "https://github.com/dietrichgebert/ponytail",
+        "descricao": "Conjunto de prompts que faz agentes de IA pensarem como um desenvolvedor sênior minimalista que prioriza código simples.",
+        "potencial": "Alinhamento com o princípio do Startuzeiro: garantir que as soluções tenham código enxuto e sem complexidade desnecessária."
+    },
+    {
+        "id": "FER-051",
+        "nome": "Design Patterns in TypeScript",
+        "slug": "design-patterns-typescript",
+        "categoria": "engenharia-estudo",
+        "tipo": "open-source",
+        "url": "https://github.com/RefactoringGuru/design-patterns-typescript",
+        "descricao": "Implementações práticas e didáticas de padrões de projeto (GoF) em TypeScript produzidas pelo Refactoring Guru.",
+        "potencial": "Padrão de referência para desenvolvimento de bots, integrações e softwares modulares em TypeScript/Node."
+    },
+    {
+        "id": "FER-052",
+        "nome": "Awesome System Design",
+        "slug": "awesome-system-design",
+        "categoria": "engenharia-estudo",
+        "tipo": "open-source",
+        "url": "https://github.com/madd86/awesome-system-design",
+        "descricao": "Repositório completo com roteiros de estudo, livros e diagramas sobre arquitetura de sistemas distribuídos de alta escala.",
+        "potencial": "Guia de consulta para desenhar arquiteturas robustas para SaaS e aplicações com alto volume de acessos."
+    },
+    {
+        "id": "FER-053",
+        "nome": "Engineering Management",
+        "slug": "engineering-management",
+        "categoria": "engenharia-estudo",
+        "tipo": "open-source",
+        "url": "https://github.com/charlax/engineering-management",
+        "descricao": "Compilação de artigos, metodologias e referências sobre liderança técnica, gestão de produtos e entrega de software.",
+        "potencial": "Diretrizes para organização de processos, produtividade e governança de tecnologia."
+    },
+    {
+        "id": "FER-054",
+        "nome": "OpusClip",
+        "slug": "opus-clip",
+        "categoria": "video-conteudo",
+        "tipo": "saas-freemium",
+        "url": "https://www.opus.pro/pt-br",
+        "descricao": "Ferramenta de IA que fatia vídeos longos em cortes verticais curtos com legendas animadas e score de viralidade.",
+        "potencial": "Operação de escala em canais de cortes para YouTube Shorts e TikTok monetizados com infoprodutos e afiliação."
+    },
+    {
+        "id": "FER-055",
+        "nome": "LazyLines (RHEIS)",
+        "slug": "lazylines-rheis",
+        "categoria": "servicos-consultoria",
+        "tipo": "servico-web",
+        "url": "https://www.rheis.com.br/product-page/lazylines",
+        "descricao": "Produto e serviço de consultoria comercializado pela RHEIS Consulting.",
+        "potencial": "Referência e benchmarking de precificação e oferta de serviços corporativos no mercado nacional."
+    },
+    {
+        "id": "FER-056",
+        "nome": "Academic Phrasebank",
+        "slug": "academic-phrasebank",
+        "categoria": "engenharia-estudo",
+        "tipo": "plataforma-educacional",
+        "url": "https://www.phrasebank.manchester.ac.uk/",
+        "descricao": "Banco de frases e estruturas sintáticas acadêmicas da Univ. de Manchester para redação formal em inglês.",
+        "potencial": "Aprimoramento de relatórios formais, papers e documentações técnicas em inglês para produtos globais."
+    }
+]
+
+# 1. Salvar ferramentas/catalogo.yaml com categorias e tipos
+yaml_path = Path("ferramentas/catalogo.yaml")
+yaml_path.parent.mkdir(exist_ok=True)
+
+with open(yaml_path, "w", encoding="utf-8") as f:
+    f.write("# ========================================================\n")
+    f.write("# Catálogo Oficial de Ferramentas - Startuzeiro\n")
+    f.write(f"# Total de Ferramentas: {len(TOOLS)}\n")
+    f.write("# ========================================================\n\n")
+    for t in TOOLS:
+        f.write(f"- id: {t['id']}\n")
+        f.write(f"  nome: \"{t['nome']}\"\n")
+        f.write(f"  slug: \"{t['slug']}\"\n")
+        f.write(f"  categoria: \"{t['categoria']}\"\n")
+        f.write(f"  tipo: \"{t['tipo']}\"\n")
+        f.write(f"  url: \"{t['url']}\"\n")
+        f.write(f"  descricao: \"{t['descricao']}\"\n")
+        f.write(f"  potencial_startuzeiro: \"{t['potencial']}\"\n\n")
+
+print(f"[OK] {yaml_path} atualizado!")
+
+# 2. Atualizar knowledge/ferramentas/<slug>.md
+kd = Path("knowledge/ferramentas")
+kd.mkdir(parents=True, exist_ok=True)
+
+for t in TOOLS:
+    md_file = kd / f"{t['slug']}.md"
+    content = f"""---
+id: {t['id']}
+nome: "{t['nome']}"
+categoria: "{t['categoria']}"
+tipo: "{t['tipo']}"
+url: "{t['url']}"
+tags: [ferramenta, {t['categoria']}, {t['tipo']}]
+---
+
+# {t['nome']}
+
+## 📌 O que é
+{t['descricao']}
+
+- **🔗 URL Oficial:** [{t['url']}]({t['url']})
+- **📂 Categoria:** `{t['categoria']}`
+- **⚙️ Tipo:** `{t['tipo']}`
+
+---
+
+## 💡 Aplicação no Startuzeiro
+{t['potencial']}
+
+---
+
+## 🔗 Conexões
+- [[README|Índice de Ferramentas]]
+- [[metodologia/templates/template-pesquisa|Template de Pesquisa]]
+"""
+    with open(md_file, "w", encoding="utf-8") as f:
+        f.write(content)
+
+print(f"[OK] {len(TOOLS)} notas individuais geradas em {kd}!")
+
+# 3. Gerar README.md do catálogo em knowledge/ferramentas/README.md
+readme_path = kd / "README.md"
+with open(readme_path, "w", encoding="utf-8") as f:
+    f.write("# 🛠️ Catálogo de Ferramentas do Startuzeiro\n\n")
+    f.write(f"Total de ferramentas catalogadas: **{len(TOOLS)}**\n\n")
+    f.write("Este índice reúne todas as ferramentas extraídas dos favoritos do Chrome, totalmente estruturadas por **Categoria** e **Tipo**, conectadas diretamente ao grafo de conhecimento do Obsidian e do laboratório.\n\n")
+    f.write("---\n\n")
+
+    # Mapeamento de títulos bonitos de categoria
+    CAT_TITLES = {
+        "video-conteudo": "🎥 Vídeo & Conteúdo (Cortes, YouTube, Viralização)",
+        "osint-investigacao": "🕵️ OSINT & Investigação (Reconhecimento Facial, Geolocalização, Dark Web)",
+        "scraping-automacao": "🕷️ Scraping & Automação Web (Monitores, OCR, Extratores)",
+        "agentes-ia": "🤖 Agentes de IA & Automação Inteligente",
+        "audio-voz": "🎙️ Áudio & Voz com IA",
+        "design-assets": "🎨 Design, Imagens & Assets Visuais",
+        "copywriting-marketing": "✍️ Copywriting & Otimização de Marketing",
+        "apresentacoes-pitch": "📊 Apresentações, Slides & Pitch Decks com IA",
+        "produtividade-ideias": "🧠 Mapeamento Mental & Ideação",
+        "utilitarios-seguranca": "🛡️ Utilitários de Segurança & Testes",
+        "pesquisa-mercado": "🔍 Pesquisa de Mercado & Descoberta",
+        "servicos-consultoria": "💼 Modelos de Serviço & Consultoria",
+        "engenharia-estudo": "📚 Engenharia de Software, Arquitetura & Estudos",
+    }
+
+    categories = list(CAT_TITLES.keys())
+    for cat in categories:
+        cat_tools = [t for t in TOOLS if t["categoria"] == cat]
+        if not cat_tools:
+            continue
+        f.write(f"## {CAT_TITLES.get(cat, cat.upper())} ({len(cat_tools)} itens)\n\n")
+        f.write("| ID | Ferramenta | Tipo | Descrição | Link |\n")
+        f.write("| :--- | :--- | :--- | :--- | :--- |\n")
+        for t in cat_tools:
+            f.write(f"| `{t['id']}` | **[[{t['slug']}\\|{t['nome']}]]** | `{t['tipo']}` | {t['descricao']} | [Acessar ↗]({t['url']}) |\n")
+        f.write("\n---\n\n")
+
+print(f"[OK] Índice {readme_path} gerado com sucesso!")
