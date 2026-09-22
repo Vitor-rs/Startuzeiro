@@ -52,5 +52,19 @@ Para due diligence de empresas brasileiras, análise de sócios, QSA, grupos eco
 - Via Skill (`.agents/skills/`): `cnpj-ai-research`.
 - Sempre inclua os links do grafo interativo (`https://grafo.cnpj.ai/?q=<cnpj_basico>`) nos relatórios.
 
+## 6. Prospecção B2B, Descoberta de E-mails e Enriquecimento com Hunter.io
+
+Para encontrar tomadores de decisão, mapear contatos por domínio corporativo, verificar entregabilidade de e-mails e estruturar listas de leads, utilize o **Hunter.io**:
+- Via MCP:
+  - `Domain-Search`: lista e-mails e contatos de uma empresa a partir do domínio (com filtros de departamento e senioridade).
+  - `Email-Finder`: descobre o e-mail exato de um executivo com base em nome completo e domínio.
+  - `Email-Verifier`: valida entregabilidade (MX, SMTP, score e risco de bounce).
+  - `Find-Companies`: descoberta gratuita de empresas por nicho/setor (0 créditos).
+  - `Email-Count`: contagem gratuita de e-mails em um domínio antes de gastar créditos.
+  - `Person-Enrichment` / `Company-Enrichment`: enriquecimento de dados a partir de e-mail ou domínio.
+  - `Create-Lead` / `Create-Lead-If-Missing`: salva contatos diretamente na conta do Hunter.
+- Via Skill (`.agents/skills/`): `hunter-b2b-intel`.
+- Lembre-se: o plano Free possui 50 créditos/mês. Sempre use `Email-Count` e `Find-Companies` gratuitamente antes de executar buscas intensivas.
+
 
 

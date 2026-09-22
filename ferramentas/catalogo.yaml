@@ -534,3 +534,12 @@
   descricao: "Servidor MCP e plataforma de inteligência sobre 72M+ de CNPJs da Receita Federal com navegação em redes de sócios, vínculos de contato e dívida ativa da PGFN."
   potencial_startuzeiro: "Due diligence de concorrentes, verificação de idoneidade fiscal, mapeamento de grupos econômicos e qualificação avançada de leads B2B no Brasil."
 
+- id: FER-060
+  nome: "Hunter.io"
+  slug: "hunter"
+  categoria: "prospeccao-b2b-email-intel"
+  tipo: "mcp-servico-api"
+  url: "https://hunter.io/"
+  descricao: "Servidor MCP e plataforma líder global de inteligência de contatos B2B, busca de tomadores de decisão por domínio corporativo, verificação de e-mails e automação de outreach."
+  potencial_startuzeiro: "Enriquecimento de contatos comerciais, descoberta de e-mails diretos de tomadores de decisão, prevenção de bounces em campanhas de cold mail e prospecção ativa de clientes e parceiros."
+

@@ -106,6 +106,7 @@ $firecrawlKey = if ($envVars["FIRECRAWL_API_KEY"]) { $envVars["FIRECRAWL_API_KEY
 $context7Key = if ($envVars["CONTEXT7_API_KEY"]) { $envVars["CONTEXT7_API_KEY"] } else { "SUA_CHAVE_CONTEXT7_AQUI" }
 $exaKey = if ($envVars["EXA_API_KEY"]) { $envVars["EXA_API_KEY"] } else { "SUA_CHAVE_EXA_AQUI" }
 $cnpjAiKey = if ($envVars["CNPJ_AI_API_KEY"]) { $envVars["CNPJ_AI_API_KEY"] } else { "SUA_CHAVE_CNPJ_AI_AQUI" }
+$hunterKey = if ($envVars["HUNTER_API_KEY"]) { $envVars["HUNTER_API_KEY"] } else { "SUA_CHAVE_HUNTER_AQUI" }
 
 # Configurar transcript-api se nao existir
 if (-not $mcpData.mcpServers."transcript-api") {
@@ -181,6 +182,21 @@ if (-not $mcpData.mcpServers."cnpj-ai") {
     Write-Host "   [+] MCP 'cnpj-ai' adicionado ao mcp_config.json!" -ForegroundColor Green
 } else {
     Write-Host "   [OK] MCP 'cnpj-ai' ja configurado." -ForegroundColor Green
+}
+
+# Configurar hunter se nao existir
+if (-not $mcpData.mcpServers."hunter") {
+    $hunterObj = [PSCustomObject]@{
+        serverUrl = "https://mcp.hunter.io/mcp"
+        headers = [PSCustomObject]@{
+            "X-API-Key" = "$hunterKey"
+        }
+    }
+    $mcpData.mcpServers | Add-Member -MemberType NoteProperty -Name "hunter" -Value $hunterObj -Force
+    $modified = $true
+    Write-Host "   [+] MCP 'hunter' adicionado ao mcp_config.json!" -ForegroundColor Green
+} else {
+    Write-Host "   [OK] MCP 'hunter' ja configurado." -ForegroundColor Green
 }
 
 if ($modified) {

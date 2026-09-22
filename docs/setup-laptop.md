@@ -30,6 +30,7 @@ Esse script realiza automaticamente:
    - `context7` (com seu token obtido do `.env`)
    - `exa` (com sua chave obtida do `.env`)
    - `cnpj-ai` (com sua chave obtida do `.env`)
+   - `hunter` (com sua chave obtida do `.env`)
 
 ---
 
@@ -69,9 +70,9 @@ git pull origin main
 
 | Componente | Onde fica armazenado | Status de Portabilidade |
 | :--- | :--- | :--- |
-| **37 Skills (`firecrawl*`, `transcriptapi`, `context7*`, `exa*`, `cnpj-ai*`)** | `.agents/skills/` (no repositório) | ✅ 100% versionado no Git |
+| **38 Skills (`firecrawl*`, `transcriptapi`, `context7*`, `exa*`, `cnpj-ai*`, `hunter-b2b*`)** | `.agents/skills/` (no repositório) | ✅ 100% versionado no Git |
 | **Regras do Agente (`AGENTS.md`, rules)** | `.agents/rules/` e raiz | ✅ 100% versionado no Git (caminhos dinâmicos) |
-| **Catálogo de 59 Ferramentas** | `ferramentas/catalogo.yaml` e `knowledge/` | ✅ 100% versionado no Git |
+| **Catálogo de 60 Ferramentas** | `ferramentas/catalogo.yaml` e `knowledge/` | ✅ 100% versionado no Git |
 | **Lake de Transcrições (`yt_base`)** | `yt_base/` | ✅ 100% versionado no Git |
 | **Scripts e Utilitários** | `scripts/` | ✅ 100% portáveis (usam caminhos relativos ao repositório) |
 | **Chaves de API (`.env`)** | Raiz do projeto | ⚠️ Ignorado pelo Git por segurança. Gerado via `.env.example` |
