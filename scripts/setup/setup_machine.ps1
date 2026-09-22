@@ -108,6 +108,7 @@ $exaKey = if ($envVars["EXA_API_KEY"]) { $envVars["EXA_API_KEY"] } else { "SUA_C
 $cnpjAiKey = if ($envVars["CNPJ_AI_API_KEY"]) { $envVars["CNPJ_AI_API_KEY"] } else { "SUA_CHAVE_CNPJ_AI_AQUI" }
 $hunterKey = if ($envVars["HUNTER_API_KEY"]) { $envVars["HUNTER_API_KEY"] } else { "SUA_CHAVE_HUNTER_AQUI" }
 $apolloKey = if ($envVars["APOLLO_API_KEY"]) { $envVars["APOLLO_API_KEY"] } else { "SUA_CHAVE_APOLLO_AQUI" }
+$clayKey = if ($envVars["CLAY_API_KEY"]) { $envVars["CLAY_API_KEY"] } else { "SUA_CHAVE_CLAY_AQUI" }
 
 # Configurar transcript-api se nao existir
 if (-not $mcpData.mcpServers."transcript-api") {
@@ -213,6 +214,21 @@ if (-not $mcpData.mcpServers."apollo") {
     Write-Host "   [+] MCP 'apollo' adicionado ao mcp_config.json!" -ForegroundColor Green
 } else {
     Write-Host "   [OK] MCP 'apollo' ja configurado." -ForegroundColor Green
+}
+
+# Configurar clay se nao existir
+if (-not $mcpData.mcpServers."clay") {
+    $clayObj = [PSCustomObject]@{
+        serverUrl = "https://api.clay.com/v3/mcp"
+        headers = [PSCustomObject]@{
+            "clay-api-key" = "$clayKey"
+        }
+    }
+    $mcpData.mcpServers | Add-Member -MemberType NoteProperty -Name "clay" -Value $clayObj -Force
+    $modified = $true
+    Write-Host "   [+] MCP 'clay' adicionado ao mcp_config.json!" -ForegroundColor Green
+} else {
+    Write-Host "   [OK] MCP 'clay' ja configurado." -ForegroundColor Green
 }
 
 if ($modified) {

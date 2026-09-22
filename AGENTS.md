@@ -79,5 +79,15 @@ Para busca de decisores internacionais por ICP, enriquecimento de contatos com t
 - Via Skill (`.agents/skills/`): `apollo-sales-intel`.
 - Lembre-se: Enriquecimento consome créditos do Apollo. Sempre apresente a lista de prospectos encontrados para aprovação antes de executar chamadas de enriquecimento de contatos.
 
+## 8. Inteligência GTM, Enriquecimento em Cascata e Busca Avançada com Clay
 
-
+Para buscas estruturadas no banco global de 75M+ empresas e pessoas, enriquecimento com 150+ provedores e orquestração de rotinas, utilize o **Clay**:
+- Via CLI (`clay_client.py`):
+  - Consultar empresas: `uv run scripts/utilitarios/clay_client.py search "select from companies where industry = 'Software Development' limit 5"`
+  - Consultar decisores atuais: `uv run scripts/utilitarios/clay_client.py search 'select from people where experiences.any(is_current = true and job_title is_similar_to ("CTO"))' --limit 5`
+  - Consultar catálogo e gramática: `uv run scripts/utilitarios/clay_client.py reference`
+  - Disparar rotinas: `uv run scripts/utilitarios/clay_client.py routine <routine_id> '<payload_json>'`
+- Via MCP:
+  - Conectado em `https://api.clay.com/v3/mcp` via header `clay-api-key`.
+- Via Skill (`.agents/skills/` e `.agent/skills/`): `clay-gtm-intel`.
+- Lembre-se: Use a busca cruzada do Clay (`experiences.any(...)`, `people.exists(...)`, `technographics.any(...)`) para qualificação fina de ICP antes de enriquecer dados via Hunter e Apollo.

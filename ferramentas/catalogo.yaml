@@ -1,6 +1,6 @@
 # ========================================================
 # Catálogo Oficial de Ferramentas - Startuzeiro
-# Total de Ferramentas: 59
+# Total de Ferramentas: 62
 # ========================================================
 
 - id: FER-001
@@ -551,4 +551,13 @@
   url: "https://www.apollo.io/"
   descricao: "Servidor MCP e plataforma líder global de inteligência de vendas (GTM), prospecção B2B de mais de 275M de contatos, enriquecimento de telefones/e-mails, sinais de contratação e cadências de outbound."
   potencial_startuzeiro: "Descoberta de tomadores de decisão em escala global, sinais de intenção de compra via vagas de emprego, enriquecimento de leads e automação de sequências de vendas."
+
+- id: FER-062
+  nome: "Clay.io"
+  slug: "clay"
+  categoria: "gtm-data-enrichment-waterfall"
+  tipo: "mcp-servico-api"
+  url: "https://clay.com/"
+  descricao: "Plataforma líder global de orquestração de Go-To-Market (GTM), orquestrando 150+ provedores de enriquecimento em cascata (waterfall), inteligência artificial para pesquisa de contas e banco proprietário de 75M+ empresas e pessoas consultável via SQL-like Query Mode."
+  potencial_startuzeiro: "Prospecção hiper-segmentada com buscas cruzadas (pessoas por atributos de empresas), enriquecimento massivo multiprovedor, execução de rotinas automatizadas e geração de listas de leads de altíssima conversão."
 
