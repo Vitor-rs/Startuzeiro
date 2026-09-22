@@ -5,11 +5,27 @@ from pathlib import Path
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
-p = Path(r"C:\Users\Vitor\AppData\Local\Google\Chrome\User Data\Default\AccountBookmarks")
+# Resolução dinâmica e portável do diretório de favoritos do Chrome
+user_chrome = Path.home() / "AppData" / "Local" / "Google" / "Chrome" / "User Data"
 
-if not p.exists():
-    print("Arquivo AccountBookmarks não encontrado.")
+candidates = [
+    user_chrome / "Default" / "AccountBookmarks",
+    user_chrome / "Default" / "Bookmarks",
+    user_chrome / "Profile 1" / "AccountBookmarks",
+    user_chrome / "Profile 1" / "Bookmarks",
+]
+
+p = None
+for candidate in candidates:
+    if candidate.exists():
+        p = candidate
+        break
+
+if not p:
+    print(f"[ERRO] Nenhum arquivo de favoritos encontrado em: {user_chrome}")
     sys.exit(1)
+
+print(f"📖 Lendo favoritos de: {p}")
 
 with open(p, "r", encoding="utf-8") as f:
     data = json.load(f)

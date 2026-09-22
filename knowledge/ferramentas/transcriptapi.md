@@ -27,7 +27,7 @@ Já configurado no `~/.gemini/config/mcp_config.json`:
 "transcript-api": {
   "serverUrl": "https://transcriptapi.com/mcp",
   "headers": {
-    "Authorization": "Bearer sk_klfxvcp..."
+    "Authorization": "Bearer SUA_CHAVE_TRANSCRIPTAPI_AQUI"
   }
 }
 ```

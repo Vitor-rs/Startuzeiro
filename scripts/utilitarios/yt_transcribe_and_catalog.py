@@ -27,7 +27,8 @@ from dotenv import load_dotenv
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
-load_dotenv()
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+load_dotenv(REPO_ROOT / ".env")
 
 BASE_URL = "https://transcriptapi.com/api/v2/youtube"
 
@@ -190,7 +191,7 @@ def main():
         "Accept": "application/json"
     }
 
-    yt_base = Path("yt_base")
+    yt_base = REPO_ROOT / "yt_base"
     yt_lake = yt_base / "yt_lake"
     yt_lake.mkdir(parents=True, exist_ok=True)
 

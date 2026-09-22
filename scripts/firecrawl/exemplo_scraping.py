@@ -13,12 +13,14 @@ Para executar diretamente:
 
 import os
 import sys
+from pathlib import Path
 from dotenv import load_dotenv
 
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
-load_dotenv()
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+load_dotenv(REPO_ROOT / ".env")
 
 def main():
     api_key = os.getenv("FIRECRAWL_API_KEY")

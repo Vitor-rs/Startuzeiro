@@ -32,6 +32,7 @@ ENV/
 # Environment Variables & Secrets
 .env
 .env.*
+!.env.example
 *.local
 credentials.json
 secrets.yaml
