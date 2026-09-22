@@ -1,11 +1,11 @@
-/* Startuzeiro Hub - Estilos Customizados */
+/* Startuzeiro Hub - Estilos Customizados & Sistema de Design */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --bg-main: #0a0d14;
-  --bg-card: #111622;
-  --bg-card-hover: #161d2d;
+  --bg-main: #07090e;
+  --bg-card: #0e131f;
+  --bg-card-hover: #141c2e;
   --border-subtle: #1e293b;
   --border-active: #3b82f6;
   --text-main: #f8fafc;
@@ -30,11 +30,11 @@ code, pre, .font-mono {
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0d14;
+  background: #07090e;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
@@ -51,16 +51,35 @@ code, pre, .font-mono {
 .glow-emerald {
   box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
 }
+.glow-blue {
+  box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.25);
+}
+.glow-amber {
+  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.25);
+}
 
 /* Glassmorphism card */
 .glass-panel {
-  background: rgba(17, 22, 34, 0.85);
+  background: rgba(14, 19, 31, 0.85);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .glass-panel:hover {
   border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Active Badge for Installed Tools */
+.badge-active-tool {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.badge-catalog-tool {
+  background: rgba(100, 116, 139, 0.2);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.3);
 }
 
 /* Category Badges */
@@ -134,11 +153,167 @@ code, pre, .font-mono {
   color: #a7f3d0;
 }
 
-/* Drawer transition */
+/* Drawer & Modal transitions */
 .drawer-backdrop {
   transition: opacity 0.25s ease-in-out;
 }
 
 .drawer-content {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* D3 Graph Canvas Styles */
+#d3-graph-container {
+  background: radial-gradient(circle at center, #101726 0%, #080b12 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+}
+
+.graph-node circle {
+  stroke-width: 2px;
+  transition: r 0.2s, stroke-width 0.2s;
+  cursor: pointer;
+}
+
+.graph-node:hover circle {
+  stroke: #ffffff !important;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+.graph-link {
+  stroke-opacity: 0.6;
+  transition: stroke-opacity 0.2s, stroke-width 0.2s;
+}
+
+.graph-link:hover {
+  stroke-opacity: 1;
+  stroke-width: 2.5px;
+}
+
+.graph-node text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  fill: #e2e8f0;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* Pipeline Step Indicator */
+.pipeline-step {
+  position: relative;
+  padding-left: 28px;
+}
+
+.pipeline-step::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 24px;
+  bottom: -16px;
+  width: 2px;
+  background-color: #1e293b;
+}
+
+.pipeline-step:last-child::before {
+  display: none;
+}
+
+.pipeline-bullet {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Rendered Markdown Styling */
+.markdown-body {
+  color: #e2e8f0;
+  line-height: 1.65;
+  font-size: 0.9rem;
+}
+
+.markdown-body h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 0.4rem;
+}
+
+.markdown-body h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #a78bfa;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.markdown-body p {
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body ul, .markdown-body ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  list-style-type: disc;
+}
+
+.markdown-body li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown-body code {
+  background: #1e293b;
+  color: #38bdf8;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.markdown-body pre {
+  background: #0a0e17;
+  border: 1px solid #1e293b;
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body blockquote {
+  border-left: 3px solid #3b82f6;
+  padding-left: 0.75rem;
+  color: #94a3b8;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body a {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+.markdown-body a:hover {
+  color: #93c5fd;
 }
