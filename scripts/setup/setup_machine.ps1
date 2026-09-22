@@ -105,6 +105,7 @@ $transcriptKey = if ($envVars["TRANSCRIPT_API_KEY"]) { $envVars["TRANSCRIPT_API_
 $firecrawlKey = if ($envVars["FIRECRAWL_API_KEY"]) { $envVars["FIRECRAWL_API_KEY"] } else { "SUA_CHAVE_FIRECRAWL_AQUI" }
 $context7Key = if ($envVars["CONTEXT7_API_KEY"]) { $envVars["CONTEXT7_API_KEY"] } else { "SUA_CHAVE_CONTEXT7_AQUI" }
 $exaKey = if ($envVars["EXA_API_KEY"]) { $envVars["EXA_API_KEY"] } else { "SUA_CHAVE_EXA_AQUI" }
+$cnpjAiKey = if ($envVars["CNPJ_AI_API_KEY"]) { $envVars["CNPJ_AI_API_KEY"] } else { "SUA_CHAVE_CNPJ_AI_AQUI" }
 
 # Configurar transcript-api se nao existir
 if (-not $mcpData.mcpServers."transcript-api") {
@@ -165,6 +166,21 @@ if (-not $mcpData.mcpServers."exa") {
     Write-Host "   [+] MCP 'exa' adicionado ao mcp_config.json!" -ForegroundColor Green
 } else {
     Write-Host "   [OK] MCP 'exa' ja configurado." -ForegroundColor Green
+}
+
+# Configurar cnpj-ai se nao existir
+if (-not $mcpData.mcpServers."cnpj-ai") {
+    $cnpjAiObj = [PSCustomObject]@{
+        serverUrl = "https://mcp.cnpj.ai/mcp"
+        headers = [PSCustomObject]@{
+            Authorization = "Bearer $cnpjAiKey"
+        }
+    }
+    $mcpData.mcpServers | Add-Member -MemberType NoteProperty -Name "cnpj-ai" -Value $cnpjAiObj -Force
+    $modified = $true
+    Write-Host "   [+] MCP 'cnpj-ai' adicionado ao mcp_config.json!" -ForegroundColor Green
+} else {
+    Write-Host "   [OK] MCP 'cnpj-ai' ja configurado." -ForegroundColor Green
 }
 
 if ($modified) {

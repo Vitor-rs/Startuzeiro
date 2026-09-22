@@ -1,6 +1,6 @@
 # ========================================================
 # Catálogo Oficial de Ferramentas - Startuzeiro
-# Total de Ferramentas: 58
+# Total de Ferramentas: 59
 # ========================================================
 
 - id: FER-001
@@ -524,4 +524,13 @@
   url: "https://exa.ai/"
   descricao: "Motor de busca neural e semântico construído para IA com capacidades de pesquisa web em linguagem natural, leitura de páginas e agente autônomo."
   potencial_startuzeiro: "Pesquisa aprofundada de concorrentes, enriquecimento de dados de empresas, descoberta de leads qualificados e inteligência de mercado."
+
+- id: FER-059
+  nome: "cnpj.ai"
+  slug: "cnpj-ai"
+  categoria: "inteligencia-societaria-osint"
+  tipo: "mcp-servico-api"
+  url: "https://cnpj.ai/"
+  descricao: "Servidor MCP e plataforma de inteligência sobre 72M+ de CNPJs da Receita Federal com navegação em redes de sócios, vínculos de contato e dívida ativa da PGFN."
+  potencial_startuzeiro: "Due diligence de concorrentes, verificação de idoneidade fiscal, mapeamento de grupos econômicos e qualificação avançada de leads B2B no Brasil."
 

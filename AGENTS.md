@@ -38,4 +38,19 @@ Para pesquisas de mercado, inteligência de concorrentes, descoberta de leads e 
   - `agent_run`: pesquisa autônoma em múltiplos passos com enriquecimento e saída estruturada.
 - Via Skills (`.agents/skills/`): `company-research`, `lead-generation`, `exa-search`, `exa-contents`, `build-with-exa`.
 
+## 5. Investigação Societária e Inteligência de Empresas com cnpj.ai
+
+Para due diligence de empresas brasileiras, análise de sócios, QSA, grupos econômicos e dívida ativa da PGFN, utilize o **cnpj.ai**:
+- Via MCP:
+  - `investigar_empresa`: investigação cadastral e societária completa em 1 chamada (situação, QSA, dívida ativa, vínculos ocultos).
+  - `empresas_do_socio`: descobre todas as empresas de um sócio pessoa física.
+  - `rede_societaria`: mapeia relacionamentos societários em até 3 níveis.
+  - `vinculos_ocultos`: identifica empresas com mesmo e-mail ou telefone cadastrado.
+  - `encontrar_conexao`: menor caminho societário entre dois CNPJs.
+  - `listar_empresas` & `buscar_cnae`: prospecção e filtragem de empresas por CNAE e região.
+  - `panorama_empresarial`: estatísticas e contagens de mercado por UF/município.
+- Via Skill (`.agents/skills/`): `cnpj-ai-research`.
+- Sempre inclua os links do grafo interativo (`https://grafo.cnpj.ai/?q=<cnpj_basico>`) nos relatórios.
+
+
 
