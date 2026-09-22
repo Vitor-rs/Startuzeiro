@@ -107,6 +107,7 @@ $context7Key = if ($envVars["CONTEXT7_API_KEY"]) { $envVars["CONTEXT7_API_KEY"] 
 $exaKey = if ($envVars["EXA_API_KEY"]) { $envVars["EXA_API_KEY"] } else { "SUA_CHAVE_EXA_AQUI" }
 $cnpjAiKey = if ($envVars["CNPJ_AI_API_KEY"]) { $envVars["CNPJ_AI_API_KEY"] } else { "SUA_CHAVE_CNPJ_AI_AQUI" }
 $hunterKey = if ($envVars["HUNTER_API_KEY"]) { $envVars["HUNTER_API_KEY"] } else { "SUA_CHAVE_HUNTER_AQUI" }
+$apolloKey = if ($envVars["APOLLO_API_KEY"]) { $envVars["APOLLO_API_KEY"] } else { "SUA_CHAVE_APOLLO_AQUI" }
 
 # Configurar transcript-api se nao existir
 if (-not $mcpData.mcpServers."transcript-api") {
@@ -197,6 +198,21 @@ if (-not $mcpData.mcpServers."hunter") {
     Write-Host "   [+] MCP 'hunter' adicionado ao mcp_config.json!" -ForegroundColor Green
 } else {
     Write-Host "   [OK] MCP 'hunter' ja configurado." -ForegroundColor Green
+}
+
+# Configurar apollo se nao existir
+if (-not $mcpData.mcpServers."apollo") {
+    $apolloObj = [PSCustomObject]@{
+        serverUrl = "https://mcp.apollo.io/mcp"
+        headers = [PSCustomObject]@{
+            "X-Api-Key" = "$apolloKey"
+        }
+    }
+    $mcpData.mcpServers | Add-Member -MemberType NoteProperty -Name "apollo" -Value $apolloObj -Force
+    $modified = $true
+    Write-Host "   [+] MCP 'apollo' adicionado ao mcp_config.json!" -ForegroundColor Green
+} else {
+    Write-Host "   [OK] MCP 'apollo' ja configurado." -ForegroundColor Green
 }
 
 if ($modified) {

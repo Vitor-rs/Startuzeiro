@@ -66,5 +66,18 @@ Para encontrar tomadores de decisão, mapear contatos por domínio corporativo, 
 - Via Skill (`.agents/skills/`): `hunter-b2b-intel`.
 - Lembre-se: o plano Free possui 50 créditos/mês. Sempre use `Email-Count` e `Find-Companies` gratuitamente antes de executar buscas intensivas.
 
+## 7. Inteligência de Vendas e Prospecção Global com Apollo.io
+
+Para busca de decisores internacionais por ICP, enriquecimento de contatos com telefones diretos e e-mails, análise de vagas abertas e automação de cadências de vendas, utilize o **Apollo.io**:
+- Via MCP:
+  - `apollo_search_people` / `apollo_mixed_people_api_search`: busca decisores por cargo, hierarquia e localização.
+  - `apollo_search_organizations` / `apollo_mixed_companies_search`: prospecção de contas e empresas.
+  - `apollo_get_job_postings`: sinais de intenção de compra através de vagas ativas da empresa.
+  - `apollo_enrich_person` & `apollo_people_match`: revela e-mails e telefones diretos (consome créditos).
+  - `apollo_enrich_organization`: dados firmográficos e tecnográficos completos da empresa.
+  - `apollo_create_contacts` & `apollo_add_contacts_to_sequence`: cadastra leads e matricula em sequências de cold mail.
+- Via Skill (`.agents/skills/`): `apollo-sales-intel`.
+- Lembre-se: Enriquecimento consome créditos do Apollo. Sempre apresente a lista de prospectos encontrados para aprovação antes de executar chamadas de enriquecimento de contatos.
+
 
 

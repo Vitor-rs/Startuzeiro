@@ -543,3 +543,12 @@
   descricao: "Servidor MCP e plataforma líder global de inteligência de contatos B2B, busca de tomadores de decisão por domínio corporativo, verificação de e-mails e automação de outreach."
   potencial_startuzeiro: "Enriquecimento de contatos comerciais, descoberta de e-mails diretos de tomadores de decisão, prevenção de bounces em campanhas de cold mail e prospecção ativa de clientes e parceiros."
 
+- id: FER-061
+  nome: "Apollo.io"
+  slug: "apollo"
+  categoria: "sales-intelligence-gtm-prospeccao"
+  tipo: "mcp-servico-api"
+  url: "https://www.apollo.io/"
+  descricao: "Servidor MCP e plataforma líder global de inteligência de vendas (GTM), prospecção B2B de mais de 275M de contatos, enriquecimento de telefones/e-mails, sinais de contratação e cadências de outbound."
+  potencial_startuzeiro: "Descoberta de tomadores de decisão em escala global, sinais de intenção de compra via vagas de emprego, enriquecimento de leads e automação de sequências de vendas."
+
