@@ -44,22 +44,72 @@ function loadTools() {
         allTools = TOOLS_DATA;
     }
     updateMetrics();
+    populateCategoryFilter();
     renderToolsList();
     renderOpenSourceList();
     renderSaasList();
 }
 
-// Atualizar métricas do header
+// Atualizar métricas do header e contadores de abas
 function updateMetrics() {
     const totalCount = allTools.length;
     const osCount = allTools.filter(t => t.tipo === 'open-source').length;
     const saasCount = allTools.filter(t => t.tipo && (t.tipo.includes('saas') || t.tipo.includes('web') || t.tipo.includes('banco') || t.tipo.includes('plataforma'))).length;
     const mcpCount = allTools.filter(t => t.tipo === 'mcp-servico-api').length;
 
-    document.getElementById('metric-total').textContent = totalCount;
-    document.getElementById('metric-os').textContent = osCount;
-    document.getElementById('metric-saas').textContent = saasCount;
-    document.getElementById('metric-mcp').textContent = mcpCount;
+    // Header metrics
+    const elTotal = document.getElementById('metric-total');
+    if (elTotal) elTotal.textContent = totalCount;
+    const elOs = document.getElementById('metric-os');
+    if (elOs) elOs.textContent = osCount;
+    const elSaas = document.getElementById('metric-saas');
+    if (elSaas) elSaas.textContent = saasCount;
+    const elMcp = document.getElementById('metric-mcp');
+    if (elMcp) elMcp.textContent = mcpCount;
+
+    // Tab badges
+    const tabCat = document.getElementById('tab-catalog-count');
+    if (tabCat) tabCat.textContent = totalCount;
+    const tabOs = document.getElementById('tab-os-count');
+    if (tabOs) tabOs.textContent = osCount;
+    const tabSaas = document.getElementById('tab-saas-count');
+    if (tabSaas) tabSaas.textContent = saasCount;
+
+    // Filter pills
+    const pillAll = document.querySelector('.filter-pill[data-filter="all"]');
+    if (pillAll) pillAll.textContent = `Todas (${totalCount})`;
+    const pillOs = document.querySelector('.filter-pill[data-filter="open-source"]');
+    if (pillOs) pillOs.textContent = `Open-Source (${osCount})`;
+    const pillSaas = document.querySelector('.filter-pill[data-filter="saas"]');
+    if (pillSaas) pillSaas.textContent = `SaaS & Web (${saasCount})`;
+    const pillMcp = document.querySelector('.filter-pill[data-filter="mcp"]');
+    if (pillMcp) pillMcp.textContent = `MCPs & APIs (${mcpCount})`;
+
+    // Intro descriptions
+    const introOs = document.getElementById('os-intro-count');
+    if (introOs) introOs.textContent = `${osCount} projetos com código aberto no GitHub`;
+    const introSaas = document.getElementById('saas-intro-count');
+    if (introSaas) introSaas.textContent = `${saasCount} ferramentas que rodam diretamente na nuvem`;
+}
+
+// Preencher dinamicamente o dropdown de categorias com contagens
+function populateCategoryFilter() {
+    const categorySelect = document.getElementById('category-filter');
+    if (!categorySelect) return;
+
+    const categoryCounts = {};
+    allTools.forEach(t => {
+        const cat = t.categoria || 'geral';
+        categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    });
+
+    const sortedCats = Object.keys(categoryCounts).sort();
+
+    categorySelect.innerHTML = `<option value="all">Todas as Categorias (${allTools.length})</option>` +
+        sortedCats.map(cat => {
+            const label = cat.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            return `<option value="${cat}">${label} (${categoryCounts[cat]})</option>`;
+        }).join('');
 }
 
 // Navegação entre abas
@@ -187,13 +237,24 @@ function resetFilters() {
 function createToolCardHtml(t, isOsOnly = false) {
     const catBadgeClass = getCategoryBadgeClass(t.categoria);
     const typeBadgeClass = getTypeBadgeClass(t.tipo);
+    const ghUrl = t.github || (t.url && t.url.includes('github.com') ? t.url : null);
+
+    const githubBadge = ghUrl ? `
+        <a href="${ghUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-white flex items-center gap-1 px-2 py-0.5 rounded bg-slate-800/90 border border-slate-700 hover:border-slate-500 transition-colors" title="Repositório no GitHub">
+            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+        </a>
+    ` : '';
 
     return `
         <div class="glass-panel p-5 rounded-xl flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 hover:border-slate-600 cursor-pointer" onclick="openToolDrawer('${t.id}')">
             <div>
                 <div class="flex items-center justify-between gap-2 mb-3">
                     <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-slate-800/80 text-blue-400 border border-slate-700">${t.id}</span>
-                    <span class="text-xs px-2.5 py-0.5 rounded-full ${typeBadgeClass} font-medium">${t.tipo || 'ferramenta'}</span>
+                    <div class="flex items-center gap-1.5">
+                        ${githubBadge}
+                        <span class="text-xs px-2.5 py-0.5 rounded-full ${typeBadgeClass} font-medium">${t.tipo || 'ferramenta'}</span>
+                    </div>
                 </div>
                 <h3 class="font-bold text-base text-white hover:text-blue-400 transition-colors mb-2 flex items-center gap-2">
                     ${escapeHtml(t.nome)}
@@ -204,8 +265,8 @@ function createToolCardHtml(t, isOsOnly = false) {
             </div>
             
             <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                <span class="px-2 py-0.5 rounded ${catBadgeClass} font-medium">${escapeHtml(t.categoria || 'Geral')}</span>
-                <span class="text-blue-400 font-semibold hover:underline flex items-center gap-1">
+                <span class="px-2 py-0.5 rounded ${catBadgeClass} font-medium truncate max-w-[180px]">${escapeHtml(t.categoria || 'Geral')}</span>
+                <span class="text-blue-400 font-semibold hover:underline flex items-center gap-1 shrink-0">
                     Ver usabilidade →
                 </span>
             </div>
@@ -216,12 +277,13 @@ function createToolCardHtml(t, isOsOnly = false) {
 // Mapeamento de Cores para Categorias
 function getCategoryBadgeClass(cat) {
     if (!cat) return 'badge-design';
-    if (cat.includes('osint')) return 'badge-osint';
-    if (cat.includes('scraping')) return 'badge-scraping';
-    if (cat.includes('video')) return 'badge-video';
-    if (cat.includes('gtm') || cat.includes('prospeccao') || cat.includes('vendas')) return 'badge-gtm';
-    if (cat.includes('agente')) return 'badge-agentes';
-    if (cat.includes('engenharia')) return 'badge-engenharia';
+    const c = cat.toLowerCase();
+    if (c.includes('osint') || c.includes('seguranca')) return 'badge-osint';
+    if (c.includes('scraping') || c.includes('automacao') || c.includes('dados') || c.includes('banco') || c.includes('backend') || c.includes('cloud')) return 'badge-scraping';
+    if (c.includes('video') || c.includes('audio') || c.includes('voz')) return 'badge-video';
+    if (c.includes('gtm') || c.includes('prospeccao') || c.includes('vendas') || c.includes('marketing') || c.includes('copywriting')) return 'badge-gtm';
+    if (c.includes('agente') || c.includes('llm') || c.includes('dev-ia') || c.includes('nlp')) return 'badge-agentes';
+    if (c.includes('engenharia') || c.includes('machine-learning') || c.includes('avaliacao') || c.includes('grafos')) return 'badge-engenharia';
     return 'badge-design';
 }
 
@@ -243,6 +305,7 @@ function openToolDrawer(toolId) {
 
     const isOpenSource = tool.tipo === 'open-source';
     const isMcp = tool.tipo === 'mcp-servico-api';
+    const ghUrl = tool.github || (tool.url && tool.url.includes('github.com') ? tool.url : null);
 
     document.getElementById('drawer-title').textContent = tool.nome;
     document.getElementById('drawer-id').textContent = tool.id;
@@ -255,8 +318,21 @@ function openToolDrawer(toolId) {
     urlBtn.href = tool.url || '#';
     urlBtn.textContent = tool.url ? `Acessar ${tool.nome} ↗` : 'Sem link';
 
+    // Botão de GitHub no Drawer
+    const ghBtn = document.getElementById('drawer-github-link');
+    if (ghBtn) {
+        if (ghUrl) {
+            ghBtn.href = ghUrl;
+            ghBtn.classList.remove('hidden');
+        } else {
+            ghBtn.classList.add('hidden');
+        }
+    }
+
     // Gerar comando rápido sugerido para cópia
     let quickCmd = '';
+    const slug = tool.slug || tool.nome.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+
     if (isOpenSource) {
         if (tool.nome.toLowerCase().includes('mailaccess')) {
             quickCmd = 'uvx mailaccess doctor';
@@ -264,6 +340,10 @@ function openToolDrawer(toolId) {
             quickCmd = 'uv run --with scrapling python -c "import scrapling; print(\'Scrapling OK!\')"';
         } else if (tool.nome.toLowerCase().includes('changedetection')) {
             quickCmd = 'uv pip install changedetection.io && changedetection.io -p 5000';
+        } else if (tool.categoria && (tool.categoria.includes('rag') || tool.categoria.includes('agente') || tool.categoria.includes('machine-learning') || tool.categoria.includes('llm') || tool.categoria.includes('nlp') || tool.categoria.includes('audio') || tool.categoria.includes('engenharia'))) {
+            quickCmd = `uv pip install ${slug}\n# Ou clonar o código:\ngit clone ${ghUrl || tool.url}.git`;
+        } else if (ghUrl) {
+            quickCmd = `git clone ${ghUrl}.git`;
         } else {
             quickCmd = `git clone ${tool.url}.git`;
         }

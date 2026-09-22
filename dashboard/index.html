@@ -77,16 +77,16 @@
                 🚀 Playground de Testes
             </button>
             <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="catalog">
-                🗂️ Catálogo Geral (62)
+                🗂️ Catálogo Geral <span id="tab-catalog-count" class="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-blue-300 font-mono">202</span>
             </button>
             <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="opensource">
-                🧪 Laboratório Open-Source (21)
+                🧪 Laboratório Open-Source <span id="tab-os-count" class="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-emerald-400 font-mono">137</span>
             </button>
             <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="saas">
-                ☁️ Diretório SaaS & Web (35)
+                ☁️ Diretório SaaS <span id="tab-saas-count" class="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-purple-300 font-mono">59</span>
             </button>
             <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="mcps">
-                🔌 Servidores MCP (8)
+                🔌 Servidores MCP <span class="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-cyan-400 font-mono">8</span>
             </button>
         </div>
     </header>
@@ -392,7 +392,7 @@
         </section>
 
         <!-- ======================================================== -->
-        <!-- ABA 3: LABORATÓRIO OPEN-SOURCE (21 FERRAMENTAS) -->
+        <!-- ABA 3: LABORATÓRIO OPEN-SOURCE -->
         <!-- ======================================================== -->
         <section id="tab-opensource" class="tab-content hidden space-y-6">
             <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/30 p-6 rounded-2xl border border-emerald-900/40 glow-emerald">
@@ -400,7 +400,7 @@
                     🧪 Laboratório de Softwares Open-Source
                 </h2>
                 <p class="text-sm text-slate-300">
-                    Estes são os **21 projetos com código aberto no GitHub** captados dos seus favoritos. Todos podem ser executados, testados ou estudados localmente na sua máquina Windows 11 com <code class="text-emerald-400">uv</code>, <code class="text-emerald-400">node</code> ou <code class="text-emerald-400">docker</code>.
+                    Estes são os <strong class="text-emerald-400 font-bold" id="os-intro-count">137 projetos com código aberto no GitHub</strong> captados dos seus favoritos. Todos podem ser clonados, executados e testados localmente na sua máquina Windows 11 com <code class="text-emerald-400">uv</code>, <code class="text-emerald-400">node</code> ou <code class="text-emerald-400">docker</code>.
                 </p>
             </div>
 
@@ -410,7 +410,7 @@
         </section>
 
         <!-- ======================================================== -->
-        <!-- ABA 4: DIRETÓRIO SAAS & NUVEM (35 FERRAMENTAS) -->
+        <!-- ABA 4: DIRETÓRIO SAAS & NUVEM -->
         <!-- ======================================================== -->
         <section id="tab-saas" class="tab-content hidden space-y-6">
             <div class="bg-gradient-to-r from-purple-950/40 via-slate-900 to-pink-950/30 p-6 rounded-2xl border border-purple-900/40">
@@ -418,7 +418,7 @@
                     ☁️ Diretório de Plataformas SaaS & Ferramentas Web
                 </h2>
                 <p class="text-sm text-slate-300">
-                    As **35 ferramentas que rodam diretamente na nuvem** pelo navegador (vídeo com IA, síntese vocal, otimização de SEO, bancos de assets gratuitos e decks interativos).
+                    As <strong class="text-purple-400 font-bold" id="saas-intro-count">59 ferramentas que rodam diretamente na nuvem</strong> pelo navegador (vídeo com IA, síntese vocal, otimização de SEO, bancos de assets gratuitos, infraestrutura e decks interativos).
                 </p>
             </div>
 
@@ -559,11 +559,15 @@
                     </div>
                 </div>
 
-                <div class="pt-4 border-t border-slate-800 flex gap-3">
-                    <a id="drawer-link" href="#" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-lg shadow-blue-600/20">
+                <div class="pt-4 border-t border-slate-800 flex gap-2">
+                    <a id="drawer-link" href="#" target="_blank" class="flex-1 text-center py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-lg shadow-blue-600/20 truncate">
                         Acessar Ferramenta ↗
                     </a>
-                    <button onclick="closeToolDrawer()" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition">
+                    <a id="drawer-github-link" href="#" target="_blank" class="hidden py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition border border-slate-700 flex items-center gap-1.5 shrink-0">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub ↗
+                    </a>
+                    <button onclick="closeToolDrawer()" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition shrink-0">
                         Fechar
                     </button>
                 </div>
