@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startuzeiro Hub - Painel Central de Ferramentas & Testes</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#07090e',
+                            800: '#0f141f',
+                            700: '#172033',
+                            600: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col">
+
+    <!-- Top Navigation & Status Bar -->
+    <header class="border-b border-slate-800/80 bg-[#0a0e17]/90 backdrop-blur sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center font-black text-white text-xl shadow-lg shadow-blue-500/20">
+                    S
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                        Startuzeiro Hub
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-mono font-semibold border border-blue-500/30">v1.0</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Painel Central de Testes, Usabilidade & Inteligência</p>
+                </div>
+            </div>
+
+            <!-- Server Status & Action -->
+            <div class="flex items-center gap-3">
+                <div id="server-status-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 border border-slate-700">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    <span id="server-status-text">Verificando Servidor Local...</span>
+                </div>
+                <a href="../yt_base/README.md" target="_blank" class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">
+                    📺 Lake de Vídeos ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- Metrics Ticker Bar -->
+        <div class="bg-slate-900/60 border-t border-slate-800/50 py-2 px-4 sm:px-8">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between text-xs text-slate-400 gap-4">
+                <div class="flex items-center gap-6">
+                    <div>Total de Ferramentas: <span id="metric-total" class="font-bold text-white font-mono">62</span></div>
+                    <div>Testáveis Localmente: <span id="metric-os" class="font-bold text-emerald-400 font-mono">21</span></div>
+                    <div>SaaS & Nuvem: <span id="metric-saas" class="font-bold text-purple-400 font-mono">35</span></div>
+                    <div>Servidores MCP: <span id="metric-mcp" class="font-bold text-cyan-400 font-mono">8</span></div>
+                </div>
+                <div class="text-[11px] text-slate-500 hidden md:block">
+                    Inicie o backend com <code class="text-blue-400 bg-slate-800 px-1.5 py-0.5 rounded">abrir_painel.bat</code> para disparar testes ao vivo
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto no-scrollbar gap-2 pt-2">
+            <button class="tab-btn active px-4 py-2.5 text-xs font-bold border-b-2 border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-lg transition-all flex items-center gap-2" data-tab="playground">
+                🚀 Playground de Testes
+            </button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="catalog">
+                🗂️ Catálogo Geral (62)
+            </button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="opensource">
+                🧪 Laboratório Open-Source (21)
+            </button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="saas">
+                ☁️ Diretório SaaS & Web (35)
+            </button>
+            <button class="tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="mcps">
+                🔌 Servidores MCP (8)
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ======================================================== -->
+        <!-- ABA 1: PLAYGROUND INTERATIVO DE TESTES -->
+        <!-- ======================================================== -->
+        <section id="tab-playground" class="tab-content space-y-6">
+            <div class="bg-gradient-to-r from-blue-950/40 via-slate-900 to-indigo-950/30 p-6 rounded-2xl border border-blue-900/40 glow-cyan">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2 mb-1">
+                    🚀 Central de Teste e Execução Rápida
+                </h2>
+                <p class="text-sm text-slate-300">
+                    Dispare consultas e testes diretamente do navegador sem abrir o terminal. O Startuzeiro Bridge executa as ferramentas em segundo plano e exibe a resposta em tempo real.
+                </p>
+            </div>
+
+            <!-- Grid de Módulos de Teste -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- 1. Clay GTM Search -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span> Clay GTM Search (FER-062)
+                            </h3>
+                            <span class="text-xs px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono">Query Mode</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-3">Busca SQL-like no banco global de 75M+ empresas e pessoas da Clay.</p>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Query SQL-like:</label>
+                                <input type="text" id="clay-query-input" value="select from companies where domain = 'google.com'" 
+                                       class="w-full px-3 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-xs font-mono text-emerald-400 focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="flex items-center justify-between gap-3">
+                                <div class="flex items-center gap-2">
+                                    <label class="text-xs text-slate-400">Limite:</label>
+                                    <select id="clay-limit-select" class="px-2 py-1 rounded bg-slate-900 border border-slate-700 text-xs text-slate-200">
+                                        <option value="1">1 resultado</option>
+                                        <option value="3">3 resultados</option>
+                                        <option value="5" selected>5 resultados</option>
+                                    </select>
+                                </div>
+                                <button id="run-clay-btn" class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+                                    ▶ Executar Busca Clay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                            <span>Console de Retorno:</span>
+                            <button onclick="copyConsoleOutput('clay-console')" class="text-blue-400 hover:underline">Copiar Saída</button>
+                        </div>
+                        <pre id="clay-console" class="terminal-window p-3 text-xs max-h-48 overflow-y-auto whitespace-pre-wrap">Aguardando execução...</pre>
+                    </div>
+                </div>
+
+                <!-- 2. YouTube Transcriber -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500"></span> YouTube Transcriber & Catalog (/yt)
+                            </h3>
+                            <span class="text-xs px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-mono">TranscriptAPI</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-3">Extrai transcrição com timestamps e atualiza o catálogo do lake em <code class="text-blue-400">yt_base/</code>.</p>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Link do Vídeo do YouTube:</label>
+                                <input type="text" id="yt-url-input" placeholder="https://www.youtube.com/watch?v=..." 
+                                       class="w-full px-3 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-xs text-white focus:outline-none focus:border-rose-500">
+                            </div>
+                            <div class="flex justify-end">
+                                <button id="run-yt-btn" class="px-4 py-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-rose-600/20">
+                                    ▶ Transcrever e Catalogar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                            <span>Console de Retorno:</span>
+                            <button onclick="copyConsoleOutput('yt-console')" class="text-blue-400 hover:underline">Copiar Saída</button>
+                        </div>
+                        <pre id="yt-console" class="terminal-window p-3 text-xs max-h-48 overflow-y-auto whitespace-pre-wrap">Aguardando envio de link...</pre>
+                    </div>
+                </div>
+
+                <!-- 3. MailAccess OSINT -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-cyan-400"></span> MailAccess OSINT (FER-010)
+                            </h3>
+                            <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono">2500+ Serviços</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-3">Pesquisa de padrões de e-mail corporativo offline e diagnóstico de saúde de OSINT.</p>
+
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Ação:</label>
+                                    <select id="mail-action-select" class="w-full px-2 py-2 rounded bg-slate-900 border border-slate-700 text-xs text-slate-200">
+                                        <option value="doctor">Diagnóstico (doctor)</option>
+                                        <option value="find-email" selected>Padrão (find-email)</option>
+                                        <option value="harvest">Colher (harvest-emails)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Domínio:</label>
+                                    <input type="text" id="mail-domain-input" value="microsoft.com" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-xs text-white">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Nome Completo (para find-email):</label>
+                                <input type="text" id="mail-name-input" value="Satya Nadella" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-xs text-white">
+                            </div>
+                            <div class="flex justify-end">
+                                <button id="run-mail-btn" class="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-cyan-600/20">
+                                    ▶ Consultar MailAccess
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                            <span>Console de Retorno:</span>
+                            <button onclick="copyConsoleOutput('mail-console')" class="text-blue-400 hover:underline">Copiar Saída</button>
+                        </div>
+                        <pre id="mail-console" class="terminal-window p-3 text-xs max-h-48 overflow-y-auto whitespace-pre-wrap">Aguardando execução...</pre>
+                    </div>
+                </div>
+
+                <!-- 4. Scrapling Fetcher -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-violet-400"></span> Scrapling Fetcher (FER-017)
+                            </h3>
+                            <span class="text-xs px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono">Bypass Anti-Bot</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-3">Raspagem web adaptativa ultrarrápida com contorno de proteções Cloudflare.</p>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">URL de Destino:</label>
+                                <input type="text" id="scrapling-url-input" value="https://news.ycombinator.com" 
+                                       class="w-full px-3 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-xs text-white focus:outline-none focus:border-violet-500">
+                            </div>
+                            <div class="flex justify-end">
+                                <button id="run-scrapling-btn" class="px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-violet-600/20">
+                                    ▶ Raspar Página
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                            <span>Console de Retorno:</span>
+                            <button onclick="copyConsoleOutput('scrapling-console')" class="text-blue-400 hover:underline">Copiar Saída</button>
+                        </div>
+                        <pre id="scrapling-console" class="terminal-window p-3 text-xs max-h-48 overflow-y-auto whitespace-pre-wrap">Aguardando envio de URL...</pre>
+                    </div>
+                </div>
+
+                <!-- 5. Hunter.io Quick Domain Count -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-orange-400"></span> Hunter.io Email Count (FER-060)
+                            </h3>
+                            <span class="text-xs px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 font-mono">0 Créditos</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-3">Consulta gratuita do volume de e-mails em um domínio antes de gastar créditos.</p>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Domínio da Empresa:</label>
+                                <input type="text" id="hunter-domain-input" value="stripe.com" class="w-full px-3 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-xs text-white">
+                            </div>
+                            <div class="flex justify-end">
+                                <button id="run-hunter-btn" class="px-4 py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-orange-600/20">
+                                    ▶ Consultar Hunter.io
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                            <span>Retorno JSON:</span>
+                            <button onclick="copyConsoleOutput('hunter-console')" class="text-blue-400 hover:underline">Copiar Saída</button>
+                        </div>
+                        <pre id="hunter-console" class="terminal-window p-3 text-xs max-h-48 overflow-y-auto whitespace-pre-wrap">Aguardando domínio...</pre>
+                    </div>
+                </div>
+
+                <!-- 6. cnpj.ai Grafo Societário -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-emerald-400"></span> cnpj.ai Grafo Societário (FER-059)
+                            </h3>
+                            <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">72M+ CNPJs</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-3">Investigação instantânea de redes de sócios, QSA e grupos econômicos.</p>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">CNPJ (completo ou básico):</label>
+                                <input type="text" id="cnpj-input" value="00.000.000/0001-91" placeholder="00.000.000/0001-91" 
+                                       class="w-full px-3 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-xs text-white">
+                            </div>
+                            <div class="flex justify-end">
+                                <button id="run-cnpj-btn" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-emerald-600/20">
+                                    ▶ Gerar Grafo Societário
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+                            <span>Links Rápidos de Inteligência:</span>
+                        </div>
+                        <div id="cnpj-console" class="terminal-window p-3 text-xs min-h-[5rem] flex items-center justify-center text-slate-500">
+                            Informe um CNPJ para gerar os atalhos do grafo interativo.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- ABA 2: CATÁLOGO GERAL DE TODAS AS 62 FERRAMENTAS -->
+        <!-- ======================================================== -->
+        <section id="tab-catalog" class="tab-content hidden space-y-6">
+            <!-- Search & Filter Controls -->
+            <div class="glass-panel p-5 rounded-2xl space-y-4">
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div class="relative w-full md:w-96">
+                        <input type="text" id="search-input" placeholder="Buscar por nome, categoria, palavra-chave..." 
+                               class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500">
+                        <span class="absolute left-3 top-3 text-slate-500">🔍</span>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <button class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white transition" data-filter="all">
+                            Todas
+                        </button>
+                        <button class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-filter="open-source">
+                            Open-Source (21)
+                        </button>
+                        <button class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-filter="saas">
+                            SaaS & Web (35)
+                        </button>
+                        <button class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-filter="mcp">
+                            MCPs & APIs (8)
+                        </button>
+
+                        <select id="category-filter" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-300">
+                            <option value="all">Todas as Categorias</option>
+                            <option value="video-conteudo">Vídeo & Conteúdo</option>
+                            <option value="osint-investigacao">OSINT & Investigação</option>
+                            <option value="scraping-automacao">Scraping & Automação</option>
+                            <option value="agentes-ia">Agentes de IA</option>
+                            <option value="design-assets">Design & Assets</option>
+                            <option value="apresentacoes-pitch">Apresentações & Pitch</option>
+                            <option value="engenharia-estudo">Engenharia & Estudos</option>
+                            <option value="sales-intelligence-gtm-prospeccao">GTM & Prospecção</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-slate-800/80">
+                    <span id="filtered-count">Carregando catálogo...</span>
+                    <span>Clique em qualquer card para ver a usabilidade e comandos</span>
+                </div>
+            </div>
+
+            <!-- Tool Cards Grid -->
+            <div id="tools-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Injetado dinamicamente pelo app.js -->
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- ABA 3: LABORATÓRIO OPEN-SOURCE (21 FERRAMENTAS) -->
+        <!-- ======================================================== -->
+        <section id="tab-opensource" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/30 p-6 rounded-2xl border border-emerald-900/40 glow-emerald">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2 mb-1">
+                    🧪 Laboratório de Softwares Open-Source
+                </h2>
+                <p class="text-sm text-slate-300">
+                    Estes são os **21 projetos com código aberto no GitHub** captados dos seus favoritos. Todos podem ser executados, testados ou estudados localmente na sua máquina Windows 11 com <code class="text-emerald-400">uv</code>, <code class="text-emerald-400">node</code> ou <code class="text-emerald-400">docker</code>.
+                </p>
+            </div>
+
+            <div id="opensource-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Injetado dinamicamente pelo app.js -->
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- ABA 4: DIRETÓRIO SAAS & NUVEM (35 FERRAMENTAS) -->
+        <!-- ======================================================== -->
+        <section id="tab-saas" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-purple-950/40 via-slate-900 to-pink-950/30 p-6 rounded-2xl border border-purple-900/40">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2 mb-1">
+                    ☁️ Diretório de Plataformas SaaS & Ferramentas Web
+                </h2>
+                <p class="text-sm text-slate-300">
+                    As **35 ferramentas que rodam diretamente na nuvem** pelo navegador (vídeo com IA, síntese vocal, otimização de SEO, bancos de assets gratuitos e decks interativos).
+                </p>
+            </div>
+
+            <div id="saas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Injetado dinamicamente pelo app.js -->
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- ABA 5: SERVIDORES MCP (8 SERVIDORES) -->
+        <!-- ======================================================== -->
+        <section id="tab-mcps" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-cyan-950/40 via-slate-900 to-blue-950/30 p-6 rounded-2xl border border-cyan-900/40 glow-cyan">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2 mb-1">
+                    🔌 Servidores MCP & Inteligência Integrada
+                </h2>
+                <p class="text-sm text-slate-300">
+                    Os **8 servidores Model Context Protocol (MCP)** configurados no Startuzeiro em <code class="text-cyan-400 font-mono">~/.gemini/config/mcp_config.json</code> para conferir superpoderes aos agentes de IA.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- MCP 1: Clay -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-amber-400">
+                    <span class="text-xs font-mono text-amber-400 font-bold">MCP • FER-062</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">Clay.io</h3>
+                    <p class="text-xs text-slate-400 mb-3">Enriquecimento em cascata e busca em 75M+ empresas via Query Mode.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">https://api.clay.com/v3/mcp</code>
+                </div>
+
+                <!-- MCP 2: Hunter.io -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-orange-500">
+                    <span class="text-xs font-mono text-orange-400 font-bold">MCP • FER-060</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">Hunter.io</h3>
+                    <p class="text-xs text-slate-400 mb-3">Busca e verificação de e-mails corporativos e contatos de tomadores de decisão.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">https://mcp.hunter.io/mcp</code>
+                </div>
+
+                <!-- MCP 3: Apollo.io -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-blue-500">
+                    <span class="text-xs font-mono text-blue-400 font-bold">MCP • FER-061</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">Apollo.io</h3>
+                    <p class="text-xs text-slate-400 mb-3">Inteligência de vendas B2B, vagas ativas e cadências de outbound.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">https://mcp.apollo.io/mcp</code>
+                </div>
+
+                <!-- MCP 4: cnpj.ai -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-emerald-500">
+                    <span class="text-xs font-mono text-emerald-400 font-bold">MCP • FER-059</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">cnpj.ai</h3>
+                    <p class="text-xs text-slate-400 mb-3">Rede de sócios, QSA, vínculos de contato e dívida ativa em 72M+ CNPJs.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">https://mcp.cnpj.ai/mcp</code>
+                </div>
+
+                <!-- MCP 5: Exa -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-violet-500">
+                    <span class="text-xs font-mono text-violet-400 font-bold">MCP • FER-058</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">Exa Neural Search</h3>
+                    <p class="text-xs text-slate-400 mb-3">Motor de busca neural e semântico construído especificamente para IA.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">https://mcp.exa.ai/mcp</code>
+                </div>
+
+                <!-- MCP 6: Context7 -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-indigo-500">
+                    <span class="text-xs font-mono text-indigo-400 font-bold">MCP • FER-057</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">Context7</h3>
+                    <p class="text-xs text-slate-400 mb-3">Documentação oficial e referências de APIs em tempo real sem alucinações.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">https://mcp.context7.com/mcp</code>
+                </div>
+
+                <!-- MCP 7: Firecrawl -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-rose-500">
+                    <span class="text-xs font-mono text-rose-400 font-bold">MCP Local / Cloud</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">Firecrawl</h3>
+                    <p class="text-xs text-slate-400 mb-3">Raspagem, rastreamento profundo e conversão web em Markdown para LLMs.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">npx -y firecrawl-mcp</code>
+                </div>
+
+                <!-- MCP 8: TranscriptAPI -->
+                <div class="glass-panel p-5 rounded-xl border-l-4 border-red-500">
+                    <span class="text-xs font-mono text-red-400 font-bold">MCP Hosted</span>
+                    <h3 class="font-bold text-white text-base mt-1 mb-2">TranscriptAPI</h3>
+                    <p class="text-xs text-slate-400 mb-3">Extração instantânea de transcrições de vídeos do YouTube com timestamps.</p>
+                    <code class="text-[10px] text-slate-300 bg-slate-900 px-2 py-1 rounded block truncate font-mono">https://transcriptapi.com/mcp</code>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Slide-out Drawer para Detalhes da Ferramenta -->
+    <div id="tool-drawer" class="fixed inset-0 z-50 hidden overflow-hidden">
+        <!-- Backdrop -->
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 drawer-backdrop cursor-pointer" onclick="closeToolDrawer()"></div>
+
+        <!-- Sliding Panel -->
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div id="drawer-content" class="w-screen max-w-md bg-[#0e131f] border-l border-slate-800 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto translate-x-full drawer-content">
+                <div>
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-2">
+                            <span id="drawer-id" class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-mono text-xs font-bold border border-blue-500/30">ID</span>
+                            <span id="drawer-type" class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300">Tipo</span>
+                        </div>
+                        <button onclick="closeToolDrawer()" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition text-lg">
+                            ✕
+                        </button>
+                    </div>
+
+                    <div class="py-5 space-y-4">
+                        <div>
+                            <span id="drawer-category" class="text-xs font-semibold text-blue-400 uppercase tracking-wider block mb-1">Categoria</span>
+                            <h2 id="drawer-title" class="text-xl font-bold text-white">Nome da Ferramenta</h2>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Descrição Oficial:</h4>
+                            <p id="drawer-desc" class="text-sm text-slate-300 leading-relaxed bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+                                Descrição da ferramenta...
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">Potencial no Startuzeiro:</h4>
+                            <p id="drawer-potencial" class="text-sm text-slate-300 leading-relaxed bg-emerald-950/20 p-3 rounded-lg border border-emerald-900/30">
+                                Potencial anotado...
+                            </p>
+                        </div>
+
+                        <!-- Terminal Command Snippet -->
+                        <div id="drawer-cmd-container" class="space-y-1">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-slate-300 uppercase tracking-wider">Como Testar / Executar:</span>
+                                <button id="drawer-copy-btn" onclick="copyDrawerCommand()" class="text-blue-400 hover:underline">Copiar</button>
+                            </div>
+                            <pre id="drawer-cmd-text" class="terminal-window p-3 text-xs overflow-x-auto whitespace-pre-wrap"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-800 flex gap-3">
+                    <a id="drawer-link" href="#" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-lg shadow-blue-600/20">
+                        Acessar Ferramenta ↗
+                    </a>
+                    <button onclick="closeToolDrawer()" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="tools_data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
