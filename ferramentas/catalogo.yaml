@@ -1,6 +1,6 @@
 # ========================================================
 # Catálogo Oficial de Ferramentas - Startuzeiro
-# Total de Ferramentas: 56
+# Total de Ferramentas: 57
 # ========================================================
 
 - id: FER-001
@@ -506,4 +506,13 @@
   url: "https://www.phrasebank.manchester.ac.uk/"
   descricao: "Banco de frases e estruturas sintáticas acadêmicas da Univ. de Manchester para redação formal em inglês."
   potencial_startuzeiro: "Aprimoramento de relatórios formais, papers e documentações técnicas em inglês para produtos globais."
+
+- id: FER-057
+  nome: "Context7"
+  slug: "context7"
+  categoria: "documentacao-ia-dev"
+  tipo: "mcp-servico-api"
+  url: "https://context7.com/"
+  descricao: "Servidor MCP e CLI que fornece documentação e exemplos de código atualizados de repositórios oficiais para agentes de IA em tempo real."
+  potencial_startuzeiro: "Consulta instantânea de APIs sem alucinações, aceleração no desenvolvimento de scripts, bots e validação de SDKs no monorepo."
 
