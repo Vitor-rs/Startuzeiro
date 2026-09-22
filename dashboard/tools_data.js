@@ -2143,14 +2143,14 @@ const TOOLS_DATA = [
   },
   {
     "id": "FER-202",
-    "nome": "KùzuDB",
+    "nome": "KùzuDB (Arquivado)",
     "slug": "kuzudb",
     "categoria": "grafos-redes-complexas",
     "tipo": "open-source",
     "url": "https://kuzudb.com/",
     "github": "https://github.com/kuzudb/kuzu",
-    "descricao": "Sistema de gerenciamento de banco de dados de grafos embutido e ultrarrápido (o 'DuckDB dos grafos'), executando consultas Cypher direto na memória.",
-    "potencial_startuzeiro": "Consultas ultra-rápidas em grafos de redes societárias locais sem necessidade de instalar servidores pesados de banco de dados."
+    "descricao": "Sistema de banco de dados de grafos embutido em Cypher. NOTA: Projeto arquivado oficialmente em outubro de 2025 após aquisição pela Apple; substituído no Startuzeiro pelo NetworkX (FER-063).",
+    "potencial_startuzeiro": "Referência histórica de grafos Cypher embutidos. Para novos experimentos de redes societárias, utilize o NetworkX (FER-063) via scripts/utilitarios/graph_networkx.py."
   },
   {
     "id": "FER-203",

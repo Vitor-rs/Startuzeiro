@@ -8,7 +8,6 @@ dependencies = [
     "changedetection-io>=0.60.7",
     "duckdb>=1.5.5",
     "instructor>=1.17.0",
-    "kuzu>=0.11.3",
     "markitdown>=0.1.8",
     "pandas>=3.0.6",
     "pymupdf4llm>=1.28.2",
