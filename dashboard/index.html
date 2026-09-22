@@ -79,7 +79,10 @@
 
         <!-- Main Navigation Tabs -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto no-scrollbar gap-2 pt-2">
-            <button class="main-tab-btn active px-4 py-2.5 text-xs font-bold border-b-2 border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-lg transition-all flex items-center gap-2" data-tab="orchestrator">
+            <button class="main-tab-btn active px-4 py-2.5 text-xs font-bold border-b-2 border-purple-500 text-purple-400 bg-purple-500/10 rounded-t-lg transition-all flex items-center gap-2" data-tab="brain">
+                🧠 Cérebro Agêntico (Monetização)
+            </button>
+            <button class="main-tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="orchestrator">
                 🚀 Fábrica de Pesquisa (Missão 360°)
             </button>
             <button class="main-tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2" data-tab="workbench">
@@ -98,9 +101,174 @@
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
         <!-- ======================================================== -->
+        <!-- ABA 0: CÉREBRO AGÊNTICO (DESCOBERTA & MONETIZAÇÃO) -->
+        <!-- ======================================================== -->
+        <section id="tab-brain" class="main-tab-content space-y-6">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-purple-950/60 via-indigo-950/50 to-slate-900 p-6 rounded-2xl border border-purple-900/50 glow-cyan">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            🧠 Cérebro Agêntico & Fábrica de Monetização Digital
+                        </h2>
+                        <p class="text-sm text-slate-300 mt-1">
+                            Motor autônomo que minera sinais de mercado, analisa transcrições do Lake e sintetiza oportunidades de alta margem através dos 4 vetores de monetização digital.
+                        </p>
+                    </div>
+                    <div class="shrink-0 flex items-center gap-2">
+                        <button id="run-mine-brain-btn" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs transition shadow-lg shadow-purple-600/30 flex items-center gap-2">
+                            ⚡ Minerar Transcrições do Lake (C.O.D.E.)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The 4 Monetization Vectors Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Vector 1: AAA -->
+                <div class="glass-panel p-5 rounded-2xl border-l-4 border-blue-500 flex flex-col justify-between space-y-3">
+                    <div>
+                        <span class="text-[10px] font-mono text-blue-400 font-bold uppercase">Vetor 1 • B2B High-Ticket</span>
+                        <h3 class="text-base font-bold text-white mt-1">Agência de Automação de IA (AAA)</h3>
+                        <p class="text-xs text-slate-400 mt-1">Venda de triagem de WhatsApp, SDR autônomo e fluxos n8n para negócios locais.</p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800 text-[11px] text-slate-300 flex items-center justify-between">
+                        <span>Ticket: <strong class="text-emerald-400">R$ 1.5k - 8k</strong></span>
+                        <span class="text-slate-500 font-mono">OPP-001 / 002</span>
+                    </div>
+                </div>
+
+                <!-- Vector 2: Micro-SaaS -->
+                <div class="glass-panel p-5 rounded-2xl border-l-4 border-emerald-500 flex flex-col justify-between space-y-3">
+                    <div>
+                        <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">Vetor 2 • Recorrência MRR</span>
+                        <h3 class="text-base font-bold text-white mt-1">Micro-SaaS & Wrappers Agênticos</h3>
+                        <p class="text-xs text-slate-400 mt-1">Ferramentas de nicho ultra-focadas resolvendo 1 problema com DuckDB e LLMs locais.</p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800 text-[11px] text-slate-300 flex items-center justify-between">
+                        <span>MRR: <strong class="text-emerald-400">R$ 97 - 497/mês</strong></span>
+                        <span class="text-slate-500 font-mono">OPP-003</span>
+                    </div>
+                </div>
+
+                <!-- Vector 3: Afiliados -->
+                <div class="glass-panel p-5 rounded-2xl border-l-4 border-amber-500 flex flex-col justify-between space-y-3">
+                    <div>
+                        <span class="text-[10px] font-mono text-amber-400 font-bold uppercase">Vetor 3 • Performance CPL/CPA</span>
+                        <h3 class="text-base font-bold text-white mt-1">Afiliação High-Ticket & Arbitragem</h3>
+                        <p class="text-xs text-slate-400 mt-1">Páginas comparativas de software capturando termos de alta intenção comercial no Google.</p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800 text-[11px] text-slate-300 flex items-center justify-between">
+                        <span>Comissão: <strong class="text-emerald-400">R$ 150 - 800/venda</strong></span>
+                        <span class="text-slate-500 font-mono">OPP-004</span>
+                    </div>
+                </div>
+
+                <!-- Vector 4: Mídia Dark -->
+                <div class="glass-panel p-5 rounded-2xl border-l-4 border-pink-500 flex flex-col justify-between space-y-3">
+                    <div>
+                        <span class="text-[10px] font-mono text-pink-400 font-bold uppercase">Vetor 4 • Tráfego Orgânico</span>
+                        <h3 class="text-base font-bold text-white mt-1">Máquina de Conteúdo & Dark Media</h3>
+                        <p class="text-xs text-slate-400 mt-1">Repurposing de transcrições de podcasts (Hormozi / Ali Abdaal) em 20 micro-ativos virais.</p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800 text-[11px] text-slate-300 flex items-center justify-between">
+                        <span>Alavancagem: <strong class="text-emerald-400">Infinita</strong></span>
+                        <span class="text-slate-500 font-mono">OPP-005</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grafo do Cérebro Agêntico Interativo (D3.js) -->
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h3 class="font-bold text-white text-base flex items-center gap-2">
+                            🌐 Grafo de Conhecimento Agêntico: Vetores, Oportunidades & Ferramentas
+                        </h3>
+                        <p class="text-xs text-slate-400">Visualização interativa das conexões entre modelos de monetização, blueprints ativos e a stack de ferramentas.</p>
+                    </div>
+                    <button onclick="loadBrainGraph()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition">
+                        🔄 Recarregar Grafo
+                    </button>
+                </div>
+
+                <div class="relative w-full h-[400px] rounded-xl overflow-hidden border border-slate-800" id="brain-graph-container">
+                    <svg id="brain-graph-svg" class="w-full h-full"></svg>
+                    <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur px-3 py-2 rounded-lg border border-slate-800 text-[11px] text-slate-400 space-y-1">
+                        <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Vetor AAA (B2B)</div>
+                        <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Vetor Micro-SaaS</div>
+                        <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Vetor Afiliados</div>
+                        <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span> Vetor Mídia Dark</div>
+                        <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-orange-400"></span> Ferramentas Ativas</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galeria de Modelos Mentais Visuais (web_imgs) -->
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <div class="border-b border-slate-800 pb-3">
+                    <h3 class="font-bold text-white text-base flex items-center gap-2">
+                        📐 Galeria de Modelos Mentais & Blueprints Visuais (resources/web_imgs)
+                    </h3>
+                    <p class="text-xs text-slate-400">Os 6 princípios teóricos fundamentais que regem o design, os agentes e a taxonomia do Startuzeiro.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2 hover:border-slate-700 transition">
+                        <div class="h-32 bg-slate-950 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800">
+                            <img src="../resources/web_imgs/19174f7cfadb6423763e2d174c189d59.jpg" alt="Agent Development Kit" class="object-cover w-full h-full hover:scale-105 transition cursor-pointer" onclick="window.open(this.src)">
+                        </div>
+                        <h4 class="font-bold text-white text-xs">The Agent Development Kit</h4>
+                        <p class="text-[11px] text-slate-400">5 camadas: Memória (AGENTS.md) → Skills → Hooks → Subagentes → Plugins.</p>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2 hover:border-slate-700 transition">
+                        <div class="h-32 bg-slate-950 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800">
+                            <img src="../resources/web_imgs/7bbe669fb9b290a21b676028574ccb8b.jpg" alt="How to Build an AI Agent" class="object-cover w-full h-full hover:scale-105 transition cursor-pointer" onclick="window.open(this.src)">
+                        </div>
+                        <h4 class="font-bold text-white text-xs">How to Build an AI Agent</h4>
+                        <p class="text-[11px] text-slate-400">Ciclo de vida em 8 passos: do propósito aos evals e benchmarks.</p>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2 hover:border-slate-700 transition">
+                        <div class="h-32 bg-slate-950 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800">
+                            <img src="../resources/web_imgs/9124f505318b88dae1b9456b0460948c.jpg" alt="Building a Second Brain" class="object-cover w-full h-full hover:scale-105 transition cursor-pointer" onclick="window.open(this.src)">
+                        </div>
+                        <h4 class="font-bold text-white text-xs">Second Brain: C.O.D.E. & P.A.R.A.</h4>
+                        <p class="text-[11px] text-slate-400">Capture, Organize, Distill, Express organizado em Projetos, Áreas, Recursos e Arquivo.</p>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2 hover:border-slate-700 transition">
+                        <div class="h-32 bg-slate-950 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800">
+                            <img src="../resources/web_imgs/ca6b6c0aa7ef41e185d9aaa18bf6afcc.jpg" alt="The 4-Folder Structure" class="object-cover w-full h-full hover:scale-105 transition cursor-pointer" onclick="window.open(this.src)">
+                        </div>
+                        <h4 class="font-bold text-white text-xs">The 4-Folder Structure</h4>
+                        <p class="text-[11px] text-slate-400">prompts/, data/, agents/, evals/. Quatro pastas. Zero confusão.</p>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2 hover:border-slate-700 transition">
+                        <div class="h-32 bg-slate-950 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800">
+                            <img src="../resources/web_imgs/d1978b806d59c4a3a4af8c9e289a0beb.jpg" alt="Evolution of AI Agents" class="object-cover w-full h-full hover:scale-105 transition cursor-pointer" onclick="window.open(this.src)">
+                        </div>
+                        <h4 class="font-bold text-white text-xs">Evolution of AI Agents</h4>
+                        <p class="text-[11px] text-slate-400">Evolução dos Níveis 1 a 6: rumo a redes autônomas com segurança e limites.</p>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2 hover:border-slate-700 transition">
+                        <div class="h-32 bg-slate-950 rounded-lg overflow-hidden flex items-center justify-center border border-slate-800">
+                            <img src="../resources/web_imgs/e71a2615560242dfb4504c7fe87b4427.jpg" alt="Master Enterprise Architecture" class="object-cover w-full h-full hover:scale-105 transition cursor-pointer" onclick="window.open(this.src)">
+                        </div>
+                        <h4 class="font-bold text-white text-xs">Master Enterprise Architecture</h4>
+                        <p class="text-[11px] text-slate-400">Taxonomia indexada (01_..., 02_...), rastreadores de versão e integridade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================== -->
         <!-- ABA 1: FÁBRICA DE PESQUISA (ORQUESTRADOR DE MISSÕES 360°) -->
         <!-- ======================================================== -->
-        <section id="tab-orchestrator" class="main-tab-content space-y-6">
+        <section id="tab-orchestrator" class="main-tab-content hidden space-y-6">
             <div class="bg-gradient-to-r from-blue-950/50 via-slate-900 to-indigo-950/40 p-6 rounded-2xl border border-blue-900/50 glow-blue">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>

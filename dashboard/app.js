@@ -22,7 +22,7 @@ const ACTIVE_TOOL_IDS = new Set([
 
 let allTools = [];
 let serverConnected = false;
-let currentMainTab = 'orchestrator';
+let currentMainTab = 'brain';
 let currentStudio = 'diligence';
 let currentCrmTab = 'dossiers';
 let catalogFilter = 'all';
@@ -33,6 +33,7 @@ let crmOpportunities = [];
 let crmLake = [];
 let currentDossierRaw = '';
 let d3Simulation = null;
+let d3BrainSimulation = null;
 
 // ========================================================
 // INICIALIZAÇÃO
@@ -44,11 +45,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     initCatalogFilters();
     initMissionControls();
     initStudioForms();
+    initBrainControls();
     
     await checkServerStatus();
     loadToolsCatalog();
     await refreshAllData();
+    loadBrainGraph();
 });
+
 
 // Atualização geral de dados
 async function refreshAllData() {
@@ -140,11 +144,10 @@ function switchMainTab(tabId) {
     const tabBtns = document.querySelectorAll('.main-tab-btn');
     tabBtns.forEach(btn => {
         if (btn.dataset.tab === tabId) {
-            btn.classList.add('active', 'border-blue-500', 'text-blue-400', 'bg-blue-500/10');
-            btn.classList.remove('border-transparent', 'text-slate-400');
+            const activeColor = tabId === 'brain' ? 'border-purple-500 text-purple-400 bg-purple-500/10' : 'border-blue-500 text-blue-400 bg-blue-500/10';
+            btn.className = `main-tab-btn active px-4 py-2.5 text-xs font-bold border-b-2 rounded-t-lg transition-all flex items-center gap-2 ${activeColor}`;
         } else {
-            btn.classList.remove('active', 'border-blue-500', 'text-blue-400', 'bg-blue-500/10');
-            btn.classList.add('border-transparent', 'text-slate-400');
+            btn.className = 'main-tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2';
         }
     });
 
@@ -152,12 +155,160 @@ function switchMainTab(tabId) {
     const targetContent = document.getElementById(`tab-${tabId}`);
     if (targetContent) targetContent.classList.remove('hidden');
 
-    if (tabId === 'crm') {
+    if (tabId === 'brain') {
+        loadBrainGraph();
+    } else if (tabId === 'crm') {
         renderCrmDossiers();
         renderCrmOpportunities();
         renderCrmLake();
     }
 }
+
+// ========================================================
+// CONTROLE DO CÉREBRO AGÊNTICO (DISCOVERY & MONETIZAÇÃO)
+// ========================================================
+function initBrainControls() {
+    const mineBtn = document.getElementById('run-mine-brain-btn');
+    if (mineBtn) {
+        mineBtn.addEventListener('click', async () => {
+            mineBtn.disabled = true;
+            mineBtn.innerHTML = '⏳ Minerando Transcrições no Lake...';
+            try {
+                const res = await fetch('http://localhost:5050/api/brain/mine', { method: 'POST' });
+                const data = await res.json();
+                if (data.status === 'success') {
+                    alert(`Mineração Agêntica Concluída!\n${data.created_count} novas oportunidades sintetizadas através dos 4 vetores de monetização.`);
+                    await refreshAllData();
+                    loadBrainGraph();
+                } else {
+                    alert(`Aviso: ${data.error || 'Mineração executada.'}`);
+                }
+            } catch (e) {
+                alert('Servidor local offline. Certifique-se de rodar abrir_painel.bat para disparar o Cérebro Agêntico.');
+            } finally {
+                mineBtn.disabled = false;
+                mineBtn.innerHTML = '⚡ Minerar Transcrições do Lake (C.O.D.E.)';
+            }
+        });
+    }
+}
+
+async function loadBrainGraph() {
+    const container = document.getElementById('brain-graph-container');
+    const svg = d3.select("#brain-graph-svg");
+    if (!container || svg.empty()) return;
+
+    svg.selectAll("*").remove();
+
+    let graphData = null;
+    try {
+        const res = await fetch('http://localhost:5050/api/brain/graph');
+        if (res.ok) {
+            graphData = await res.json();
+        }
+    } catch (e) {
+        // Fallback
+    }
+
+    if (!graphData || !graphData.nodes || graphData.nodes.length === 0) {
+        // Grafo padrão de demonstração se backend ainda não retornou
+        graphData = {
+            nodes: [
+                { id: "vec:aaa", label: "Vetor AAA (B2B)", color: "#3b82f6", r: 20 },
+                { id: "vec:saas", label: "Micro-SaaS MRR", color: "#10b981", r: 20 },
+                { id: "vec:aff", label: "Afiliação High-Ticket", color: "#f59e0b", r: 20 },
+                { id: "vec:media", label: "Mídia Dark & Audience", color: "#ec4899", r: 20 },
+                { id: "opp:OPP-001", label: "OPP-001: Imobiliárias WhatsApp", color: "#3b82f6", r: 15 },
+                { id: "opp:OPP-002", label: "OPP-002: Speed-to-Lead B2B", color: "#3b82f6", r: 15 },
+                { id: "opp:OPP-003", label: "OPP-003: Extrator Contábil", color: "#10b981", r: 15 },
+                { id: "opp:OPP-004", label: "OPP-004: Arbitragem SaaS", color: "#f59e0b", r: 15 },
+                { id: "opp:OPP-005", label: "OPP-005: Repurposing Dark", color: "#ec4899", r: 15 }
+            ],
+            links: [
+                { source: "vec:aaa", target: "opp:OPP-001", label: "ICE 500" },
+                { source: "vec:aaa", target: "opp:OPP-002", label: "ICE 648" },
+                { source: "vec:saas", target: "opp:OPP-003", label: "ICE 512" },
+                { source: "vec:aff", target: "opp:OPP-004", label: "ICE 504" },
+                { source: "vec:media", target: "opp:OPP-005", label: "ICE 504" }
+            ]
+        };
+    }
+
+    const width = container.clientWidth || 800;
+    const height = container.clientHeight || 400;
+
+    const g = svg.append("g");
+
+    // Zoom behavior
+    svg.call(d3.zoom()
+        .scaleExtent([0.5, 3])
+        .on("zoom", (event) => {
+            g.attr("transform", event.transform);
+        })
+    );
+
+    d3BrainSimulation = d3.forceSimulation(graphData.nodes)
+        .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(100))
+        .force("charge", d3.forceManyBody().strength(-280))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collision", d3.forceCollide().radius(35));
+
+    // Links
+    const link = g.append("g")
+        .selectAll("line")
+        .data(graphData.links)
+        .join("line")
+        .attr("class", "graph-link")
+        .attr("stroke", "#334155")
+        .attr("stroke-width", 1.5);
+
+    // Nodes
+    const node = g.append("g")
+        .selectAll("g")
+        .data(graphData.nodes)
+        .join("g")
+        .attr("class", "graph-node")
+        .call(d3.drag()
+            .on("start", (event, d) => {
+                if (!event.active) d3BrainSimulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            })
+            .on("drag", (event, d) => {
+                d.fx = event.x;
+                d.fy = event.y;
+            })
+            .on("end", (event, d) => {
+                if (!event.active) d3BrainSimulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            })
+        )
+        .on("click", (event, d) => {
+            alert(`Nó do Cérebro: ${d.label || d.id}\nTipo: ${d.type}`);
+        });
+
+    node.append("circle")
+        .attr("r", d => d.r || 14)
+        .attr("fill", d => d.color || "#8b5cf6")
+        .attr("stroke", "#1e293b");
+
+    node.append("text")
+        .attr("dy", -18)
+        .attr("text-anchor", "middle")
+        .text(d => d.label || d.id);
+
+    d3BrainSimulation.on("tick", () => {
+        link
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+    });
+}
+
 
 function initStudioTabs() {
     const studioBtns = document.querySelectorAll('.studio-tab-btn');

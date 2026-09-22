@@ -110,3 +110,38 @@ Para manter a premissa de que a infraestrutura deve ser menor que a pesquisa:
 - **Análises SQL In-Process**: Use `duckdb` (`uv run scripts/utilitarios/duckdb_query.py`) para cruzar arquivos CSV, Parquet e JSON sem subir servidores pesados de banco.
 - **Grafos Societários & Conexões**: Use `networkx` (`uv run scripts/utilitarios/graph_networkx.py`) para modelar redes de sócios/empresas, identificar menor caminho societário, detectar grupos econômicos e exportar visualizações interativas em HTML (`export-html`).
 - **Monitoramento Web Concorrentes**: Use `changedetection.io` (`scripts/utilitarios/start_changedetection.bat`) para monitorar alterações visuais e textuais em sites e termos.
+
+## 11. Arquitetura do Segundo Cérebro (C.O.D.E. + P.A.R.A.) & 4-Folders
+
+O repositório é governado pelos modelos mentais do **Agent Development Kit**, **P.A.R.A.** e **4-Folder Structure**:
+- **`prompts/`**: Prompts versionados como código (`system/`, `tasks/`, `tools/`).
+- **`data/`**: Entradas brutas e processadas (`raw/`, `processed/`).
+- **`.agents/`**: Suíte de agentes, skills (41 módulos) e guardrail hooks.
+- **`evals/`**: Rubricas de avaliação ICE (`scorecards/`), telemetria (`traces/`) e testes (`tests/`).
+- **`brain/`**: O Segundo Cérebro:
+  - `01_oportunidades/`: Projetos ativos com prazos e hipóteses falseáveis nos 4 vetores de monetização.
+  - `02_pesquisas/`: Áreas de inteligência contínua (dossiês 360° de concorrentes e panoramas de nicho).
+  - `03_recursos/`: Acervo de referência (transcrições do YouTube Lake, catálogo master e modelos mentais).
+  - `04_arquivo/`: Memória fria de investigações e testes finalizados.
+
+## 12. Os 4 Vetores de Monetização na Internet
+
+Toda oportunidade de negócio descoberta pelo agente deve ser enquadrada e avaliada pela ótica dos 4 vetores:
+1. **Agência de Automação de IA (AAA)**: Venda de serviços B2B de alto ticket (R$ 1.500 a R$ 10.000) automatizando speed-to-lead e qualificação no WhatsApp (Hunter + Clay + Evolution API/n8n).
+2. **Micro-SaaS & Wrappers Agênticos**: Criação de ferramentas leves com receita recorrente (MRR R$ 97 a R$ 497/mês) resolvendo dores específicas com IA local e DuckDB.
+3. **Afiliação High-Ticket & Arbitragem**: Mapeamento de programas de afiliados com comissões de R$ 150 a R$ 800/venda e produção de páginas comparativas capturando tráfego de alta intenção comercial.
+4. **Máquina de Conteúdo & Dark Media**: Repurposing de transcrições de mentorias em 20 micro-ativos virais (carrosséis, scripts de shorts, threads) para monetização com audiência.
+
+## 13. O Motor Autônomo de Inteligência Agêntica (`scripts/agentic_brain.py`)
+
+Para rodar a mineração autônoma de mercado:
+- Mineração de transcrições e síntese de oportunidades:
+  ```bash
+  uv run scripts/agentic_brain.py mine
+  ```
+- Exportação do grafo de conexões de mercado:
+  ```bash
+  uv run scripts/agentic_brain.py graph
+  ```
+- Painel Web Unificado: Execute `abrir_painel.bat` e acesse a aba **"🧠 Cérebro Agêntico"** em `http://localhost:5050`.
+

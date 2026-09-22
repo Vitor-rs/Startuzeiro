@@ -35,6 +35,16 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = ROOT_DIR / "dashboard"
 PORT = 5050
 
+# Importar motor do Cérebro Agêntico
+try:
+    from scripts import agentic_brain
+except Exception:
+    try:
+        import agentic_brain
+    except Exception:
+        agentic_brain = None
+
+
 # IDs das ferramentas ativas e instaladas na bancada
 ACTIVE_TOOL_IDS = {
     "FER-017",  # Scrapling
@@ -161,85 +171,129 @@ class StartuzeiroHandler(SimpleHTTPRequestHandler):
 
             return self._send_json(200, tools_data)
 
-        # 3. CRM: Listar Dossiês em pesquisas/concorrentes/
+        # 3. Cérebro Agêntico: Grafo de Conhecimento e Oportunidades
+        if path == "/api/brain/graph":
+            if agentic_brain:
+                g = agentic_brain.build_knowledge_graph()
+                return self._send_json(200, g)
+            return self._send_json(200, {"nodes": [], "links": []})
+
+        # 4. CRM: Listar Dossiês em brain/02_pesquisas/concorrentes e pesquisas/concorrentes
         if path == "/api/crm/dossiers":
             dossiers = []
-            p_dir = ROOT_DIR / "pesquisas" / "concorrentes"
-            p_dir.mkdir(parents=True, exist_ok=True)
-            for f in sorted(p_dir.glob("*.md"), key=os.path.getmtime, reverse=True):
-                try:
-                    content = f.read_text(encoding="utf-8")
-                    title = f.stem.replace("_", " ").title()
-                    created_at = ""
-                    tags = []
-                    summary = ""
-
-                    if content.startswith("---"):
-                        parts = content.split("---", 2)
-                        if len(parts) >= 3:
-                            header = parts[1]
-                            for line in header.splitlines():
-                                if line.startswith("titulo:"):
-                                    title = line.split(":", 1)[1].strip(" \"'")
-                                elif line.startswith("data_investigacao:") or line.startswith("data:"):
-                                    created_at = line.split(":", 1)[1].strip(" \"'")
-                                elif line.startswith("resumo:"):
-                                    summary = line.split(":", 1)[1].strip(" \"'")
-
-                    dossiers.append({
-                        "filename": f.name,
-                        "title": title,
-                        "created_at": created_at or "Recente",
-                        "size_kb": round(f.stat().st_size / 1024, 1),
-                        "summary": summary,
-                        "path": f"pesquisas/concorrentes/{f.name}"
-                    })
-                except Exception:
-                    pass
-            return self._send_json(200, dossiers)
-
-        # 4. CRM: Listar Oportunidades em oportunidades/
-        if path == "/api/crm/opportunities":
-            opps = []
-            opps_dir = ROOT_DIR / "oportunidades"
-            for f in opps_dir.rglob("*.md"):
-                if f.name.startswith("OPP-"):
+            seen_files = set()
+            dirs = [
+                ROOT_DIR / "brain" / "02_pesquisas" / "concorrentes",
+                ROOT_DIR / "pesquisas" / "concorrentes"
+            ]
+            for p_dir in dirs:
+                if not p_dir.exists():
+                    continue
+                for f in sorted(p_dir.glob("*.md"), key=os.path.getmtime, reverse=True):
+                    if f.name in seen_files:
+                        continue
+                    seen_files.add(f.name)
                     try:
                         content = f.read_text(encoding="utf-8")
-                        title = f.stem
-                        status = "Ideação"
-                        ice_score = 0
+                        title = f.stem.replace("_", " ").title()
+                        created_at = ""
+                        summary = ""
 
-                        # Extrair dados do documento
-                        for line in content.splitlines():
-                            if line.startswith("# "):
-                                title = line.replace("# ", "").strip()
-                            elif "Status:" in line:
-                                status = line.split("Status:", 1)[1].strip()
-                            elif "ICE Score:" in line or "Pontuação ICE:" in line:
-                                m = re.search(r"\d+(\.\d+)?", line)
-                                if m:
-                                    ice_score = float(m.group(0))
+                        if content.startswith("---"):
+                            parts = content.split("---", 2)
+                            if len(parts) >= 3:
+                                header = parts[1]
+                                for line in header.splitlines():
+                                    if line.startswith("titulo:"):
+                                        title = line.split(":", 1)[1].strip(" \"'")
+                                    elif line.startswith("data_investigacao:") or line.startswith("data:"):
+                                        created_at = line.split(":", 1)[1].strip(" \"'")
+                                    elif line.startswith("resumo:"):
+                                        summary = line.split(":", 1)[1].strip(" \"'")
 
-                        opps.append({
-                            "id": f.stem.split("-")[0] + "-" + f.stem.split("-")[1] if "-" in f.stem else f.stem,
-                            "title": title,
-                            "category": f.parent.name,
-                            "status": status,
-                            "ice_score": ice_score,
+                        dossiers.append({
                             "filename": f.name,
-                            "path": str(f.relative_to(ROOT_DIR)).replace("\\", "/")
+                            "title": title,
+                            "created_at": created_at or "Recente",
+                            "size_kb": round(f.stat().st_size / 1024, 1),
+                            "summary": summary,
+                            "path": f"brain/02_pesquisas/concorrentes/{f.name}"
                         })
                     except Exception:
                         pass
-            return self._send_json(200, opps)
+            return self._send_json(200, dossiers)
 
-        # 5. CRM: Listar Vídeos do YouTube Lake
+        # 5. CRM: Listar Oportunidades em brain/01_oportunidades e oportunidades/
+        if path == "/api/crm/opportunities":
+            opps = []
+            seen_ids = set()
+            dirs = [
+                ROOT_DIR / "brain" / "01_oportunidades",
+                ROOT_DIR / "oportunidades"
+            ]
+            for opps_dir in dirs:
+                if not opps_dir.exists():
+                    continue
+                for f in opps_dir.rglob("*.md"):
+                    if f.name.startswith("OPP-"):
+                        try:
+                            content = f.read_text(encoding="utf-8")
+                            title = f.stem
+                            status = "Ideação"
+                            ice_score = 0
+                            vector = f.parent.name
+                            revenue = ""
+
+                            if content.startswith("---"):
+                                parts = content.split("---", 2)
+                                if len(parts) >= 3:
+                                    header = parts[1]
+                                    for line in header.splitlines():
+                                        if line.startswith("titulo:"):
+                                            title = line.split(":", 1)[1].strip(" \"'")
+                                        elif line.startswith("status:"):
+                                            status = line.split(":", 1)[1].strip(" \"'")
+                                        elif line.startswith("potencial_receita:"):
+                                            revenue = line.split(":", 1)[1].strip(" \"'")
+                                        elif "total:" in line or "media:" in line:
+                                            m = re.search(r"\d+(\.\d+)?", line)
+                                            if m:
+                                                ice_score = float(m.group(0))
+
+                            opp_id = f.stem.split("-")[0] + "-" + f.stem.split("-")[1] if "-" in f.stem else f.stem
+                            if opp_id in seen_ids:
+                                continue
+                            seen_ids.add(opp_id)
+
+                            opps.append({
+                                "id": opp_id,
+                                "title": title,
+                                "category": vector,
+                                "status": status.title(),
+                                "ice_score": ice_score,
+                                "revenue": revenue,
+                                "filename": f.name,
+                                "path": str(f.relative_to(ROOT_DIR)).replace("\\", "/")
+                            })
+                        except Exception:
+                            pass
+            return self._send_json(200, sorted(opps, key=lambda x: x["ice_score"], reverse=True))
+
+        # 6. CRM: Listar Vídeos do YouTube Lake
         if path == "/api/crm/lake":
             lake_files = []
-            yt_lake_dir = ROOT_DIR / "yt_base" / "yt_lake"
-            if yt_lake_dir.exists():
+            seen_files = set()
+            dirs = [
+                ROOT_DIR / "brain" / "03_recursos" / "yt_lake",
+                ROOT_DIR / "yt_base" / "yt_lake"
+            ]
+            for yt_lake_dir in dirs:
+                if not yt_lake_dir.exists():
+                    continue
                 for f in sorted(yt_lake_dir.glob("*.md"), key=os.path.getmtime, reverse=True):
+                    if f.name in seen_files:
+                        continue
+                    seen_files.add(f.name)
                     try:
                         content = f.read_text(encoding="utf-8")
                         title = f.stem.replace("_", " ").title()
@@ -252,13 +306,13 @@ class StartuzeiroHandler(SimpleHTTPRequestHandler):
                             if len(parts) >= 3:
                                 header = parts[1]
                                 for line in header.splitlines():
-                                    if line.startswith("titulo:"):
+                                    if line.startswith("titulo_original:") or line.startswith("titulo:"):
                                         title = line.split(":", 1)[1].strip(" \"'")
                                     elif line.startswith("canal:"):
                                         channel = line.split(":", 1)[1].strip(" \"'")
                                     elif line.startswith("data_publicacao:") or line.startswith("data_ingestao:"):
                                         date = line.split(":", 1)[1].strip(" \"'")
-                                    elif line.startswith("link_video:") or line.startswith("url:"):
+                                    elif line.startswith("link_video:") or line.startswith("url_original:") or line.startswith("url:"):
                                         url = line.split(":", 1)[1].strip(" \"'")
 
                         lake_files.append({
@@ -268,11 +322,12 @@ class StartuzeiroHandler(SimpleHTTPRequestHandler):
                             "date": date,
                             "url": url,
                             "size_kb": round(f.stat().st_size / 1024, 1),
-                            "path": f"yt_base/yt_lake/{f.name}"
+                            "path": f"brain/03_recursos/yt_lake/{f.name}"
                         })
                     except Exception:
                         pass
             return self._send_json(200, lake_files)
+
 
         # Caso contrário, serve arquivos estáticos de dashboard/
         super().do_GET()
@@ -649,19 +704,37 @@ tags:
 2. Monitorar a página de preços e novidades com o `changedetection.io`.
 3. Adicionar oportunidade correspondente no quadro de validação (`oportunidades/`).
 """
-            out_dir = ROOT_DIR / "pesquisas" / "concorrentes"
-            out_dir.mkdir(parents=True, exist_ok=True)
-            out_file = out_dir / f"{slug_name}.md"
-            out_file.write_text(dossier_content, encoding="utf-8")
+            # Salvar em brain/02_pesquisas/concorrentes e em pesquisas/concorrentes
+            out_dirs = [
+                ROOT_DIR / "brain" / "02_pesquisas" / "concorrentes",
+                ROOT_DIR / "pesquisas" / "concorrentes"
+            ]
+            for d in out_dirs:
+                d.mkdir(parents=True, exist_ok=True)
+                (d / f"{slug_name}.md").write_text(dossier_content, encoding="utf-8")
 
-            mission_results["dossier_path"] = f"pesquisas/concorrentes/{slug_name}.md"
+            mission_results["dossier_path"] = f"brain/02_pesquisas/concorrentes/{slug_name}.md"
             mission_results["dossier_content"] = dossier_content
-            mission_results["steps"].append({"step": "Compilação Dossiê", "status": "success", "detail": f"Dossiê salvo em {out_file.name}"})
+            mission_results["steps"].append({"step": "Compilação Dossiê", "status": "success", "detail": f"Dossiê salvo em {slug_name}.md no Lake"})
 
             return self._send_json(200, mission_results)
 
+        # ========================================================
+        # CÉREBRO AGÊNTICO: MINERAÇÃO DE OPORTUNIDADES
+        # ========================================================
+        if path == "/api/brain/mine":
+            if agentic_brain:
+                created = agentic_brain.mine_transcripts()
+                return self._send_json(200, {
+                    "status": "success",
+                    "created_count": len(created),
+                    "created_opps": created
+                })
+            return self._send_json(500, {"error": "Módulo agentic_brain não carregado"})
+
         # 404 para rotas desconhecidas
         return self._send_json(404, {"error": "Rota POST não encontrada"})
+
 
 
 def run(port=PORT):

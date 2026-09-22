@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OpportunityBlueprint",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^OPP-[0-9]{3}$"
+    },
+    "titulo": {
+      "type": "string"
+    },
+    "vetor_monetizacao": {
+      "type": "string",
+      "enum": ["automacao_aaa", "saas_micro", "afiliados_arbitragem", "media_dark"]
+    },
+    "categoria": {
+      "type": "string"
+    },
+    "potencial_receita": {
+      "type": "string"
+    },
+    "investimento_inicial": {
+      "type": "string"
+    },
+    "score_ice": {
+      "type": "object",
+      "properties": {
+        "impacto": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "confianca": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "facilidade": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "total": { "type": "integer" }
+      },
+      "required": ["impacto", "confianca", "facilidade", "total"]
+    },
+    "icp": {
+      "type": "string"
+    },
+    "dor_urgente": {
+      "type": "string"
+    },
+    "solucao_tecnica": {
+      "type": "string"
+    },
+    "ferramentas_startuzeiro": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "hipotese_validacao": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": [
+    "id",
+    "titulo",
+    "vetor_monetizacao",
+    "potencial_receita",
+    "score_ice",
+    "icp",
+    "dor_urgente",
+    "solucao_tecnica",
+    "hipotese_validacao"
+  ]
+}
