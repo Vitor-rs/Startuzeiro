@@ -104,6 +104,7 @@ $modified = $false
 $transcriptKey = if ($envVars["TRANSCRIPT_API_KEY"]) { $envVars["TRANSCRIPT_API_KEY"] } else { "SUA_CHAVE_TRANSCRIPT_AQUI" }
 $firecrawlKey = if ($envVars["FIRECRAWL_API_KEY"]) { $envVars["FIRECRAWL_API_KEY"] } else { "SUA_CHAVE_FIRECRAWL_AQUI" }
 $context7Key = if ($envVars["CONTEXT7_API_KEY"]) { $envVars["CONTEXT7_API_KEY"] } else { "SUA_CHAVE_CONTEXT7_AQUI" }
+$exaKey = if ($envVars["EXA_API_KEY"]) { $envVars["EXA_API_KEY"] } else { "SUA_CHAVE_EXA_AQUI" }
 
 # Configurar transcript-api se nao existir
 if (-not $mcpData.mcpServers."transcript-api") {
@@ -149,6 +150,21 @@ if (-not $mcpData.mcpServers."context7") {
     Write-Host "   [+] MCP 'context7' adicionado ao mcp_config.json!" -ForegroundColor Green
 } else {
     Write-Host "   [OK] MCP 'context7' ja configurado." -ForegroundColor Green
+}
+
+# Configurar exa se nao existir
+if (-not $mcpData.mcpServers."exa") {
+    $exaObj = [PSCustomObject]@{
+        serverUrl = "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run"
+        headers = [PSCustomObject]@{
+            "x-api-key" = "$exaKey"
+        }
+    }
+    $mcpData.mcpServers | Add-Member -MemberType NoteProperty -Name "exa" -Value $exaObj -Force
+    $modified = $true
+    Write-Host "   [+] MCP 'exa' adicionado ao mcp_config.json!" -ForegroundColor Green
+} else {
+    Write-Host "   [OK] MCP 'exa' ja configurado." -ForegroundColor Green
 }
 
 if ($modified) {

@@ -28,3 +28,14 @@ Sempre que surgirem dúvidas de APIs, bibliotecas, SDKs modernos ou configuraç�
   ```
 - Via MCP: Ferramentas `resolve-library-id` e `query-docs`.
 
+## 4. Busca Semântica e Pesquisa Profunda com Exa
+
+Para pesquisas de mercado, inteligência de concorrentes, descoberta de leads e recuperação semântica na web, utilize o **Exa**:
+- Via MCP:
+  - `web_search_exa`: busca web rápida em linguagem natural.
+  - `web_fetch_exa`: extração e leitura de páginas a partir de URLs.
+  - `web_search_advanced_exa`: busca avançada com filtros de domínio, datas e categorias.
+  - `agent_run`: pesquisa autônoma em múltiplos passos com enriquecimento e saída estruturada.
+- Via Skills (`.agents/skills/`): `company-research`, `lead-generation`, `exa-search`, `exa-contents`, `build-with-exa`.
+
+

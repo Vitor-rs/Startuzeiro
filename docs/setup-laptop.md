@@ -28,6 +28,7 @@ Esse script realiza automaticamente:
    - `transcript-api` (com seu token obtido do `.env`)
    - `firecrawl` (com seu token e runner `npx -y firecrawl-mcp`)
    - `context7` (com seu token obtido do `.env`)
+   - `exa` (com sua chave obtida do `.env`)
 
 ---
 
@@ -67,9 +68,9 @@ git pull origin main
 
 | Componente | Onde fica armazenado | Status de Portabilidade |
 | :--- | :--- | :--- |
-| **31 Skills (`firecrawl*`, `transcriptapi`, `context7*`)** | `.agents/skills/` (no repositório) | ✅ 100% versionado no Git |
+| **36 Skills (`firecrawl*`, `transcriptapi`, `context7*`, `exa*`)** | `.agents/skills/` (no repositório) | ✅ 100% versionado no Git |
 | **Regras do Agente (`AGENTS.md`, rules)** | `.agents/rules/` e raiz | ✅ 100% versionado no Git (caminhos dinâmicos) |
-| **Catálogo de 57 Ferramentas** | `ferramentas/catalogo.yaml` e `knowledge/` | ✅ 100% versionado no Git |
+| **Catálogo de 58 Ferramentas** | `ferramentas/catalogo.yaml` e `knowledge/` | ✅ 100% versionado no Git |
 | **Lake de Transcrições (`yt_base`)** | `yt_base/` | ✅ 100% versionado no Git |
 | **Scripts e Utilitários** | `scripts/` | ✅ 100% portáveis (usam caminhos relativos ao repositório) |
 | **Chaves de API (`.env`)** | Raiz do projeto | ⚠️ Ignorado pelo Git por segurança. Gerado via `.env.example` |
