@@ -25,7 +25,6 @@ Esse script realiza automaticamente:
 1. **Criação do `.env`:** Copia o `.env.example` para `.env` para você preencher suas chaves de API com segurança.
 2. **Instalação/Verificação do `uv`:** Garante que o `uv` está instalado no sistema.
 3. **Configuração Global dos MCPs:** Injeta automaticamente no `C:\Users\user\.gemini\config\mcp_config.json` as entradas de:
-   - `transcript-api` (com seu token obtido do `.env`)
    - `firecrawl` (com seu token e runner `npx -y firecrawl-mcp`)
    - `context7` (com seu token obtido do `.env`)
    - `exa` (com sua chave obtida do `.env`)
@@ -72,7 +71,7 @@ git pull origin main
 
 | Componente | Onde fica armazenado | Status de Portabilidade |
 | :--- | :--- | :--- |
-| **40 Skills (`firecrawl*`, `transcriptapi`, `context7*`, `exa*`, `cnpj-ai*`, `hunter-b2b*`, `apollo-sales*`, `clay-gtm*`)** | `.agents/skills/` (no repositório) | ✅ 100% versionado no Git |
+| **40 Skills (`firecrawl*`, `youtube-transcription`, `context7*`, `exa*`, `cnpj-ai*`, `hunter-b2b*`, `apollo-sales*`, `clay-gtm*`)** | `.agents/skills/` (no repositório) | ✅ 100% versionado no Git |
 | **Regras do Agente (`AGENTS.md`, rules)** | `.agents/rules/` e raiz | ✅ 100% versionado no Git (caminhos dinâmicos) |
 | **Catálogo de 62 Ferramentas** | `ferramentas/catalogo.yaml` e `knowledge/` | ✅ 100% versionado no Git |
 | **Lake de Transcrições (`yt_base`)** | `yt_base/` | ✅ 100% versionado no Git |

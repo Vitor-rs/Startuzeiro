@@ -51,5 +51,5 @@ Configurado em `~/.gemini/config/mcp_config.json`:
 
 ## Links Relacionados
 - [[Firecrawl]]
-- [[TranscriptAPI]]
+- [[youtube-transcript-api]]
 - [[catalogo]]

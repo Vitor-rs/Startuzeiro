@@ -75,6 +75,6 @@ Configurado em `~/.gemini/config/mcp_config.json`:
 - [[cnpj-ai]]
 - [[Exa]]
 - [[Firecrawl]]
-- [[TranscriptAPI]]
+- [[youtube-transcript-api]]
 - [[Context7]]
 - [[catalogo]]

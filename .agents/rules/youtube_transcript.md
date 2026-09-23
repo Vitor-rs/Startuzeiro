@@ -12,7 +12,7 @@ Quando o usuário digitar uma mensagem que contenha ou comece com barra `/` segu
    uv run scripts/utilitarios/yt_transcribe_and_catalog.py "<link>"
    ```
 2. O script irá:
-   - Extrair a transcrição completa com timestamps via TranscriptAPI.
+   - Extrair a transcrição completa com timestamps via youtube-transcript-api e metadados via oEmbed/yt-dlp (100% gratuito, sem chaves).
    - Normalizar o título do vídeo para o nome do arquivo (`yt_base/yt_lake/<nome_normalizado>.md`), convertendo espaços em `_`, removendo acentos (`ç` -> `c`, etc.) e caracteres especiais.
    - Gerar metadados completos (Canal, Data de Publicação, Visualizações, Assunto Resumido).
    - Atualizar a tabela de catálogo central em `yt_base/README.md`.

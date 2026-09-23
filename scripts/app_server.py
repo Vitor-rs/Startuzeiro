@@ -126,10 +126,10 @@ class StartuzeiroHandler(SimpleHTTPRequestHandler):
                     "exa": bool(os.getenv("EXA_API_KEY") and "sua_chave" not in os.getenv("EXA_API_KEY", "")),
                     "context7": bool(os.getenv("CONTEXT7_API_KEY") and "sua_chave" not in os.getenv("CONTEXT7_API_KEY", "")),
                     "firecrawl": bool(os.getenv("FIRECRAWL_API_KEY") and "sua_chave" not in os.getenv("FIRECRAWL_API_KEY", "")),
-                    "transcript_api": bool(os.getenv("TRANSCRIPT_API_KEY") and "sua_chave" not in os.getenv("TRANSCRIPT_API_KEY", "")),
                     "huggingface": True  # Modo anônimo ou token
                 },
                 "engines": {
+                    "youtube_transcribe": True,
                     "duckdb": True,
                     "networkx": True,
                     "gliner": True,

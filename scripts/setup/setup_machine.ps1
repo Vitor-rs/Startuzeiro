@@ -101,7 +101,6 @@ if (-not $mcpData.mcpServers) {
 $modified = $false
 
 # Obter chaves do .env
-$transcriptKey = if ($envVars["TRANSCRIPT_API_KEY"]) { $envVars["TRANSCRIPT_API_KEY"] } else { "SUA_CHAVE_TRANSCRIPT_AQUI" }
 $firecrawlKey = if ($envVars["FIRECRAWL_API_KEY"]) { $envVars["FIRECRAWL_API_KEY"] } else { "SUA_CHAVE_FIRECRAWL_AQUI" }
 $context7Key = if ($envVars["CONTEXT7_API_KEY"]) { $envVars["CONTEXT7_API_KEY"] } else { "SUA_CHAVE_CONTEXT7_AQUI" }
 $exaKey = if ($envVars["EXA_API_KEY"]) { $envVars["EXA_API_KEY"] } else { "SUA_CHAVE_EXA_AQUI" }
@@ -109,21 +108,6 @@ $cnpjAiKey = if ($envVars["CNPJ_AI_API_KEY"]) { $envVars["CNPJ_AI_API_KEY"] } el
 $hunterKey = if ($envVars["HUNTER_API_KEY"]) { $envVars["HUNTER_API_KEY"] } else { "SUA_CHAVE_HUNTER_AQUI" }
 $apolloKey = if ($envVars["APOLLO_API_KEY"]) { $envVars["APOLLO_API_KEY"] } else { "SUA_CHAVE_APOLLO_AQUI" }
 $clayKey = if ($envVars["CLAY_API_KEY"]) { $envVars["CLAY_API_KEY"] } else { "SUA_CHAVE_CLAY_AQUI" }
-
-# Configurar transcript-api se nao existir
-if (-not $mcpData.mcpServers."transcript-api") {
-    $transcriptObj = [PSCustomObject]@{
-        serverUrl = "https://transcriptapi.com/mcp"
-        headers = [PSCustomObject]@{
-            Authorization = "Bearer $transcriptKey"
-        }
-    }
-    $mcpData.mcpServers | Add-Member -MemberType NoteProperty -Name "transcript-api" -Value $transcriptObj -Force
-    $modified = $true
-    Write-Host "   [+] MCP 'transcript-api' adicionado ao mcp_config.json!" -ForegroundColor Green
-} else {
-    Write-Host "   [OK] MCP 'transcript-api' ja configurado." -ForegroundColor Green
-}
 
 # Configurar firecrawl se nao existir
 if (-not $mcpData.mcpServers."firecrawl") {

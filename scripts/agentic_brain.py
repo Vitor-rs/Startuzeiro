@@ -342,7 +342,7 @@ def build_knowledge_graph():
         ("tool:cnpj_ai", "cnpj.ai & NetworkX (Sócios)", "#14b8a6"),
         ("tool:duckdb", "DuckDB (Analytics)", "#06b6d4"),
         ("tool:gliner", "GLiNER (Zero-Shot NER)", "#8b5cf6"),
-        ("tool:yt", "TranscriptAPI (YouTube Lake)", "#ef4444")
+        ("tool:yt", "YouTube Transcript Engine", "#ef4444")
     ]
     for tid, tlabel, tcolor in tools:
         add_node(tid, "tool", tlabel, tcolor, radius=12)

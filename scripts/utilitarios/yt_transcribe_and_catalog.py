@@ -1,50 +1,45 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
+#     "youtube-transcript-api",
 #     "httpx",
-#     "python-dotenv",
+#     "yt-dlp",
 # ]
 # ///
 """
 Automação de Transcrição e Catalogação do YouTube para Startuzeiro.
-Salva transcrições em yt_base/yt_lake/<nome_normalizado>.md
-E cataloga os metadados em yt_base/README.md
+Motor 100% Gratuito & Open-Source (youtube-transcript-api + oEmbed + yt-dlp).
+
+Salva transcrições em:
+- yt_base/yt_lake/<nome_normalizado>.md
+- brain/03_recursos/yt_lake/<nome_normalizado>.md (P.A.R.A. Second Brain)
+E cataloga os metadados em:
+- yt_base/README.md
 
 Uso:
-    uv run scripts/utilitarios/yt_transcribe_and_catalog.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    uv run scripts/utilitarios/yt_transcribe_and_catalog.py "https://www.youtube.com/watch?v=CzDTaLqozlQ"
 """
 
-import os
 import sys
+import os
 import re
 import unicodedata
 import argparse
 from datetime import datetime
 from pathlib import Path
 import httpx
-from dotenv import load_dotenv
+from youtube_transcript_api import YouTubeTranscriptApi
 
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-load_dotenv(REPO_ROOT / ".env")
-
-BASE_URL = "https://transcriptapi.com/api/v2/youtube"
-
-def get_api_key():
-    key = os.getenv("TRANSCRIPT_API_KEY")
-    if not key:
-        print("[ERRO] TRANSCRIPT_API_KEY não configurada no arquivo .env!")
-        sys.exit(1)
-    return key
 
 def extract_video_id(url_or_id: str) -> str:
     url_or_id = url_or_id.strip()
     if re.match(r"^[a-zA-Z0-9_-]{11}$", url_or_id):
         return url_or_id
-    
-    # Padrões comuns de URL
+
     patterns = [
         r"(?:v=|\/v\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})",
         r"youtu\.be\/([a-zA-Z0-9_-]{11})",
@@ -54,74 +49,140 @@ def extract_video_id(url_or_id: str) -> str:
         m = re.search(p, url_or_id)
         if m:
             return m.group(1)
-            
-    # Fallback básico
+
     clean = re.sub(r"[?&].*$", "", url_or_id)
     parts = clean.split("/")
     if parts and len(parts[-1]) == 11:
         return parts[-1]
-        
+
     return url_or_id
 
 def normalize_filename(title: str) -> str:
     """Normaliza o título: sem acentos, 'ç' -> 'c', espaços viram '_'"""
-    # Decomposição unicode e remoção de marcas de acento
     nfkd = unicodedata.normalize("NFKD", title)
     ascii_str = nfkd.encode("ASCII", "ignore").decode("ASCII")
-    
-    # Minúsculo
     clean = ascii_str.lower()
-    # Substituir qualquer caractere não alfanumérico por underscore
     clean = re.sub(r"[^a-z0-9]+", "_", clean)
     clean = clean.strip("_")
-    
     return clean[:120] if clean else "video_sem_titulo"
 
-def fetch_metadata(client: httpx.Client, video_id: str) -> dict:
+def format_timestamp(seconds: float) -> str:
+    s = int(seconds)
+    hours = s // 3600
+    minutes = (s % 3600) // 60
+    secs = s % 60
+    if hours > 0:
+        return f"[{hours:02d}:{minutes:02d}:{secs:02d}]"
+    return f"[{minutes:02d}:{secs:02d}]"
+
+def fetch_oembed(video_id: str) -> dict:
+    """Busca metadados essenciais via API pública oEmbed da Google (instantâneo, 0 chaves)."""
+    url = f"https://www.youtube.com/watch?v={video_id}"
     try:
-        r = client.get("/video/metadata", params={"video_url": video_id})
+        r = httpx.get("https://www.youtube.com/oembed", params={"url": url, "format": "json"}, timeout=12.0)
         if r.status_code == 200:
             return r.json()
     except Exception as e:
-        print(f"[AVISO] Não foi possível obter metadados completos: {e}")
+        print(f"[AVISO] Falha ao consultar oEmbed: {e}")
     return {}
 
-def fetch_transcript(client: httpx.Client, video_id: str) -> dict:
-    # 1. Tentar com prioridade de idioma pt, en, asr
-    for lang in ["pt,en,asr", "en,asr", None]:
-        params = {
-            "video_url": video_id,
-            "format": "text",
-            "include_timestamp": "true",
-            "send_metadata": "true"
+def fetch_ytdlp_metadata(video_id: str) -> dict:
+    """Enriquece metadados detalhados (views, data exata, descrição) via yt-dlp sem baixar o vídeo."""
+    try:
+        import yt_dlp
+        ydl_opts = {
+            "skip_download": True,
+            "quiet": True,
+            "no_warnings": True,
+            "extract_flat": False
         }
-        if lang:
-            params["language"] = lang
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(video_id, download=False)
+            if info:
+                upload_raw = info.get("upload_date") or ""
+                if len(upload_raw) == 8:
+                    upload_date = f"{upload_raw[:4]}-{upload_raw[4:6]}-{upload_raw[6:]}"
+                else:
+                    upload_date = upload_raw or "Desconhecido"
 
-        r = client.get("/transcript", params=params)
-        if r.status_code == 200:
-            return r.json()
-        elif r.status_code == 404:
-            continue
-        elif r.status_code == 401:
-            print("[ERRO 401] Chave de API inválida.")
-            sys.exit(1)
-        elif r.status_code == 402:
-            print("[ERRO 402] Créditos insuficientes no TranscriptAPI.")
-            sys.exit(1)
-        r.raise_for_status()
+                views = info.get("view_count")
+                views_str = f"{views:,}".replace(",", ".") if views else "Não informado"
 
+                return {
+                    "title": info.get("title"),
+                    "channel": info.get("uploader") or info.get("channel"),
+                    "publish_date": upload_date,
+                    "views": views_str,
+                    "description": info.get("description") or "",
+                    "duration": info.get("duration") or 0
+                }
+    except Exception as e:
+        print(f"[AVISO] Não foi possível obter metadados enriquecidos via yt-dlp: {e}")
     return {}
+
+def fetch_transcript_ytta(video_id: str) -> list:
+    """Extrai legendas via youtube-transcript-api com fallback inteligente de idiomas."""
+    ytt = YouTubeTranscriptApi()
+
+    # 1. Tentar faixas preferenciais (Português, Português Brasileiro, Inglês)
+    for target_langs in [["pt", "pt-BR"], ["en"], None]:
+        try:
+            if target_langs:
+                t = ytt.fetch(video_id, languages=target_langs)
+            else:
+                # Tenta qualquer legenda disponível na lista
+                t_list = ytt.list(video_id)
+                for item in t_list:
+                    t = item.fetch()
+                    break
+            if t and t.snippets:
+                return [
+                    {"start": s.start, "duration": s.duration, "text": s.text}
+                    for s in t.snippets
+                ]
+        except Exception:
+            continue
+    return []
+
+def format_smart_transcript(snippets: list) -> str:
+    """Agrupa snippets em parágrafos lógicos com timestamps a cada ~30-45 segundos."""
+    if not snippets:
+        return ""
+
+    paragraphs = []
+    current_ts = snippets[0]["start"]
+    current_texts = []
+    block_start = current_ts
+
+    for s in snippets:
+        txt = s["text"].strip()
+        if not txt:
+            continue
+
+        current_texts.append(txt)
+        # Se passaram mais de 35 segundos ou se terminar em pontuação forte após 25 segundos
+        elapsed = s["start"] - block_start
+        if elapsed >= 35 or (elapsed >= 20 and txt.endswith((".", "!", "?"))):
+            ts_str = format_timestamp(block_start)
+            para = f"{ts_str} " + " ".join(current_texts)
+            paragraphs.append(para)
+            current_texts = []
+            block_start = s["start"] + s.get("duration", 2)
+
+    if current_texts:
+        ts_str = format_timestamp(block_start)
+        paragraphs.append(f"{ts_str} " + " ".join(current_texts))
+
+    return "\n\n".join(paragraphs)
 
 def generate_summary(title: str, description: str, transcript_text: str) -> str:
-    """Gera um resumo conciso do assunto a partir da descrição e início da transcrição."""
+    """Gera resumo conciso a partir da descrição ou início da transcrição."""
     if description and len(description.strip()) > 30:
         clean_desc = description.strip().split("\n")[0]
         if len(clean_desc) > 160:
             clean_desc = clean_desc[:157] + "..."
         return clean_desc
-    
-    # Se não tiver descrição, pegar os primeiros 150 caracteres da transcrição limpa
+
     clean_lines = [l for l in transcript_text.split("\n") if l.strip() and not l.startswith("[")]
     sample = " ".join(clean_lines[:3]).strip()
     if len(sample) > 150:
@@ -130,8 +191,7 @@ def generate_summary(title: str, description: str, transcript_text: str) -> str:
 
 def update_catalog(yt_base_dir: Path, video_data: dict):
     catalog_md = yt_base_dir / "README.md"
-    
-    # Se o arquivo não existir, criar estrutura inicial
+
     if not catalog_md.exists():
         initial_content = """# 📺 YouTube Base (yt_base)
 
@@ -149,22 +209,19 @@ Todas as transcrições completas ficam armazenadas no lake: [`yt_lake/`](./yt_l
         with open(catalog_md, "w", encoding="utf-8") as f:
             f.write(initial_content)
 
-    # Ler conteúdo atual
     with open(catalog_md, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
     vid_id = video_data["video_id"]
     file_rel = f"yt_lake/{video_data['filename']}"
-    
-    # Linha da tabela
+
     table_row = f"| **[[{file_rel}\\|{video_data['title']}]]** | {video_data['channel']} | {video_data['publish_date']} | {video_data['summary']} | [Assistir ↗]({video_data['url']}) |\n"
 
-    # Verificar se o vídeo já está catalogado
     exists = False
     new_lines = []
     for line in lines:
         if vid_id in line or video_data['url'] in line:
-            new_lines.append(table_row) # Atualiza a linha existente
+            new_lines.append(table_row)
             exists = True
         else:
             new_lines.append(line)
@@ -178,7 +235,7 @@ Todas as transcrições completas ficam armazenadas no lake: [`yt_lake/`](./yt_l
     print(f"📖 Catálogo atualizado em: {catalog_md}")
 
 def main():
-    parser = argparse.ArgumentParser(description="Transcrever e catalogar vídeo do YouTube")
+    parser = argparse.ArgumentParser(description="Transcrever e catalogar vídeo do YouTube (Motor Gratuito & Open-Source)")
     parser.add_argument("url", help="Link do YouTube ou ID do vídeo")
     args = parser.parse_args()
 
@@ -186,48 +243,43 @@ def main():
     full_url = f"https://www.youtube.com/watch?v={video_id}"
     print(f"\n🔍 Processando vídeo ID: {video_id} ({full_url})")
 
-    headers = {
-        "Authorization": f"Bearer {get_api_key()}",
-        "Accept": "application/json"
-    }
+    # 1. Obter metadados
+    print("📥 Coletando metadados (oEmbed & yt-dlp)...")
+    oembed_meta = fetch_oembed(video_id)
+    ytdlp_meta = fetch_ytdlp_metadata(video_id)
+
+    title = ytdlp_meta.get("title") or oembed_meta.get("title") or f"YouTube Video {video_id}"
+    channel_name = ytdlp_meta.get("channel") or oembed_meta.get("author_name") or "Canal Desconhecido"
+    publish_date = ytdlp_meta.get("publish_date") or "Não informado"
+    views = ytdlp_meta.get("views") or "Não informado"
+    desc = ytdlp_meta.get("description") or ""
+
+    # 2. Obter transcrição
+    print("🎙️ Extraindo transcrição com timestamps...")
+    snippets = fetch_transcript_ytta(video_id)
+
+    if not snippets:
+        print(f"[ERRO] Não foi possível obter legendas para o vídeo {video_id}.")
+        print("Verifique se o vídeo possui legendas disponíveis ou se o link está correto.")
+        sys.exit(1)
+
+    formatted_transcript = format_smart_transcript(snippets)
+
+    # 3. Preparar arquivo e diretórios
+    norm_name = normalize_filename(title)
+    filename = f"{norm_name}.md"
 
     yt_base = REPO_ROOT / "yt_base"
     yt_lake = yt_base / "yt_lake"
     yt_lake.mkdir(parents=True, exist_ok=True)
 
-    with httpx.Client(base_url=BASE_URL, headers=headers, timeout=60.0) as client:
-        # 1. Metadados
-        print("📥 Obtendo informações do vídeo...")
-        meta = fetch_metadata(client, video_id)
-        
-        # 2. Transcrição
-        print("🎙️ Extraindo transcrição...")
-        t_data = fetch_transcript(client, video_id)
+    # Lake no Segundo Cérebro (P.A.R.A.)
+    brain_lake = REPO_ROOT / "brain" / "03_recursos" / "yt_lake"
+    brain_lake.mkdir(parents=True, exist_ok=True)
 
-    if not t_data or not t_data.get("transcript"):
-        print(f"[ERRO] Não foi possível obter a transcrição do vídeo {video_id}.")
-        print("Verifique se o vídeo possui legendas disponíveis ou se o link está correto.")
-        sys.exit(1)
-
-    transcript_text = t_data.get("transcript", "")
-    
-    # Extração de campos de metadados
-    title = meta.get("title") or t_data.get("metadata", {}).get("title") or f"YouTube Video {video_id}"
-    channel_info = meta.get("channel") or {}
-    channel_name = channel_info.get("name") or t_data.get("metadata", {}).get("author_name") or "Canal Desconhecido"
-    publish_date = meta.get("publishDate") or meta.get("relativeDate") or "Não informado"
-    views = meta.get("viewCountText") or "Não informado"
-    desc = meta.get("description") or ""
-
-    # Normalizar nome do arquivo: minúsculo, sem acentos, ç -> c, espaços -> _
-    norm_name = normalize_filename(title)
-    filename = f"{norm_name}.md"
-    file_path = yt_lake / filename
-
-    summary = generate_summary(title, desc, transcript_text)
-
-    # Escrever arquivo de transcrição no yt_lake
+    summary = generate_summary(title, desc, formatted_transcript)
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
     md_content = f"""---
 video_id: "{video_id}"
 titulo_original: "{title}"
@@ -236,7 +288,8 @@ data_publicacao: "{publish_date}"
 visualizacoes: "{views}"
 url_original: "{full_url}"
 data_transcricao: "{now_str}"
-tags: [youtube, transcricao, yt_lake]
+motor_transcricao: "youtube-transcript-api (Open-Source / Free)"
+tags: [youtube, transcricao, yt_lake, second_brain]
 ---
 
 # {title}
@@ -254,15 +307,22 @@ tags: [youtube, transcricao, yt_lake]
 ---
 
 ## 🎙️ Transcrição Completa
-{transcript_text}
+{formatted_transcript}
 """
 
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(md_content)
+    # Gravar em yt_base/yt_lake
+    file_path = yt_lake / filename
+    file_path.write_text(md_content, encoding="utf-8")
 
-    print(f"✅ Transcrição salva com sucesso em:\n   -> {file_path}")
+    # Sincronizar em brain/03_recursos/yt_lake
+    brain_file_path = brain_lake / filename
+    brain_file_path.write_text(md_content, encoding="utf-8")
 
-    # Atualizar o catálogo em yt_base/README.md
+    print(f"✅ Transcrição salva com sucesso em:")
+    print(f"   -> {file_path}")
+    print(f"   -> {brain_file_path}")
+
+    # Atualizar o catálogo central
     video_summary_info = {
         "video_id": video_id,
         "filename": filename,
@@ -273,7 +333,7 @@ tags: [youtube, transcricao, yt_lake]
         "url": full_url
     }
     update_catalog(yt_base, video_summary_info)
-    print("🎉 Vídeo transcrito e catalogado perfeitamente!\n")
+    print("🎉 Vídeo transcrito e catalogado perfeitamente no Lake e no Segundo Cérebro!\n")
 
 if __name__ == "__main__":
     main()
